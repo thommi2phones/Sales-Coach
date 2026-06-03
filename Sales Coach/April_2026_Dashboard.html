@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>April 2026 Performance — Thomas Lindsey</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  :root {
+    --bg:#0f1117; --surface:#1a1d27; --surface-2:#222632; --border:#2a2e3b;
+    --text:#e4e6ed; --muted:#8b8fa3;
+    --accent:#6c5ce7; --green:#00b894; --orange:#fdcb6e; --red:#e17055; --blue:#74b9ff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);padding:2rem;line-height:1.5}
+  .container{max-width:1200px;margin:0 auto}
+  .header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border)}
+  .header h1{font-size:1.75rem;font-weight:800;letter-spacing:-0.02em}
+  .header h1 span{color:var(--accent)}
+  .header .meta{color:var(--muted);font-size:0.85rem;text-align:right;line-height:1.7}
+  .header .meta strong{color:var(--text)}
+
+  /* Hero */
+  .hero{background:linear-gradient(135deg,rgba(108,92,231,0.15),rgba(0,184,148,0.08));border:1px solid rgba(108,92,231,0.3);border-radius:16px;padding:1.75rem 2rem;margin-bottom:1.5rem}
+  .hero-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem}
+  .hero h2{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);font-weight:600}
+  .hero .pct-pill{background:var(--green);color:#0f1117;padding:0.4rem 1rem;border-radius:99px;font-weight:700;font-size:0.95rem}
+  .hero-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;align-items:end}
+  .hero-stat .label{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.4rem}
+  .hero-stat .value{font-size:2rem;font-weight:800;letter-spacing:-0.02em;line-height:1}
+  .hero-stat .sub{font-size:0.78rem;color:var(--muted);margin-top:0.3rem}
+  .hero-stat .value.green{color:var(--green)}
+  .hero-stat .value.orange{color:var(--orange)}
+  .progress-bar-wrap{margin-top:1.25rem;background:rgba(0,0,0,0.3);border-radius:99px;height:10px;overflow:hidden;position:relative}
+  .progress-bar{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--green));width:83%}
+  .progress-labels{display:flex;justify-content:space-between;margin-top:0.4rem;font-size:0.72rem;color:var(--muted)}
+
+  /* Stat row */
+  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
+  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem}
+  .stat-card .label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.4rem;font-weight:600}
+  .stat-card .value{font-size:1.5rem;font-weight:700}
+  .stat-card .sub{font-size:0.75rem;color:var(--muted);margin-top:0.25rem}
+  .stat-card.green .value{color:var(--green)}
+  .stat-card.red .value{color:var(--red)}
+  .stat-card.blue .value{color:var(--blue)}
+  .stat-card.orange .value{color:var(--orange)}
+
+  /* Section */
+  .section-title{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);font-weight:600;margin-bottom:0.85rem;display:flex;align-items:center;gap:0.5rem}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem}
+
+  /* Deal table */
+  table{width:100%;border-collapse:collapse;font-size:0.85rem}
+  th{text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);font-weight:600;color:var(--muted);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em}
+  td{padding:0.7rem 0.75rem;border-bottom:1px solid var(--border)}
+  tr:last-child td{border-bottom:none}
+  tr:hover{background:var(--surface-2)}
+  .deal-name{font-weight:500}
+  .amount{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+  .stage-pill{display:inline-block;padding:0.18rem 0.55rem;border-radius:5px;font-size:0.7rem;font-weight:600}
+  .stage-qual{background:rgba(116,185,255,0.15);color:var(--blue)}
+  .stage-prop{background:rgba(253,203,110,0.15);color:var(--orange)}
+  .stage-pov{background:rgba(108,92,231,0.15);color:var(--accent)}
+  .stage-agree{background:rgba(0,184,148,0.15);color:var(--green)}
+  .stage-won{background:var(--green);color:#0f1117}
+  .stage-lost{background:rgba(225,112,85,0.15);color:var(--red)}
+
+  /* Two-col layout */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem}
+  .stage-bar{display:flex;justify-content:space-between;align-items:center;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.85rem}
+  .stage-bar:last-child{border-bottom:none}
+  .stage-bar .left{display:flex;align-items:center;gap:0.6rem}
+  .stage-bar .count{color:var(--muted);font-size:0.75rem}
+  .stage-bar .val{font-variant-numeric:tabular-nums;font-weight:600}
+
+  /* Insights */
+  .insights{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+  .insight{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;border-left:3px solid var(--green)}
+  .insight.warn{border-left-color:var(--orange)}
+  .insight.bad{border-left-color:var(--red)}
+  .insight h4{font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;display:flex;align-items:center;gap:0.4rem}
+  .insight p{font-size:0.82rem;color:var(--muted);line-height:1.55}
+
+  /* Recommendations */
+  .recs{background:linear-gradient(135deg,rgba(108,92,231,0.06),rgba(116,185,255,0.04));border:1px solid rgba(108,92,231,0.25);border-radius:14px;padding:1.5rem 1.75rem;margin-bottom:1.5rem}
+  .recs h3{font-size:1rem;font-weight:700;margin-bottom:1rem}
+  .rec-item{display:flex;gap:1rem;padding:0.85rem 0;border-bottom:1px solid rgba(108,92,231,0.12)}
+  .rec-item:last-child{border-bottom:none}
+  .rec-num{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--accent);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem}
+  .rec-body strong{display:block;margin-bottom:0.2rem;font-size:0.92rem}
+  .rec-body p{font-size:0.82rem;color:var(--muted);line-height:1.55}
+  .rec-body .due{display:inline-block;margin-top:0.35rem;font-size:0.72rem;background:var(--surface-2);padding:0.15rem 0.5rem;border-radius:5px;color:var(--text)}
+
+  .narrative{background:var(--surface);border-left:3px solid var(--accent);padding:1.1rem 1.4rem;border-radius:8px;font-size:0.95rem;line-height:1.65;margin-bottom:1.5rem}
+  .narrative strong{color:var(--accent)}
+
+  .footer{text-align:center;padding:1rem;color:var(--muted);font-size:0.72rem;border-top:1px solid var(--border);margin-top:1rem}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1><span>April 2026</span> Performance Review</h1>
+    <div class="meta">
+      <strong>Thomas Lindsey</strong> · Team Lead, NAM Brand Portfolio<br>
+      Prepared for 1:1 with Andrew · April 29, 2026<br>
+      Source: Salesforce OpportunitySplit (live)
+    </div>
+  </div>
+
+  <!-- HERO ATTAINMENT -->
+  <div class="hero">
+    <div class="hero-top">
+      <div>
+        <h2>Pipeline Generated · April 2026</h2>
+        <p style="color:var(--muted);font-size:0.85rem;margin-top:0.25rem">4× quota target ($46.75k × 4 = $187k goal)</p>
+      </div>
+      <div class="pct-pill">83% to goal</div>
+    </div>
+    <div class="hero-grid">
+      <div class="hero-stat">
+        <div class="label">Credited Pipeline</div>
+        <div class="value green">$156k</div>
+        <div class="sub">Y1 ACV × split %</div>
+      </div>
+      <div class="hero-stat">
+        <div class="label">Goal</div>
+        <div class="value">$187k</div>
+        <div class="sub">$46.75k quota × 4</div>
+      </div>
+      <div class="hero-stat">
+        <div class="label">Gap to Goal</div>
+        <div class="value orange">$31k</div>
+        <div class="sub">~3 mid-market deals</div>
+      </div>
+      <div class="hero-stat">
+        <div class="label">Deals Created</div>
+        <div class="value">21</div>
+        <div class="sub">non-renewal</div>
+      </div>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar"></div></div>
+    <div class="progress-labels"><span>$0</span><span>$156k attained</span><span>$187k goal</span></div>
+  </div>
+
+  <!-- HEADLINE STATS -->
+  <div class="stat-row">
+    <div class="stat-card green">
+      <div class="label">Closed Won (April)</div>
+      <div class="value">$1,550</div>
+      <div class="sub">Paxos | Claude · 1 deal</div>
+    </div>
+    <div class="stat-card red">
+      <div class="label">Closed Lost (April)</div>
+      <div class="value">$15,900</div>
+      <div class="sub">Fusable, Speed Sport, Chefman · 3 deals</div>
+    </div>
+    <div class="stat-card blue">
+      <div class="label">Activities Logged</div>
+      <div class="value">1,331</div>
+      <div class="sub">280 calls · 979 emails · 72 mtgs</div>
+    </div>
+    <div class="stat-card orange">
+      <div class="label">Customer-Facing Mtgs</div>
+      <div class="value">61</div>
+      <div class="sub">~2/business day</div>
+    </div>
+  </div>
+
+  <!-- NARRATIVE -->
+  <div class="narrative">
+    April was a <strong>strong pipeline-creation month</strong> — 21 new deals at $156k credit puts you at <strong>83% of goal</strong>. The gap to 100% is <strong>$31k</strong>, fully closeable with the existing top-of-pipeline deals. The story for the 1:1: <strong>volume and breadth are working; the next chapter is conversion velocity</strong>.
+  </div>
+
+  <!-- TWO COLUMN: STAGES + TOP DEALS -->
+  <div class="two-col">
+    <div class="card">
+      <div class="section-title">Stage Breakdown</div>
+      <div class="stage-bar"><div class="left"><span class="stage-pill stage-qual">Qualified</span></div><div><span class="count">11 deals · </span><span class="val">$74.4k</span></div></div>
+      <div class="stage-bar"><div class="left"><span class="stage-pill stage-pov">Proof of Value</span></div><div><span class="count">3 deals · </span><span class="val">$25.4k</span></div></div>
+      <div class="stage-bar"><div class="left"><span class="stage-pill stage-qual">Qualification</span></div><div><span class="count">1 deal · </span><span class="val">$20.0k</span></div></div>
+      <div class="stage-bar"><div class="left"><span class="stage-pill stage-prop">Proposal</span></div><div><span class="count">1 deal · </span><span class="val">$2.4k</span></div></div>
+      <div class="stage-bar"><div class="left"><span class="stage-pill stage-agree">Agreement</span></div><div><span class="count">1 deal · </span><span class="val">$0.4k</span></div></div>
+      <div class="stage-bar"><div class="left"><span class="stage-pill stage-won">Closed Won</span></div><div><span class="count">1 deal · </span><span class="val">$1.6k</span></div></div>
+      <div class="stage-bar"><div class="left"><span class="stage-pill stage-lost">Closed Lost</span></div><div><span class="count">3 deals · </span><span class="val">$15.9k</span></div></div>
+    </div>
+    <div class="card">
+      <div class="section-title">Top 5 New Deals (by Credit)</div>
+      <div class="stage-bar"><div class="left"><strong>DTCC | MIC?</strong></div><div><span class="count">Qualified · </span><span class="val">$25.0k</span></div></div>
+      <div class="stage-bar"><div class="left"><strong>StayTuned | DACT</strong></div><div><span class="count">Qualification · </span><span class="val">$20.0k</span></div></div>
+      <div class="stage-bar"><div class="left"><strong>Revibe | MIC</strong></div><div><span class="count">Proof of Value · </span><span class="val">$20.0k</span></div></div>
+      <div class="stage-bar"><div class="left"><strong>Upwork | MIC/MCP</strong></div><div><span class="count">Qualified · </span><span class="val">$15.0k</span></div></div>
+      <div class="stage-bar"><div class="left"><strong>AMN | SNO</strong></div><div><span class="count">Qualified · </span><span class="val">$12.0k</span></div></div>
+      <p style="font-size:0.78rem;color:var(--muted);margin-top:0.85rem;padding-top:0.75rem;border-top:1px solid var(--border)">Top 5 = $92k = <strong style="color:var(--text)">59% of total April credit</strong>. Concentrating progression here closes the goal gap.</p>
+    </div>
+  </div>
+
+  <!-- ALL DEALS TABLE -->
+  <div class="card">
+    <div class="section-title">All 21 Deals Created in April 2026</div>
+    <table>
+      <thead><tr><th>Deal</th><th>Stage</th><th>Created</th><th>Close Date</th><th class="amount">Credit</th></tr></thead>
+      <tbody>
+        <tr><td class="deal-name">DTCC | MIC?</td><td><span class="stage-pill stage-qual">Qualified</span></td><td>Apr 9</td><td>May 29</td><td class="amount">$25,000</td></tr>
+        <tr><td class="deal-name">StayTuned | DACT</td><td><span class="stage-pill stage-qual">Qualification</span></td><td>Apr 24</td><td>Jul 31</td><td class="amount">$20,000</td></tr>
+        <tr><td class="deal-name">Revibe | MIC</td><td><span class="stage-pill stage-pov">Proof of Value</span></td><td>Apr 24</td><td>Jun 30</td><td class="amount">$20,000</td></tr>
+        <tr><td class="deal-name">Upwork | MIC/MCP</td><td><span class="stage-pill stage-qual">Qualified</span></td><td>Apr 24</td><td>Jun 26</td><td class="amount">$15,000</td></tr>
+        <tr><td class="deal-name">Fusable | SQL</td><td><span class="stage-pill stage-lost">Closed Lost</span></td><td>Apr 3</td><td>Apr 27</td><td class="amount">$12,000</td></tr>
+        <tr><td class="deal-name">AMN | SNO</td><td><span class="stage-pill stage-qual">Qualified</span></td><td>Apr 9</td><td>Jul 31</td><td class="amount">$12,000</td></tr>
+        <tr><td class="deal-name">DS18 | MIC</td><td><span class="stage-pill stage-qual">Qualified</span></td><td>Apr 24</td><td>Sep 30</td><td class="amount">$12,000</td></tr>
+        <tr><td class="deal-name">BlueDoor | MIC</td><td><span class="stage-pill stage-qual">Qualified</span></td><td>Apr 22</td><td>May 29</td><td class="amount">$10,000</td></tr>
+        <tr><td class="deal-name">IA | MCP</td><td><span class="stage-pill stage-pov">Proof of Value</span></td><td>Apr 1</td><td>Jun 30</td><td class="amount">$5,000</td></tr>
+        <tr><td class="deal-name">WELL | MIC</td><td><span class="stage-pill stage-qual">Qualified</span></td><td>Apr 28</td><td>May 30</td><td class="amount">$4,000</td></tr>
+        <tr><td class="deal-name">Furnished Finder | MCP</td><td><span class="stage-pill stage-qual">Qualified</span></td><td>Apr 21</td><td>May 29</td><td class="amount">$3,800</td></tr>
+        <tr><td class="deal-name">Speed Sport | Growth CDI</td><td><span class="stage-pill stage-lost">Closed Lost</span></td><td>Apr 16</td><td>Apr 27</td><td class="amount">$3,000</td></tr>
+        <tr><td class="deal-name">YMCA GA | Growth</td><td><span class="stage-pill stage-prop">Proposal</span></td><td>Apr 15</td><td>Apr 24 ⚠️</td><td class="amount">$2,400</td></tr>
+        <tr><td class="deal-name">Arcadia | Growth</td><td><span class="stage-pill stage-qual">Qualified</span></td><td>Apr 16</td><td>May 29</td><td class="amount">$2,124</td></tr>
+        <tr><td class="deal-name">Poppy | Growth</td><td><span class="stage-pill stage-qual">Qualified</span></td><td>Apr 22</td><td>May 29</td><td class="amount">$2,124</td></tr>
+        <tr><td class="deal-name">LNI | Growth</td><td><span class="stage-pill stage-qual">Qualified</span></td><td>Apr 24</td><td>May 29</td><td class="amount">$2,124</td></tr>
+        <tr><td class="deal-name">Dale Howard | MCP</td><td><span class="stage-pill stage-qual">Qualified</span></td><td>Apr 28</td><td>May 29</td><td class="amount">$2,124</td></tr>
+        <tr><td class="deal-name">Paxos | Claude</td><td><span class="stage-pill stage-won">Closed Won</span></td><td>Apr 7</td><td>Apr 10</td><td class="amount">$1,550</td></tr>
+        <tr><td class="deal-name">Chefman | PBI + X</td><td><span class="stage-pill stage-lost">Closed Lost</span></td><td>Apr 1</td><td>Apr 27</td><td class="amount">$900</td></tr>
+        <tr><td class="deal-name">Maison Adam | MCP G</td><td><span class="stage-pill stage-agree">Agreement</span></td><td>Apr 9</td><td>Apr 30</td><td class="amount">$444</td></tr>
+        <tr><td class="deal-name">Parc Safari | Starter</td><td><span class="stage-pill stage-pov">Proof of Value</span></td><td>Apr 22</td><td>May 29</td><td class="amount">$444</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- INSIGHTS -->
+  <div class="section-title">What the Data Shows</div>
+  <div class="insights">
+    <div class="insight">
+      <h4>✅ Mid-market deal mix is improving</h4>
+      <p>6 deals at $10k+ credit (DTCC, StayTuned, Revibe, Upwork, AMN, DS18, BlueDoor) — that's a notable shift from a Growth-tier-heavy pipeline. This is where the leverage to hit 100% lives.</p>
+    </div>
+    <div class="insight">
+      <h4>✅ MCP/AI positioning is working</h4>
+      <p>5 of 21 deals are MCP/Claude/AI plays (Upwork, Dale Howard, Paxos, IA MCP, Furnished Finder MCP). You closed Paxos in 3 days. Ride this wave.</p>
+    </div>
+    <div class="insight warn">
+      <h4>⚠️ Velocity gap on Qualified deals</h4>
+      <p>11 deals stuck at "Qualified" worth $74k. That's 47% of pipeline credit not progressing past initial qualification. Identify the single blocker per deal.</p>
+    </div>
+    <div class="insight warn">
+      <h4>⚠️ Stale close dates</h4>
+      <p>YMCA GA close date was Apr 24 — already passed. Maison Adam due today (Apr 30). Either advance or push with documented reason.</p>
+    </div>
+    <div class="insight bad">
+      <h4>🔴 Net-negative on closed activity</h4>
+      <p>$1.6k won vs $15.9k lost = -$14.3k net. Fusable ($12k) closed lost in 24 days — quick disqualification or premature progression. Worth a 1-page autopsy.</p>
+    </div>
+    <div class="insight bad">
+      <h4>🔴 $31k gap = 2 deals away</h4>
+      <p>Advancing DTCC ($25k) or any combination of StayTuned + Revibe ($40k) closes the goal gap. The math is concentrated, not spread thin.</p>
+    </div>
+  </div>
+
+  <!-- RECOMMENDATIONS -->
+  <div class="recs">
+    <h3>🎯 May Action Plan — 6 Items, Tied to the Coaching Plan</h3>
+
+    <div class="rec-item">
+      <div class="rec-num">1</div>
+      <div class="rec-body">
+        <strong>Build value narrative + MEDDPICC card for DTCC ($25k)</strong>
+        <p>Largest April deal. Currently Qualified at 30%. Apply your Week 1 + Week 2 coaching framework here first — this is the single deal that closes 80% of the goal gap.</p>
+        <span class="due">Due May 2</span>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">2</div>
+      <div class="rec-body">
+        <strong>Run a Fusable loss autopsy</strong>
+        <p>$12k Closed Lost in 24 days. What was the disqualifier? Did discovery surface it? Was a champion identified? Pattern-match against similar SQL/DWH deals to avoid repeat. Bring 1-pager to 1:1.</p>
+        <span class="due">Due May 5</span>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">3</div>
+      <div class="rec-body">
+        <strong>Force a stage transition on the 11 Qualified deals</strong>
+        <p>Each deal needs ONE thing: a confirmed next step with the buyer that moves it to PoV / Proposal. Block 90 minutes; for each, write the specific email or call ask. Target: 5 advance to PoV by May 9.</p>
+        <span class="due">Due May 9</span>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">4</div>
+      <div class="rec-body">
+        <strong>Update overdue close dates: YMCA GA, Maison Adam, Paxos</strong>
+        <p>Either close them out today, or push with a documented mutual next step. Andrew's view of your forecast becomes credible only when close dates are honest. This is your CRM hygiene action from Week 1.</p>
+        <span class="due">Due May 1</span>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">5</div>
+      <div class="rec-body">
+        <strong>Multi-thread Upwork, AMN, DS18, BlueDoor</strong>
+        <p>Four $10k+ deals at single-threaded Qualified. Each needs 2nd contact identified (economic buyer or technical evaluator) before May 15. You're 1 stakeholder away from a stalled deal on each.</p>
+        <span class="due">Due May 15</span>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">6</div>
+      <div class="rec-body">
+        <strong>Write executive summaries for top 3 deals (DTCC, StayTuned, Revibe)</strong>
+        <p>Lead with business impact, end with recommendation. This is your Week 3 coaching exercise applied to live deals — bring all 3 to your May 19 1:1.</p>
+        <span class="due">Due May 19</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1:1 OPENING -->
+  <div class="card" style="background:linear-gradient(135deg,rgba(0,184,148,0.08),rgba(108,92,231,0.04));border-color:rgba(0,184,148,0.25)">
+    <div class="section-title" style="color:var(--green)">📝 1:1 Opening Line</div>
+    <p style="font-size:1.05rem;line-height:1.65;font-style:italic;color:var(--text)">
+      "April was my strongest pipeline-creation month — 21 deals, $156k credit, <strong>83% to goal</strong>. The gap is $31k, and DTCC alone closes 80% of it. I'm bringing a Fusable loss autopsy and a stage-transition plan for the 11 Qualified deals. The May 19 milestone is executive summaries for DTCC, StayTuned, and Revibe."
+    </p>
+  </div>
+
+  <div class="footer">
+    Source: Salesforce <code>OpportunitySplit</code> via <code>pull-sf-deals.mjs</code> · SQLite <code>deals.create_date</code> · API <code>/api/deals/pipeline-generated</code><br>
+    Activity data: HubSpot CRM · Calendar: Google Calendar · Methodology: Y1 ACV × split %, renewals excluded, monthly goal = quota × 4
+  </div>
+
+</div>
+</body>
+</html>
+</content>
+</invoke>

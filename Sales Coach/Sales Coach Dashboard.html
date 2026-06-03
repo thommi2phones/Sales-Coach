@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales Coach — Thomas</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface-hover: #222632;
+    --border: #2a2e3b;
+    --text: #e4e6ed;
+    --text-muted: #8b8fa3;
+    --accent: #6c5ce7;
+    --accent-glow: rgba(108,92,231,0.15);
+    --green: #00b894;
+    --green-glow: rgba(0,184,148,0.12);
+    --orange: #fdcb6e;
+    --orange-glow: rgba(253,203,110,0.12);
+    --red: #e17055;
+    --red-glow: rgba(225,112,85,0.12);
+    --blue: #74b9ff;
+    --blue-glow: rgba(116,185,255,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 2rem;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .header h1 span { color: var(--accent); }
+  .header-meta {
+    text-align: right;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  /* Stats Row */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .stat-card:hover { border-color: var(--accent); }
+  .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .stat-card.green .stat-value { color: var(--green); }
+  .stat-card.orange .stat-value { color: var(--orange); }
+  .stat-card.blue .stat-value { color: var(--blue); }
+  .stat-card.accent .stat-value { color: var(--accent); }
+
+  /* Section heading */
+  .section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.8rem;
+  }
+
+  /* Coaching Modules Grid */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .module-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .module-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 14px 14px 0 0;
+  }
+  .module-card:hover {
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+  .module-card.discovery::before { background: var(--green); }
+  .module-card.discovery:hover { background: var(--green-glow); border-color: var(--green); }
+  .module-card.deals::before { background: var(--accent); }
+  .module-card.deals:hover { background: var(--accent-glow); border-color: var(--accent); }
+  .module-card.pipeline::before { background: var(--orange); }
+  .module-card.pipeline:hover { background: var(--orange-glow); border-color: var(--orange); }
+  .module-card.objections::before { background: var(--blue); }
+  .module-card.objections:hover { background: var(--blue-glow); border-color: var(--blue); }
+  .module-card.closing::before { background: var(--red); }
+  .module-card.closing:hover { background: var(--red-glow); border-color: var(--red); }
+  .module-card.playbook::before { background: var(--text-muted); }
+  .module-card.playbook:hover { background: rgba(139,143,163,0.08); border-color: var(--text-muted); }
+
+  .module-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .module-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .module-card p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* Coaching Log */
+  .log-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .log-section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .log-empty {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+  .log-empty .prompt {
+    display: inline-block;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    margin-top: 0.75rem;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.82rem;
+    color: var(--accent);
+  }
+
+  /* Quick Actions */
+  .actions-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .action-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .action-card:hover {
+    border-color: var(--accent);
+    background: var(--surface-hover);
+  }
+  .action-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .action-icon.purple { background: var(--accent-glow); }
+  .action-icon.green { background: var(--green-glow); }
+  .action-icon.orange { background: var(--orange-glow); }
+  .action-icon.blue { background: var(--blue-glow); }
+  .action-card h4 { font-size: 0.9rem; font-weight: 600; }
+  .action-card p { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem; }
+
+  /* Framework section */
+  .framework {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .framework h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+  .framework-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .fw-item {
+    background: var(--bg);
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  .fw-item h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .fw-item ul {
+    list-style: none;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+  .fw-item ul li::before {
+    content: '→ ';
+    color: var(--accent);
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 1rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 768px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .modules-grid { grid-template-columns: 1fr; }
+    .actions-row { grid-template-columns: 1fr; }
+    .framework-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1><span>Sales</span> Coach</h1>
+    <div class="header-meta">
+      Thomas Lindsey<br>
+      SaaS Sales · 1-3 Month Cycles
+    </div>
+  </div>
+
+  <!-- Stats (placeholder — these update as you log sessions) -->
+  <div class="stats-row">
+    <div class="stat-card green">
+      <div class="stat-value">—</div>
+      <div class="stat-label">Calls Reviewed</div>
+    </div>
+    <div class="stat-card accent">
+      <div class="stat-value">—</div>
+      <div class="stat-label">Deals Coached</div>
+    </div>
+    <div class="stat-card orange">
+      <div class="stat-value">—</div>
+      <div class="stat-label">Win Rate Trend</div>
+    </div>
+    <div class="stat-card blue">
+      <div class="stat-value">—</div>
+      <div class="stat-label">Coaching Score</div>
+    </div>
+  </div>
+
+  <!-- Coaching Modules -->
+  <div class="section-title">Coaching Modules</div>
+  <div class="modules-grid">
+    <div class="module-card discovery">
+      <div class="module-icon">🎯</div>
+      <h3>Discovery & Qualification</h3>
+      <p>Review call transcripts, score your discovery questions, and sharpen how you uncover pain and urgency.</p>
+    </div>
+    <div class="module-card deals">
+      <div class="module-icon">♟️</div>
+      <h3>Deal Strategy</h3>
+      <p>Map stakeholders, plan next steps, and get coached on how to advance deals through your pipeline stages.</p>
+    </div>
+    <div class="module-card pipeline">
+      <div class="module-icon">📊</div>
+      <h3>Pipeline Health</h3>
+      <p>Audit your pipeline for risks, stale deals, and coverage gaps. Get a weekly action plan.</p>
+    </div>
+    <div class="module-card objections">
+      <div class="module-icon">🛡️</div>
+      <h3>Objection Handling</h3>
+      <p>Practice responses to common objections and build a library of battle-tested rebuttals for your product.</p>
+    </div>
+    <div class="module-card closing">
+      <div class="module-icon">🤝</div>
+      <h3>Closing & Negotiation</h3>
+      <p>Review your closing techniques, pricing discussions, and negotiation patterns to maximize deal value.</p>
+    </div>
+    <div class="module-card playbook">
+      <div class="module-icon">📖</div>
+      <h3>Personal Playbook</h3>
+      <p>Your evolving collection of best practices, talk tracks, and lessons learned from every coaching session.</p>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="section-title">Quick Actions</div>
+  <div class="actions-row">
+    <div class="action-card">
+      <div class="action-icon green">📞</div>
+      <div>
+        <h4>Review a Call</h4>
+        <p>Paste a transcript or notes — get scored feedback and coaching</p>
+      </div>
+    </div>
+    <div class="action-card">
+      <div class="action-icon purple">🔍</div>
+      <div>
+        <h4>Research an Account</h4>
+        <p>Deep-dive a prospect with enrichment data and CRM context</p>
+      </div>
+    </div>
+    <div class="action-card">
+      <div class="action-icon orange">📋</div>
+      <div>
+        <h4>Prep for a Meeting</h4>
+        <p>Get a briefing with agenda, attendee intel, and talking points</p>
+      </div>
+    </div>
+    <div class="action-card">
+      <div class="action-icon blue">✉️</div>
+      <div>
+        <h4>Draft Outreach</h4>
+        <p>Personalized cold email or follow-up based on research</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scoring Framework -->
+  <div class="framework">
+    <h3>How I'll Score Your Calls & Deals</h3>
+    <div class="framework-grid">
+      <div class="fw-item">
+        <h4>🎯 Discovery Quality</h4>
+        <ul>
+          <li>Pain identification depth</li>
+          <li>Business impact quantified</li>
+          <li>Decision process mapped</li>
+          <li>Timeline & urgency uncovered</li>
+          <li>Champion identified</li>
+        </ul>
+      </div>
+      <div class="fw-item">
+        <h4>♟️ Deal Control</h4>
+        <ul>
+          <li>Multi-threaded contacts</li>
+          <li>Next steps are mutual</li>
+          <li>Paper process started early</li>
+          <li>Competition awareness</li>
+          <li>Economic buyer engaged</li>
+        </ul>
+      </div>
+      <div class="fw-item">
+        <h4>💬 Communication</h4>
+        <ul>
+          <li>Talk-to-listen ratio</li>
+          <li>Open vs. closed questions</li>
+          <li>Active listening signals</li>
+          <li>Value prop clarity</li>
+          <li>Confident closing language</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coaching Log (empty state) -->
+  <div class="log-section">
+    <h3>Coaching Log</h3>
+    <div class="log-empty">
+      No sessions logged yet. Start by sharing a call transcript, deal details, or your pipeline.<br>
+      <span class="prompt">"Review my last discovery call" · "Coach me on this deal" · "Check my pipeline"</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    Sales Coach · Built for Thomas · Powered by Claude
+  </div>
+
+</div>
+</body>
+</html>

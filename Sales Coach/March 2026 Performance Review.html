@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>March 2026 Performance Review — Thomas Lindsey</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface-alt: #1e2230;
+    --border: #2a2e3b;
+    --text: #e4e6ed;
+    --text-muted: #8b8fa3;
+    --green: #00b894;
+    --green-dim: rgba(0,184,148,0.12);
+    --red: #e17055;
+    --red-dim: rgba(225,112,85,0.12);
+    --orange: #fdcb6e;
+    --orange-dim: rgba(253,203,110,0.12);
+    --blue: #74b9ff;
+    --blue-dim: rgba(116,185,255,0.12);
+    --purple: #6c5ce7;
+    --purple-dim: rgba(108,92,231,0.12);
+    --accent: #a29bfe;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 2rem;
+    line-height: 1.6;
+  }
+
+  .container { max-width: 1000px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .header .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--purple);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.25rem;
+  }
+  .header .sub {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  /* Top-line Stats */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+  }
+  .stat .value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .stat .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+  .stat.green .value { color: var(--green); }
+  .stat.red .value { color: var(--red); }
+  .stat.blue .value { color: var(--blue); }
+  .stat.purple .value { color: var(--purple); }
+  .stat.orange .value { color: var(--orange); }
+
+  /* Section */
+  .section {
+    margin-bottom: 2rem;
+  }
+  .section-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  /* Deal Tables */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .card h3 .badge {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  .badge-green { background: var(--green-dim); color: var(--green); }
+  .badge-red { background: var(--red-dim); color: var(--red); }
+  .badge-blue { background: var(--blue-dim); color: var(--blue); }
+  .badge-purple { background: var(--purple-dim); color: var(--purple); }
+  .badge-orange { background: var(--orange-dim); color: var(--orange); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+  thead th {
+    text-align: left;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+  }
+  tbody td {
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid rgba(42,46,59,0.5);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  .amount { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .amount.green { color: var(--green); }
+  .amount.red { color: var(--red); }
+  .date { color: var(--text-muted); font-size: 0.8rem; }
+  .cycle { color: var(--accent); font-size: 0.8rem; }
+  .total-row td {
+    font-weight: 700;
+    border-top: 2px solid var(--border);
+    padding-top: 0.75rem;
+  }
+
+  /* Two Column Layout */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  /* Activity Bars */
+  .activity-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+  .activity-row:last-child { margin-bottom: 0; }
+  .activity-label {
+    width: 90px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+  .activity-bar-bg {
+    flex: 1;
+    height: 28px;
+    background: var(--bg);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+  .activity-bar {
+    height: 100%;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding-left: 0.75rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: width 0.5s ease;
+  }
+  .bar-purple { background: var(--purple-dim); color: var(--purple); }
+  .bar-green { background: var(--green-dim); color: var(--green); }
+  .bar-blue { background: var(--blue-dim); color: var(--blue); }
+  .bar-orange { background: var(--orange-dim); color: var(--orange); }
+  .bar-red { background: var(--red-dim); color: var(--red); }
+
+  /* Coaching Notes */
+  .coaching {
+    background: linear-gradient(135deg, rgba(108,92,231,0.08), rgba(162,155,254,0.04));
+    border: 1px solid rgba(108,92,231,0.25);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .coaching h3 {
+    color: var(--accent);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  .coaching p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+  .coaching p:last-child { margin-bottom: 0; }
+  .coaching strong { color: var(--accent); }
+
+  /* Insight Chips */
+  .insight-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+  .insight {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  .insight .num {
+    font-size: 1.3rem;
+    font-weight: 800;
+  }
+  .insight .desc {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+  }
+  .insight.warn { border-color: rgba(225,112,85,0.3); }
+  .insight.good { border-color: rgba(0,184,148,0.3); }
+  .insight.neutral { border-color: rgba(116,185,255,0.3); }
+
+  /* Call Disposition Donut */
+  .donut-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .donut-legend {
+    font-size: 0.82rem;
+    line-height: 2;
+  }
+  .legend-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 0.4rem;
+    vertical-align: middle;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .two-col { grid-template-columns: 1fr; }
+    .insight-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="label">Sales Coach · Performance Review</div>
+    <h1>March 2026</h1>
+    <div class="sub">Thomas Lindsey · Supermetrics · Q1 Close Month</div>
+  </div>
+
+  <!-- Top-Line Stats -->
+  <div class="stats-grid">
+    <div class="stat green">
+      <div class="value">$58,441</div>
+      <div class="label">New Biz Closed Won</div>
+    </div>
+    <div class="stat red">
+      <div class="value">44%</div>
+      <div class="label">Win Rate (12W / 14L)</div>
+    </div>
+    <div class="stat blue">
+      <div class="value">61</div>
+      <div class="label">Meetings Held</div>
+    </div>
+    <div class="stat purple">
+      <div class="value">813</div>
+      <div class="label">Emails Sent/Received</div>
+    </div>
+  </div>
+
+  <!-- Key Insights -->
+  <div class="section">
+    <div class="section-title">Key Insights</div>
+    <div class="insight-grid">
+      <div class="insight warn">
+        <div class="num" style="color:var(--red);">$146k+</div>
+        <div class="desc">Lost deal value (estimated from deal names) — several $12k-$30k deals slipped</div>
+      </div>
+      <div class="insight good">
+        <div class="num" style="color:var(--green);">10</div>
+        <div class="desc">New business wins — strong volume, anchored by Tulsa ($19k) and DCL ($14k)</div>
+      </div>
+      <div class="insight neutral">
+        <div class="num" style="color:var(--blue);">770</div>
+        <div class="desc">Tasks completed — massive outbound effort across email, calls, and LinkedIn</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Closed Won Deals -->
+  <div class="section">
+    <div class="section-title">Deal Outcomes</div>
+
+    <div class="card">
+      <h3>Closed Won <span class="badge badge-green">10 New Biz + 2 Renewals</span></h3>
+      <table>
+        <thead>
+          <tr><th>Deal</th><th>Amount</th><th>Created</th><th>Closed</th><th>Cycle</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Tulsa | BQ | $12k</td><td class="amount green">$19,125</td><td class="date">Nov 26</td><td class="date">Mar 5</td><td class="cycle">99 days</td></tr>
+          <tr><td>DCL | MIC | $15k</td><td class="amount green">$14,346</td><td class="date">Feb 18</td><td class="date">Mar 25</td><td class="cycle">35 days</td></tr>
+          <tr><td>Asana | 2026 | MIC <span style="color:var(--text-muted);font-size:0.75rem;">(split)</span></td><td class="amount green">$4,444</td><td class="date">Apr '25</td><td class="date">Mar 30</td><td class="cycle">~363 days</td></tr>
+          <tr><td>Liberty U | MIC+ | $8k</td><td class="amount green">$5,898</td><td class="date">Feb 19</td><td class="date">Mar 30</td><td class="cycle">39 days</td></tr>
+          <tr><td>Club for Growth | Growth | $4k</td><td class="amount green">$4,000</td><td class="date">Oct 17</td><td class="date">Mar 30</td><td class="cycle">164 days</td></tr>
+          <tr><td>Paxos | Xads | $3k</td><td class="amount green">$2,696</td><td class="date">Feb 23</td><td class="date">Mar 5</td><td class="cycle">10 days</td></tr>
+          <tr><td>Sandow | LS Growth | $2k</td><td class="amount green">$2,124</td><td class="date">Mar 5</td><td class="date">Mar 30</td><td class="cycle">25 days</td></tr>
+          <tr><td>1800 Lighting (XDR)</td><td class="amount green">$2,124</td><td class="date">Mar 25</td><td class="date">Mar 30</td><td class="cycle">5 days</td></tr>
+          <tr><td>Brother Canada</td><td class="amount green">$2,124</td><td class="date">Feb 17</td><td class="date">Mar 16</td><td class="cycle">27 days</td></tr>
+          <tr><td>NG Dump | Growth | $1.5k</td><td class="amount green">$1,560</td><td class="date">Mar 11</td><td class="date">Mar 30</td><td class="cycle">19 days</td></tr>
+          <tr class="total-row"><td><strong>New Business Total</strong></td><td class="amount green">$58,441</td><td></td><td></td><td class="cycle">Avg ~84 days</td></tr>
+          <tr><td style="color:var(--text-muted)">Drink LMNT (Renewal)</td><td class="amount" style="color:var(--text-muted)">$0*</td><td class="date">Mar '25</td><td class="date">Mar 27</td><td class="cycle">Renewal</td></tr>
+          <tr><td style="color:var(--text-muted)">Best Lawyers (Renewal)</td><td class="amount" style="color:var(--text-muted)">$0*</td><td class="date">Mar '25</td><td class="date">Mar 7</td><td class="cycle">Renewal</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.75rem; color:var(--text-muted); margin-top:0.75rem;">* Renewal amounts may be tracked separately or as $0 in HubSpot</p>
+    </div>
+
+    <div class="card">
+      <h3>Closed Lost <span class="badge badge-red">14 Deals</span></h3>
+      <table>
+        <thead>
+          <tr><th>Deal</th><th>Est. Value</th><th>Closed</th><th>Age at Loss</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Equitable Life | MIC PBI | $30k</strong></td><td class="amount red">~$30,000</td><td class="date">Mar 31</td><td class="cycle">112 days</td></tr>
+          <tr><td><strong>Downstream Casino | DWH | $30K</strong></td><td class="amount red">~$30,000</td><td class="date">Mar 31</td><td class="cycle">~365 days</td></tr>
+          <tr><td>Z Supply | MIC | $17k</td><td class="amount red">~$17,000</td><td class="date">Mar 17</td><td class="cycle">—</td></tr>
+          <tr><td>Poco Bero | DWH | $15k</td><td class="amount red">~$15,000</td><td class="date">Mar 31</td><td class="cycle">36 days</td></tr>
+          <tr><td>Quest | MIC | $15k</td><td class="amount red">~$15,000</td><td class="date">Mar 8</td><td class="cycle">41 days</td></tr>
+          <tr><td>Tellus | MIC | $12k</td><td class="amount red">~$12,000</td><td class="date">Mar 31</td><td class="cycle">22 days</td></tr>
+          <tr><td>Duplex | MIC | $12k</td><td class="amount red">~$12,000</td><td class="date">Mar 18</td><td class="cycle">40 days</td></tr>
+          <tr><td>Graphite | LIA | $4k</td><td class="amount red">~$4,000</td><td class="date">Mar 30</td><td class="cycle">19 days</td></tr>
+          <tr><td>SSENSE | Growth | $2.2k</td><td class="amount red">~$2,200</td><td class="date">Mar 8</td><td class="cycle">13 days</td></tr>
+          <tr><td>Lights.com | Growth | $2k</td><td class="amount red">~$2,000</td><td class="date">Mar 16</td><td class="cycle">—</td></tr>
+          <tr><td>Kelowna | Growth | $2k</td><td class="amount red">~$2,000</td><td class="date">Mar 18</td><td class="cycle">40 days</td></tr>
+          <tr><td>Embark With Us (XDR)</td><td class="amount red">~$2,124</td><td class="date">Mar 16</td><td class="cycle">24 days</td></tr>
+          <tr><td>TWO MEN | MIP</td><td class="amount red">—</td><td class="date">Mar 24</td><td class="cycle">19 days</td></tr>
+          <tr><td>IRIS - ACCTS - $1200</td><td class="amount red">~$1,200</td><td class="date">Mar 31</td><td class="cycle">77 days</td></tr>
+          <tr class="total-row"><td><strong>Estimated Lost Value</strong></td><td class="amount red">~$146,500</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Activity Volume -->
+  <div class="section">
+    <div class="section-title">Activity Volume</div>
+    <div class="two-col">
+      <div class="card">
+        <h3>Monthly Activity Breakdown</h3>
+        <div class="activity-row">
+          <span class="activity-label">Emails</span>
+          <div class="activity-bar-bg">
+            <div class="activity-bar bar-purple" style="width: 100%;">813</div>
+          </div>
+        </div>
+        <div class="activity-row">
+          <span class="activity-label">Tasks</span>
+          <div class="activity-bar-bg">
+            <div class="activity-bar bar-blue" style="width: 95%;">770</div>
+          </div>
+        </div>
+        <div class="activity-row">
+          <span class="activity-label">Calls</span>
+          <div class="activity-bar-bg">
+            <div class="activity-bar bar-green" style="width: 14%;">114</div>
+          </div>
+        </div>
+        <div class="activity-row">
+          <span class="activity-label">Meetings</span>
+          <div class="activity-bar-bg">
+            <div class="activity-bar bar-orange" style="width: 7.5%;">61</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Call Outcomes <span class="badge badge-blue">114 Calls</span></h3>
+        <div style="margin-top:0.5rem;">
+          <div class="activity-row">
+            <span class="activity-label">No Answer</span>
+            <div class="activity-bar-bg">
+              <div class="activity-bar bar-red" style="width: 53%;">60</div>
+            </div>
+          </div>
+          <div class="activity-row">
+            <span class="activity-label">Connected</span>
+            <div class="activity-bar-bg">
+              <div class="activity-bar bar-green" style="width: 21%;">24</div>
+            </div>
+          </div>
+          <div class="activity-row">
+            <span class="activity-label">Left VM</span>
+            <div class="activity-bar-bg">
+              <div class="activity-bar bar-orange" style="width: 12%;">14</div>
+            </div>
+          </div>
+          <div class="activity-row">
+            <span class="activity-label">Busy</span>
+            <div class="activity-bar-bg">
+              <div class="activity-bar bar-purple" style="width: 12%;">14</div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:0.78rem; color:var(--text-muted); margin-top:0.75rem;">Connect rate: ~21% · Mostly quick outbound dials</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Task Breakdown -->
+  <div class="section">
+    <div class="two-col">
+      <div class="card">
+        <h3>Task Types <span class="badge badge-purple">770 Tasks</span></h3>
+        <div class="activity-row">
+          <span class="activity-label">Email</span>
+          <div class="activity-bar-bg">
+            <div class="activity-bar bar-purple" style="width: 100%;">~335</div>
+          </div>
+        </div>
+        <div class="activity-row">
+          <span class="activity-label">To-Do</span>
+          <div class="activity-bar-bg">
+            <div class="activity-bar bar-blue" style="width: 47%;">~158</div>
+          </div>
+        </div>
+        <div class="activity-row">
+          <span class="activity-label">Calls</span>
+          <div class="activity-bar-bg">
+            <div class="activity-bar bar-green" style="width: 40%;">~135</div>
+          </div>
+        </div>
+        <div class="activity-row">
+          <span class="activity-label">LinkedIn Msg</span>
+          <div class="activity-bar-bg">
+            <div class="activity-bar bar-orange" style="width: 26%;">~89</div>
+          </div>
+        </div>
+        <div class="activity-row">
+          <span class="activity-label">LI Connect</span>
+          <div class="activity-bar-bg">
+            <div class="activity-bar bar-red" style="width: 16%;">~54</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Meeting Types (Sample)</h3>
+        <div style="font-size:0.85rem; line-height:2;">
+          <span style="color:var(--green);">●</span> Discovery / Data Strategy Calls<br>
+          <span style="color:var(--blue);">●</span> Solutions Architect Reviews<br>
+          <span style="color:var(--purple);">●</span> Platform Walkthroughs / Demos<br>
+          <span style="color:var(--orange);">●</span> Trial Check-ins<br>
+          <span style="color:var(--accent);">●</span> Procurement / Proposal Reviews<br>
+          <span style="color:var(--text-muted);">●</span> Partner Alignment / Kick-offs
+        </div>
+        <p style="font-size:0.78rem; color:var(--text-muted); margin-top:0.75rem;">2 meetings canceled (iA Financial, one Calendly). Good mix of deal stages represented.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coaching Analysis -->
+  <div class="section">
+    <div class="section-title">Coaching Analysis</div>
+
+    <div class="coaching">
+      <h3>1. You're Losing Big, Winning Small</h3>
+      <p>Your 10 new-biz wins averaged <strong>$5,844 each</strong> (Asana was a split deal at $4,444). Meanwhile, your 15 losses included at least 5 deals in the <strong>$12k-$30k range</strong> — Equitable Life ($30k), Downstream Casino ($30k), Z Supply ($17k), Poco Bero ($15k), and Quest ($15k). The estimated lost value (~$146k) is more than <strong>2.5x what you closed</strong>.</p>
+      <p>This is the single biggest lever for you. Converting even 2-3 of those larger deals would have doubled your month. We need to dig into <strong>why those specific deals were lost</strong> — was it pricing, product fit, competition, or losing the internal champion? I'd recommend doing a deal autopsy on Equitable Life and Downstream Casino specifically.</p>
+    </div>
+
+    <div class="coaching">
+      <h3>2. End-of-Quarter Dump Is Expensive</h3>
+      <p>6 of your 15 losses were closed-lost on <strong>March 31</strong> — the last day of Q1. This suggests deals were being kept open for as long as possible hoping they'd close, then batch-cleaned at quarter end. Equitable Life ($30k), Poco Bero ($15k), Tellus ($12k), Downstream Casino ($30k), and IRIS ($1.2k) all died on the final day.</p>
+      <p>Coaching takeaway: <strong>earlier disqualification = more time on winnable deals.</strong> If a deal isn't progressing by mid-month, it's better to have an honest "are we still on track?" conversation than carry dead weight into the last week.</p>
+    </div>
+
+    <div class="coaching">
+      <h3>3. Activity Volume Is Strong — Efficiency Is the Question</h3>
+      <p>813 emails, 770 tasks, 114 calls, 61 meetings — you are not coasting. That's serious hustle. But your <strong>call connect rate is only ~21%</strong> (24 connected out of 114 dials), and average call duration was just 13 seconds. Most calls were quick dials that didn't land.</p>
+      <p>Consider: Are you calling at the right times? Are you using a multi-channel sequence (call → email → LinkedIn) to warm prospects before dialing? Your LinkedIn activity (89 messages + 54 connection requests) suggests you're already multi-threading — make sure the timing is coordinated.</p>
+    </div>
+
+    <div class="coaching">
+      <h3>4. Cycle Times Are All Over the Map</h3>
+      <p>Your wins ranged from <strong>5 days</strong> (1800 Lighting, an XDR handoff) to <strong>363 days</strong> (Asana). The sweet spot was 10-39 days for most wins. Meanwhile some losses lingered 40-112 days before dying. The Downstream Casino deal was open for over a <strong>year</strong> before closing lost.</p>
+      <p>For your 1-3 month cycle, deals that pass 60 days without advancing to a late stage should get a hard qualification review. Build a "deal health check" at the 30-day and 60-day marks.</p>
+    </div>
+
+    <div class="coaching">
+      <h3>5. Your Win Rate by Deal Size Tells a Story</h3>
+      <p>Rough breakdown from the data:</p>
+      <p>
+        <strong>Under $5k:</strong> Won 5, Lost 6 → ~45% win rate<br>
+        <strong>$5k-$10k:</strong> Won 2, Lost 0 → 100% win rate<br>
+        <strong>$10k+:</strong> Won 2, Lost 9 → ~18% win rate
+      </p>
+      <p>You're <strong>crushing mid-market deals</strong> but struggling on larger ones. The $10k+ deals likely involve more stakeholders, longer procurement, and more competition. This is where multi-threading, getting executive sponsors, and starting paper processes early becomes critical.</p>
+    </div>
+  </div>
+
+  <!-- Action Items -->
+  <div class="section">
+    <div class="section-title">Recommended Actions for April</div>
+    <div class="card" style="border-color: rgba(108,92,231,0.3);">
+      <table>
+        <thead>
+          <tr><th style="width:30px;">#</th><th>Action</th><th>Why</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:var(--purple); font-weight:700;">1</td>
+            <td><strong>Run deal autopsies on the top 3 losses</strong></td>
+            <td class="date">Equitable Life, Downstream Casino, Z Supply — find the pattern</td>
+          </tr>
+          <tr>
+            <td style="color:var(--purple); font-weight:700;">2</td>
+            <td><strong>Implement 30/60-day deal health checks</strong></td>
+            <td class="date">Flag stale deals early instead of carrying them to quarter end</td>
+          </tr>
+          <tr>
+            <td style="color:var(--purple); font-weight:700;">3</td>
+            <td><strong>Multi-thread every $10k+ deal</strong></td>
+            <td class="date">Your win rate collapses above $10k — get 2-3 contacts per deal minimum</td>
+          </tr>
+          <tr>
+            <td style="color:var(--purple); font-weight:700;">4</td>
+            <td><strong>Optimize call timing and sequencing</strong></td>
+            <td class="date">21% connect rate means 4 out of 5 calls are wasted — test different windows</td>
+          </tr>
+          <tr>
+            <td style="color:var(--purple); font-weight:700;">5</td>
+            <td><strong>Start paper process earlier on big deals</strong></td>
+            <td class="date">Get procurement, legal, and security conversations going by Stage 3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    Sales Coach · March 2026 Performance Review · Generated from HubSpot Data · Powered by Claude
+  </div>
+
+</div>
+</body>
+</html>

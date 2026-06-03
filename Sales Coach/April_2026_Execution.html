@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>April 2026 Deal Execution — Thomas Lindsey</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  :root {
+    --bg:#0f1117; --surface:#1a1d27; --surface-2:#222632; --border:#2a2e3b;
+    --text:#e4e6ed; --muted:#8b8fa3;
+    --accent:#6c5ce7; --green:#00b894; --orange:#fdcb6e; --red:#e17055; --blue:#74b9ff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);padding:2rem;line-height:1.5}
+  .container{max-width:1200px;margin:0 auto}
+  .header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border)}
+  .header h1{font-size:1.75rem;font-weight:800;letter-spacing:-0.02em}
+  .header h1 span{color:var(--accent)}
+  .header .meta{color:var(--muted);font-size:0.85rem;text-align:right;line-height:1.7}
+  .header .meta strong{color:var(--text)}
+
+  .hero{background:linear-gradient(135deg,rgba(225,112,85,0.10),rgba(253,203,110,0.05));border:1px solid rgba(225,112,85,0.25);border-radius:16px;padding:1.75rem 2rem;margin-bottom:1.5rem}
+  .hero h2{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);font-weight:600;margin-bottom:0.5rem}
+  .hero-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:1rem}
+  .hero-stat .label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.4rem;font-weight:600}
+  .hero-stat .value{font-size:2rem;font-weight:800;letter-spacing:-0.02em;line-height:1}
+  .hero-stat .sub{font-size:0.78rem;color:var(--muted);margin-top:0.3rem}
+  .hero-stat .value.green{color:var(--green)}
+  .hero-stat .value.red{color:var(--red)}
+  .hero-stat .value.orange{color:var(--orange)}
+
+  .section-title{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);font-weight:600;margin:1.25rem 0 0.85rem}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem}
+
+  table{width:100%;border-collapse:collapse;font-size:0.85rem}
+  th{text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);font-weight:600;color:var(--muted);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em}
+  td{padding:0.6rem 0.75rem;border-bottom:1px solid var(--border)}
+  tr:last-child td{border-bottom:none}
+  tr:hover{background:var(--surface-2)}
+  .amount{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem}
+
+  .callouts{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem}
+  .callout{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-align:center}
+  .callout .big{font-size:2.2rem;font-weight:800;line-height:1;letter-spacing:-0.02em;margin-bottom:0.4rem}
+  .callout .label{font-size:0.78rem;color:var(--muted);font-weight:600;line-height:1.4}
+  .callout.alert .big{color:var(--red)}
+  .callout.warn .big{color:var(--orange)}
+  .callout.win .big{color:var(--green)}
+
+  .patterns{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+  .pattern{padding:1.25rem;border-radius:12px;border:1px solid var(--border);background:var(--surface)}
+  .pattern.win{border-left:3px solid var(--green)}
+  .pattern.loss{border-left:3px solid var(--red)}
+  .pattern h4{font-size:0.92rem;font-weight:700;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.4rem}
+  .pattern ul{list-style:none;font-size:0.83rem;color:var(--muted);line-height:1.65}
+  .pattern ul li{padding:0.3rem 0;padding-left:1.1rem;position:relative}
+  .pattern.win ul li::before{content:'✓';color:var(--green);position:absolute;left:0;font-weight:700}
+  .pattern.loss ul li::before{content:'✗';color:var(--red);position:absolute;left:0;font-weight:700}
+
+  .recs{background:linear-gradient(135deg,rgba(108,92,231,0.06),rgba(116,185,255,0.04));border:1px solid rgba(108,92,231,0.25);border-radius:14px;padding:1.5rem 1.75rem;margin-bottom:1.5rem}
+  .recs h3{font-size:1rem;font-weight:700;margin-bottom:1rem}
+  .rec-item{display:flex;gap:1rem;padding:0.85rem 0;border-bottom:1px solid rgba(108,92,231,0.12)}
+  .rec-item:last-child{border-bottom:none}
+  .rec-num{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--accent);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem}
+  .rec-body strong{display:block;margin-bottom:0.2rem;font-size:0.92rem}
+  .rec-body p{font-size:0.82rem;color:var(--muted);line-height:1.55}
+  .rec-body .due{display:inline-block;margin-top:0.35rem;font-size:0.72rem;background:var(--surface-2);padding:0.15rem 0.5rem;border-radius:5px;color:var(--text)}
+
+  .narrative{background:var(--surface);border-left:3px solid var(--accent);padding:1.1rem 1.4rem;border-radius:8px;font-size:0.95rem;line-height:1.65;margin-bottom:1.5rem}
+  .narrative strong{color:var(--accent)}
+
+  .pill{display:inline-block;padding:0.18rem 0.55rem;border-radius:5px;font-size:0.7rem;font-weight:600}
+  .pill-fast{background:rgba(0,184,148,0.15);color:var(--green)}
+  .pill-slow{background:rgba(225,112,85,0.15);color:var(--red)}
+  .pill-mid{background:rgba(253,203,110,0.15);color:var(--orange)}
+  .pill-q1{background:rgba(116,185,255,0.15);color:var(--blue)}
+
+  .footer{text-align:center;padding:1rem;color:var(--muted);font-size:0.72rem;border-top:1px solid var(--border);margin-top:1rem}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1><span>April 2026</span> · Deal Execution</h1>
+    <div class="meta">
+      <strong>Thomas Lindsey</strong> · Team Lead, NAM Brand Portfolio<br>
+      Companion to April Pipeline Dashboard<br>
+      Source: Salesforce — deals closed Apr 1–30, 2026
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h2>Execution Snapshot · April 2026 Closed Deals</h2>
+    <div class="hero-grid">
+      <div class="hero-stat">
+        <div class="label">Win Rate</div>
+        <div class="value orange">24%</div>
+        <div class="sub">5 won / 21 closed</div>
+      </div>
+      <div class="hero-stat">
+        <div class="label">Closed Won (April)</div>
+        <div class="value green">$14.7k</div>
+        <div class="sub">5 deals · actual quota credit</div>
+      </div>
+      <div class="hero-stat">
+        <div class="label">Closed Lost (April, Y1 ACV)</div>
+        <div class="value red">$177k</div>
+        <div class="sub">16 deals · 12× the wins</div>
+      </div>
+      <div class="hero-stat">
+        <div class="label">Net Closed Activity</div>
+        <div class="value red">−$163k</div>
+        <div class="sub">Won minus lost (Y1 ACV)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KEY CALLOUTS -->
+  <div class="callouts">
+    <div class="callout alert">
+      <div class="big">$40k</div>
+      <div class="label">Uniphore single biggest April loss · 69-day cycle · the headline miss</div>
+    </div>
+    <div class="callout warn">
+      <div class="big">5</div>
+      <div class="label">Apr 1 Q1-cleanup losses: Downstream $30k, Equitable $30k, Poco Bero $12k, Tellus $12k, IRIS $1.2k = $85k</div>
+    </div>
+    <div class="callout win">
+      <div class="big">3 days</div>
+      <div class="label">Paxos · MCP/Claude deal closed in 3 days · the win-pattern blueprint</div>
+    </div>
+  </div>
+
+  <!-- NARRATIVE -->
+  <div class="narrative">
+    April closed 21 deals: <strong>5 won at $14.7k</strong>, <strong>16 lost at $177k Y1 ACV</strong>. Two distinct stories inside the losses: <strong>$85k was Q1 graveyard cleanup</strong> (deals carried into April just to die on the 1st), and <strong>Uniphore at $40k</strong> was a real mid-cycle loss. Wins were all sub-$5.5k — small, fast, mostly existing-customer expansions. The 1:1 talking point: <strong>April was net-negative on closed dollars, but that's distorted by Q1 carryover. Going forward, no deal carries to month-end without a real next step.</strong>
+  </div>
+
+  <!-- WINS / LOSSES SIDE BY SIDE -->
+  <div class="two-col">
+    <div class="card">
+      <div class="section-title" style="color:var(--green)">5 April Wins · $14,714</div>
+      <table>
+        <thead><tr><th>Deal</th><th>Cycle</th><th class="amount">Credit</th></tr></thead>
+        <tbody>
+          <tr><td>ISLAND TECH | DWH | EXP</td><td><span class="pill pill-mid">58 days</span></td><td class="amount">$5,164</td></tr>
+          <tr><td>DQ | BQ+2</td><td><span class="pill pill-mid">29 days</span></td><td class="amount">$4,800</td></tr>
+          <tr><td>Viewsonic | DB</td><td><span class="pill pill-mid">48 days</span></td><td class="amount">$2,000</td></tr>
+          <tr><td>Paxos | Claude (MCP)</td><td><span class="pill pill-fast">3 days</span></td><td class="amount">$1,550</td></tr>
+          <tr><td>Cousin Labs | +1 User</td><td><span class="pill pill-mid">28 days</span></td><td class="amount">$1,200</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.78rem;color:var(--muted);margin-top:0.85rem;padding-top:0.75rem;border-top:1px solid var(--border)">All wins under $5.5k. <strong style="color:var(--text)">Zero $10k+ wins in April.</strong> Most were existing customer expansion or fast MCP plays.</p>
+    </div>
+    <div class="card">
+      <div class="section-title" style="color:var(--red)">16 April Losses · $177,472</div>
+      <table>
+        <thead><tr><th>Deal</th><th>Cycle</th><th class="amount">Y1 ACV</th></tr></thead>
+        <tbody>
+          <tr><td>Uniphore | MIC/API</td><td><span class="pill pill-mid">69 days</span></td><td class="amount">$40,000</td></tr>
+          <tr><td>Downstream Casino | DWH</td><td><span class="pill pill-slow">390 days</span></td><td class="amount">$30,000</td></tr>
+          <tr><td>Equitable Life | MIC PBI</td><td><span class="pill pill-slow">112 days</span></td><td class="amount">$30,000</td></tr>
+          <tr><td>Comcast | MIC</td><td><span class="pill pill-slow">137 days</span></td><td class="amount">$15,000</td></tr>
+          <tr><td>Poco Bero | DWH</td><td><span class="pill pill-mid">37 days</span></td><td class="amount">$12,000</td></tr>
+          <tr><td>Tellus | MIC</td><td><span class="pill pill-fast">23 days</span></td><td class="amount">$12,000</td></tr>
+          <tr><td>Fusable | SQL</td><td><span class="pill pill-fast">24 days</span></td><td class="amount">$12,000</td></tr>
+          <tr><td>Oversight | Growth Custom</td><td><span class="pill pill-fast">11 days</span></td><td class="amount">$6,000</td></tr>
+          <tr><td>MNP | CDI Add-on</td><td><span class="pill pill-slow">425 days</span></td><td class="amount">$5,000</td></tr>
+          <tr><td>BBC | MIC+Connector</td><td><span class="pill pill-mid">47 days</span></td><td class="amount">$4,000</td></tr>
+          <tr><td>Speed Sport | Growth CDI</td><td><span class="pill pill-fast">11 days</span></td><td class="amount">$3,000</td></tr>
+          <tr><td>Cellular Plus</td><td><span class="pill pill-mid">43 days</span></td><td class="amount">$2,124</td></tr>
+          <tr><td>Sandow | LS Growth</td><td><span class="pill pill-mid">43 days</span></td><td class="amount">$2,124</td></tr>
+          <tr><td>LatMed | Growth</td><td><span class="pill pill-mid">55 days</span></td><td class="amount">$2,124</td></tr>
+          <tr><td>IRIS | ACCTS</td><td><span class="pill pill-mid">77 days</span></td><td class="amount">$1,200</td></tr>
+          <tr><td>Chefman | PBI + X</td><td><span class="pill pill-fast">26 days</span></td><td class="amount">$900</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- WIN PATTERNS / LOSS PATTERNS -->
+  <div class="patterns">
+    <div class="pattern win">
+      <h4>What Worked in April</h4>
+      <ul>
+        <li>Paxos (MCP/Claude) closed in 3 days — clear pain, AI positioning, fast yes</li>
+        <li>DQ ($4.8k, 29d) — existing-customer add-on, no friction</li>
+        <li>Cousin Labs +1 User — expansion play, simple value story</li>
+        <li>ISLAND TECH ($5.2k, 58d) — patience on a clean DWH expansion</li>
+        <li>Common thread: <strong>existing customers, simple expansions, or fast MCP plays</strong></li>
+      </ul>
+    </div>
+    <div class="pattern loss">
+      <h4>What Hurt in April</h4>
+      <ul>
+        <li>Uniphore $40k lost in 69 days — real mid-cycle loss, the headline miss</li>
+        <li>Q1 graveyard losses on Apr 1: Downstream (390d), Equitable Life (112d), Poco Bero, Tellus, IRIS = <strong>$85k of stale carryover</strong></li>
+        <li>4 fast losses (under 30 days): Speed Sport, Oversight, Fusable, Chefman — never qualified properly</li>
+        <li>MNP $5k lost after <strong>425 days</strong> — should have been disqualified months ago</li>
+        <li>Common thread: <strong>large deals stalling + fast losses from poor qualification</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- THE THREE STORIES -->
+  <div class="card">
+    <div class="section-title">3 Stories Inside April's Losses</div>
+    <table>
+      <thead><tr><th>Story</th><th>Deals</th><th class="amount">Lost ACV</th><th>So What</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Q1 Carryover Cleanup</strong> <span class="pill pill-q1">Apr 1</span></td>
+          <td>Downstream, Equitable Life, Poco Bero, Tellus, IRIS</td>
+          <td class="amount">$85,200</td>
+          <td>Deals kept open past Q1 just to be dispositioned. Inflated forecast, masked stalls.</td>
+        </tr>
+        <tr>
+          <td><strong>Mid-Cycle Big-Deal Loss</strong></td>
+          <td>Uniphore, Comcast, MNP</td>
+          <td class="amount">$60,000</td>
+          <td>$40k Uniphore lost at 69 days = real coachable miss. Comcast at 137 days = stuck. MNP at 425 days = graveyard.</td>
+        </tr>
+        <tr>
+          <td><strong>Fast Disqualification Failures</strong></td>
+          <td>Speed Sport (11d), Oversight (11d), Fusable (24d), Chefman (26d)</td>
+          <td class="amount">$21,900</td>
+          <td>Got into the pipeline before fit was confirmed. Sharper qualification = fewer wasted cycles.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- RECS -->
+  <div class="recs">
+    <h3>🎯 April Execution Lessons → May Plan</h3>
+
+    <div class="rec-item">
+      <div class="rec-num">1</div>
+      <div class="rec-body">
+        <strong>Run the Uniphore loss autopsy — the headline miss</strong>
+        <p>$40k lost in 69 days. Was discovery shallow? Did you have an Economic Buyer? When did the deal stop progressing? This is the largest single April loss — one page, bring to the 1:1.</p>
+        <span class="due">Due May 5</span>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">2</div>
+      <div class="rec-body">
+        <strong>No more April-1-style cleanup days in Q2</strong>
+        <p>$85k of April losses (Downstream, Equitable Life, Poco Bero, Tellus, IRIS) all died on Apr 1 — Q1 carryover that should have been dispositioned in March. Set a Friday-4pm hygiene block: any deal with no live activity in 14 days gets a real disposition call now, not at month-end.</p>
+        <span class="due">Weekly · starting May 2</span>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">3</div>
+      <div class="rec-body">
+        <strong>Codify the Paxos/DQ/Cousin Labs win pattern</strong>
+        <p>April's wins were existing customers, simple expansions, or fast MCP/AI plays. Write a 1-page qualification checklist: "Day 1 of a winnable Thomas deal looks like ___." Use it on every new April-2 deal that came in (DTCC, StayTuned, Revibe, etc.).</p>
+        <span class="due">Due May 9</span>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">4</div>
+      <div class="rec-body">
+        <strong>4 fast losses = 4 missed qualification questions</strong>
+        <p>Speed Sport (11d), Oversight (11d), Fusable (24d), Chefman (26d) all died inside 30 days. For each, write what discovery question would have surfaced the no-fit on call 1. Add those questions to your discovery deck.</p>
+        <span class="due">Due May 12</span>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">5</div>
+      <div class="rec-body">
+        <strong>Apply MEDDPICC to DTCC, StayTuned, Revibe — the three to protect</strong>
+        <p>April's pipeline gave you three $20k+ deals (DTCC, StayTuned, Revibe = $65k credit). April's execution data shows large deals are exactly where you lose. Score all three across MEDDPICC, identify reds, and build an Economic Buyer plan for each before they hit 60 days.</p>
+        <span class="due">Due May 12 · Bring to 1:1</span>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">6</div>
+      <div class="rec-body">
+        <strong>60-day rule on $10k+ open deals</strong>
+        <p>If a $10k+ deal is past 60 days without a confirmed Economic Buyer, paper process started, or business case documented — disposition it. Comcast (137d), MNP (425d), Downstream (390d) = the cost of not having this rule.</p>
+        <span class="due">Apply this week</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1:1 OPENING -->
+  <div class="card" style="background:linear-gradient(135deg,rgba(0,184,148,0.08),rgba(108,92,231,0.04));border-color:rgba(0,184,148,0.25)">
+    <div class="section-title" style="color:var(--green)">📝 1:1 Talking Point — April Execution</div>
+    <p style="font-size:1.05rem;line-height:1.65;font-style:italic;color:var(--text)">
+      "April closed 5 wins for <strong>$14.7k</strong> and 16 losses at <strong>$177k Y1 ACV</strong>. The single biggest miss was <strong>Uniphore at $40k</strong> — I'm bringing the autopsy. Five of the losses were Q1 carryover that died Apr 1; that's <strong>$85k of stale pipeline I let drag</strong>, and I'm instituting a weekly Friday hygiene block to stop that pattern. Wins were small but fast — Paxos closed in 3 days. The May plan: protect DTCC, StayTuned, and Revibe with MEDDPICC before they hit 60 days, and apply a hard 60-day disqualification rule on every $10k+ deal."
+    </p>
+  </div>
+
+  <div class="footer">
+    Source: Salesforce <code>OpportunitySplit</code> · Closed deals Apr 1–30, 2026 (excl. renewals) · Won = SplitAmount · Lost = Y1 ACV × Split %<br>
+    Pipeline view: <a href="April_2026_Dashboard.html" style="color:var(--accent)">April_2026_Dashboard.html</a> · Execution view: April_2026_Execution.html
+  </div>
+
+</div>
+</body>
+</html>

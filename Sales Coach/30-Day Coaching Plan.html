@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>30-Day Coaching Plan — Thomas</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface-hover: #222632;
+    --border: #2a2e3b;
+    --text: #e4e6ed;
+    --text-muted: #8b8fa3;
+    --accent: #6c5ce7;
+    --accent-light: rgba(108,92,231,0.15);
+    --green: #00b894;
+    --green-light: rgba(0,184,148,0.12);
+    --orange: #fdcb6e;
+    --orange-light: rgba(253,203,110,0.12);
+    --blue: #74b9ff;
+    --blue-light: rgba(116,185,255,0.12);
+    --red: #e17055;
+    --red-light: rgba(225,112,85,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 2rem;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* ── Header ── */
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .header-left h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+  }
+  .header-left h1 span { color: var(--accent); }
+  .header-left p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+  .header-right {
+    text-align: right;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.8;
+    flex-shrink: 0;
+  }
+
+  /* ── Overall Progress ── */
+  .overall-progress {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .progress-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .progress-label strong {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.2;
+  }
+  .progress-bar-wrap {
+    flex: 1;
+    background: #1e2130;
+    border-radius: 99px;
+    height: 8px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--accent), #a29bfe);
+    transition: width 0.4s ease;
+  }
+  .progress-stats {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .progress-stats strong { color: var(--text); }
+
+  /* ── SMART Goals ── */
+  .section-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .goals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .goal-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .goal-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .goal-card.goal-1::before { background: var(--accent); }
+  .goal-card.goal-2::before { background: var(--green); }
+  .goal-card.goal-3::before { background: var(--blue); }
+
+  .goal-number {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .goal-1 .goal-number { color: var(--accent); }
+  .goal-2 .goal-number { color: var(--green); }
+  .goal-3 .goal-number { color: var(--blue); }
+
+  .goal-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    line-height: 1.35;
+  }
+  .goal-card p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  .goal-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    user-select: none;
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--text-muted);
+  }
+  .goal-toggle:hover { color: var(--text); }
+  .goal-toggle svg { transition: transform 0.2s; }
+  .goal-toggle.open svg { transform: rotate(180deg); }
+
+  .goal-details {
+    display: none;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+  .goal-details.open { display: block; }
+  .smart-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  .smart-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+  .goal-1 .smart-tag { background: var(--accent-light); color: var(--accent); }
+  .goal-2 .smart-tag { background: var(--green-light); color: var(--green); }
+  .goal-3 .smart-tag { background: var(--blue-light); color: var(--blue); }
+  .smart-row span { color: var(--text-muted); }
+
+  /* ── Week Tabs ── */
+  .week-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0;
+  }
+  .week-tab {
+    padding: 0.6rem 1.1rem;
+    border-radius: 8px 8px 0 0;
+    border: 1px solid transparent;
+    border-bottom: none;
+    background: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    position: relative;
+    bottom: -1px;
+    transition: color 0.15s, background 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .week-tab:hover { color: var(--text); background: var(--surface); }
+  .week-tab.active {
+    color: var(--text);
+    background: var(--surface);
+    border-color: var(--border);
+    border-bottom-color: var(--surface);
+  }
+  .tab-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.1rem 0.35rem;
+    border-radius: 99px;
+    background: var(--surface-hover);
+    color: var(--text-muted);
+  }
+  .week-tab.active .tab-badge {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  /* ── Week Panel ── */
+  .week-panel { display: none; }
+  .week-panel.active { display: block; }
+
+  .week-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  /* Week header */
+  .week-header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .week-header-left .week-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+  }
+  .week-header-left h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .week-progress-mini {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .week-progress-mini .pct {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .week-progress-mini .pct-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 0.1rem;
+  }
+
+  /* Actions card */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .card-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Checklist */
+  .checklist { list-style: none; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li:hover { background: var(--surface-hover); margin: 0 -1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; border-radius: 6px; }
+
+  .check-box {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border);
+    border-radius: 5px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+  .checklist li.done .check-box {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .checklist li.done .check-box svg { display: block; }
+  .check-box svg { display: none; width: 11px; height: 11px; }
+
+  .check-text {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--text);
+    transition: color 0.15s;
+  }
+  .checklist li.done .check-text {
+    color: var(--text-muted);
+    text-decoration: line-through;
+    text-decoration-color: #3a3d4d;
+  }
+
+  /* Success card */
+  .success-card {
+    background: var(--green-light);
+    border: 1px solid rgba(0,184,148,0.2);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .success-card .card-title { color: var(--green); }
+  .success-card p {
+    font-size: 0.875rem;
+    color: var(--text);
+    line-height: 1.65;
+  }
+
+  /* Coaching questions */
+  .coaching-card {
+    background: var(--accent-light);
+    border: 1px solid rgba(108,92,231,0.2);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+  }
+  .coaching-card .card-title { color: var(--accent); }
+  .coaching-q {
+    list-style: none;
+  }
+  .coaching-q li {
+    font-size: 0.845rem;
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(108,92,231,0.12);
+    padding-left: 1rem;
+    position: relative;
+  }
+  .coaching-q li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .coaching-q li:last-child { border-bottom: none; }
+
+  /* Sidebar */
+  .sidebar {}
+
+  /* Focus pill */
+  .focus-pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .focus-pill .card-title { margin-bottom: 0.75rem; }
+  .focus-tag {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+  .focus-tag.accent { background: var(--accent-light); color: var(--accent); }
+  .focus-tag.green  { background: var(--green-light);  color: var(--green); }
+  .focus-tag.blue   { background: var(--blue-light);   color: var(--blue); }
+  .focus-tag.orange { background: var(--orange-light); color: var(--orange); }
+
+  .focus-description {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-top: 0.75rem;
+  }
+
+  /* Week progress bar */
+  .week-progress-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .week-progress-card .card-title { margin-bottom: 0.9rem; }
+  .week-bar-row {
+    margin-bottom: 0.6rem;
+    font-size: 0.78rem;
+  }
+  .week-bar-row .wk-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.3rem;
+    color: var(--text-muted);
+  }
+  .week-bar-row .wk-label span:last-child { color: var(--text); font-weight: 500; }
+  .mini-bar-wrap {
+    background: #1e2130;
+    border-radius: 99px;
+    height: 5px;
+    overflow: hidden;
+  }
+  .mini-bar-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: var(--accent);
+    transition: width 0.4s ease;
+  }
+  .mini-bar-fill.green { background: var(--green); }
+  .mini-bar-fill.blue  { background: var(--blue); }
+  .mini-bar-fill.orange { background: var(--orange); }
+
+  /* 30-day outcome section */
+  .outcome-section {
+    margin-top: 1.25rem;
+    background: linear-gradient(135deg, rgba(108,92,231,0.08), rgba(116,185,255,0.05));
+    border: 1px solid rgba(108,92,231,0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .outcome-section h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+  }
+  .outcome-section p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .outcome-criteria {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .outcome-criteria li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--text);
+  }
+  .outcome-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 0.65rem;
+  }
+  .outcome-icon.accent { background: var(--accent-light); color: var(--accent); }
+  .outcome-icon.green  { background: var(--green-light);  color: var(--green); }
+  .outcome-icon.blue   { background: var(--blue-light);   color: var(--blue); }
+
+  /* Reset button */
+  .reset-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-family: inherit;
+    padding: 0.35rem 0.75rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .reset-btn:hover { color: var(--red); border-color: var(--red); }
+
+  /* Responsive */
+  @media (max-width: 820px) {
+    .goals-grid { grid-template-columns: 1fr; }
+    .week-layout { grid-template-columns: 1fr; }
+    .sidebar { order: -1; }
+    body { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <h1>30-Day <span>Coaching Plan</span></h1>
+      <p>Thomas Lindsey · Account Executive, Supermetrics</p>
+    </div>
+    <div class="header-right">
+      <strong>April 28 – May 28, 2026</strong><br>
+      Deal execution · Discovery · Executive framing<br>
+      <button class="reset-btn" onclick="resetAll()" style="margin-top:0.5rem;">Reset all progress</button>
+    </div>
+  </div>
+
+  <!-- Overall progress -->
+  <div class="overall-progress">
+    <div class="progress-label">
+      <strong id="overall-pct">0%</strong>
+      Complete
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="overall-bar" style="width:0%"></div>
+    </div>
+    <div class="progress-stats">
+      <strong id="overall-done">0</strong> / <span id="overall-total">0</span> actions checked
+    </div>
+  </div>
+
+  <!-- SMART Goals -->
+  <div class="section-title">SMART Goals</div>
+  <div class="goals-grid">
+
+    <div class="goal-card goal-1">
+      <div class="goal-number">Goal 01 · Business Value</div>
+      <h3>Build a repeatable value story for every qualified opportunity</h3>
+      <p>90% of Stage 2+ deals documented with use case, business problem, stakeholder owner, and expected outcome — within 30 days.</p>
+      <button class="goal-toggle" onclick="toggleGoal(this)">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        SMART breakdown
+      </button>
+      <div class="goal-details">
+        <div class="smart-row"><span class="smart-tag">S</span><span>Build a documented value narrative for every Stage 2+ opportunity using a consistent 4-field framework.</span></div>
+        <div class="smart-row"><span class="smart-tag">M</span><span>90% of qualified deals have all four fields completed in CRM or deal brief.</span></div>
+        <div class="smart-row"><span class="smart-tag">A</span><span>Review and update active deals weekly; apply framework in discovery, recaps, and deal reviews.</span></div>
+        <div class="smart-row"><span class="smart-tag">R</span><span>Improves champion alignment, internal clarity, and business case strength.</span></div>
+        <div class="smart-row"><span class="smart-tag">T</span><span>Consistent across pipeline within 30 days.</span></div>
+      </div>
+    </div>
+
+    <div class="goal-card goal-2">
+      <div class="goal-number">Goal 02 · MEDDPICC</div>
+      <h3>Qualify every active opportunity against the full MEDDPICC framework</h3>
+      <p>80% of Stage 2+ deals have documented MEDDPICC coverage — identifying gaps proactively rather than discovering them in late-stage reviews.</p>
+      <button class="goal-toggle" onclick="toggleGoal(this)">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        SMART breakdown
+      </button>
+      <div class="goal-details">
+        <div class="smart-row"><span class="smart-tag">S</span><span>Score every Stage 2+ deal across all 8 MEDDPICC dimensions. Flag gaps and build a plan to close them before stage progression.</span></div>
+        <div class="smart-row"><span class="smart-tag">M</span><span>80% of qualified deals have a completed MEDDPICC scorecard in CRM or deal brief, reviewed in weekly pipeline calls.</span></div>
+        <div class="smart-row"><span class="smart-tag">A</span><span>Apply MEDDPICC scoring in every discovery call, recap, and deal review. Review one deal scorecard per week with manager.</span></div>
+        <div class="smart-row"><span class="smart-tag">R</span><span>Improves stage progression confidence, reduces late-stage surprises, and strengthens executive alignment.</span></div>
+        <div class="smart-row"><span class="smart-tag">T</span><span>Consistent MEDDPICC coverage across pipeline within 30 days.</span></div>
+      </div>
+    </div>
+
+    <div class="goal-card goal-3">
+      <div class="goal-number">Goal 03 · Executive Framing</div>
+      <h3>Summarize strategic deals with clarity, impact, and a recommendation</h3>
+      <p>Every mid-to-late-stage deal has a concise executive summary leading with business impact — established within 30 days.</p>
+      <button class="goal-toggle" onclick="toggleGoal(this)">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        SMART breakdown
+      </button>
+      <div class="goal-details">
+        <div class="smart-row"><span class="smart-tag">S</span><span>Write a 3–5 sentence executive summary for every strategic deal — lead with impact, end with recommendation.</span></div>
+        <div class="smart-row"><span class="smart-tag">M</span><span>All mid-to-late-stage deals have a current, polished executive summary.</span></div>
+        <div class="smart-row"><span class="smart-tag">A</span><span>Practice one executive summary per week; rewrite strategic recaps in every 1:1.</span></div>
+        <div class="smart-row"><span class="smart-tag">R</span><span>Improves alignment, urgency, and confidence in deal point of view.</span></div>
+        <div class="smart-row"><span class="smart-tag">T</span><span>Repeatable executive talk track within 30 days.</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Week tabs -->
+  <div class="week-tabs">
+    <button class="week-tab active" onclick="showWeek(1,this)">
+      Week 1 <span class="tab-badge" id="badge-1">0</span>
+    </button>
+    <button class="week-tab" onclick="showWeek(2,this)">
+      Week 2 <span class="tab-badge" id="badge-2">0</span>
+    </button>
+    <button class="week-tab" onclick="showWeek(3,this)">
+      Week 3 <span class="tab-badge" id="badge-3">0</span>
+    </button>
+    <button class="week-tab" onclick="showWeek(4,this)">
+      Week 4 <span class="tab-badge" id="badge-4">0</span>
+    </button>
+    <button class="week-tab" onclick="showWeek(5,this)" style="margin-left:auto;">
+      30-Day Outcome
+    </button>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       WEEK 1
+  ══════════════════════════════════════════ -->
+  <div class="week-panel active" id="week-1">
+    <div class="week-header">
+      <div class="week-header-left">
+        <div class="week-label">Week 1 · Apr 28 – May 4</div>
+        <h2>Baseline and Framework Build</h2>
+      </div>
+      <div class="week-progress-mini">
+        <div class="pct" id="pct-1">0%</div>
+        <div class="pct-label">complete</div>
+      </div>
+    </div>
+    <div class="week-layout">
+      <div class="main-col">
+        <div class="card">
+          <div class="card-title">
+            Actions
+            <span id="count-1" style="color:var(--text-muted);font-weight:400">0 / 5</span>
+          </div>
+          <ul class="checklist" id="list-1">
+            <li onclick="toggleItem(this)" data-week="1" data-id="0">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Audit all Stage 2+ opportunities: identify which have a documented business problem and stakeholder owner, and which don't.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="1" data-id="1">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Draft a one-page value narrative template with four fields: use case, business problem, stakeholder owner, expected outcome. Apply it to your top 3 deals.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="1" data-id="2">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Learn the MEDDPICC framework (Metrics, Economic Buyer, Decision Criteria, Decision Process, Paper Process, Identify Pain, Champion, Competition). Build a simple scorecard template you'll use on every deal.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="1" data-id="3">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Identify one deal where discovery was shallow. Write out what you'd ask differently on a second call.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="1" data-id="4">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Review CRM hygiene — ensure deal stages reflect real buyer progression, not optimism.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="success-card">
+          <div class="card-title">What Success Looks Like</div>
+          <p>Top 3 active deals have a written value narrative. Your discovery checklist exists and has been used on at least one call. You can name which deals have genuine urgency and which are at risk — without looking at your CRM.</p>
+        </div>
+        <div class="coaching-card">
+          <div class="card-title">Manager Coaching Questions</div>
+          <ul class="coaching-q">
+            <li>Looking at my top 5 deals, where do you see the weakest qualification?</li>
+            <li>Does my value narrative for [Deal X] reflect what the buyer actually said, or what I assumed?</li>
+            <li>Where am I most likely to stall in pipeline progression right now?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="focus-pill">
+          <div class="card-title">Primary Focus</div>
+          <div class="focus-tag accent">Audit & Build Foundations</div>
+          <p class="focus-description">Understand the current state of your pipeline before building anything. This week is about creating the tools you'll use for the next 30 days — not using them perfectly yet.</p>
+        </div>
+        <div class="week-progress-card">
+          <div class="card-title">30-Day Progress</div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 1</span><span id="sidebar-pct-1">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill" id="sidebar-bar-1" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 2</span><span id="sidebar-pct-2">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill green" id="sidebar-bar-2" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 3</span><span id="sidebar-pct-3">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill blue" id="sidebar-bar-3" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 4</span><span id="sidebar-pct-4">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill orange" id="sidebar-bar-4" style="width:0%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       WEEK 2
+  ══════════════════════════════════════════ -->
+  <div class="week-panel" id="week-2">
+    <div class="week-header">
+      <div class="week-header-left">
+        <div class="week-label">Week 2 · May 5 – May 11</div>
+        <h2>MEDDPICC in Practice</h2>
+      </div>
+      <div class="week-progress-mini">
+        <div class="pct" id="pct-2">0%</div>
+        <div class="pct-label">complete</div>
+      </div>
+    </div>
+    <div class="week-layout">
+      <div class="main-col">
+        <div class="card">
+          <div class="card-title">
+            Actions
+            <span id="count-2" style="color:var(--text-muted);font-weight:400">0 / 5</span>
+          </div>
+          <ul class="checklist" id="list-2">
+            <li onclick="toggleItem(this)" data-week="2" data-id="0">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Score your top 5 active deals against the full MEDDPICC scorecard. For each dimension, mark it green (confirmed), yellow (partial), or red (unknown). Be honest.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="2" data-id="1">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">For each red or yellow dimension, write one specific question you'll ask to close the gap — then use those questions on your next call with that account.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="2" data-id="2">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Identify which MEDDPICC dimension is most consistently weak across your pipeline (e.g. Economic Buyer access, Paper Process clarity). That's your personal coaching focus for the week.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="2" data-id="3">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Bring one scored MEDDPICC deal card to your 1:1. Walk through it dimension by dimension — let your manager challenge your yellows and reds.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="2" data-id="4">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">For one stalled or slow-moving deal, use MEDDPICC to diagnose exactly where it's stuck — then write a specific next action to unblock it.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="success-card">
+          <div class="card-title">What Success Looks Like</div>
+          <p>Every top active deal has a completed MEDDPICC scorecard. You can name the weakest dimension in each deal and have a clear plan to address it. In your 1:1, you can walk through at least one deal card without being caught off guard by a gap your manager spots.</p>
+        </div>
+        <div class="coaching-card">
+          <div class="card-title">Manager Coaching Questions</div>
+          <ul class="coaching-q">
+            <li>In [Deal X], do I actually have the Economic Buyer engaged, or am I working through a champion who doesn't have authority?</li>
+            <li>Which MEDDPICC dimension am I most likely to gloss over, and why?</li>
+            <li>Looking at my reds and yellows — which deals should I slow down on or disqualify?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="focus-pill">
+          <div class="card-title">Primary Focus</div>
+          <div class="focus-tag green">MEDDPICC Scoring</div>
+          <p class="focus-description">M · E · D · D · P · I · C · C — Metrics, Economic Buyer, Decision Criteria, Decision Process, Paper Process, Identify Pain, Champion, Competition. Score every active deal. Red gaps are risks. Yellow gaps are your next call agenda.</p>
+        </div>
+        <div class="week-progress-card">
+          <div class="card-title">30-Day Progress</div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 1</span><span id="sidebar-pct-1b">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill" id="sidebar-bar-1b" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 2</span><span id="sidebar-pct-2b">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill green" id="sidebar-bar-2b" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 3</span><span id="sidebar-pct-3b">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill blue" id="sidebar-bar-3b" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 4</span><span id="sidebar-pct-4b">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill orange" id="sidebar-bar-4b" style="width:0%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       WEEK 3
+  ══════════════════════════════════════════ -->
+  <div class="week-panel" id="week-3">
+    <div class="week-header">
+      <div class="week-header-left">
+        <div class="week-label">Week 3 · May 12 – May 18</div>
+        <h2>Executive Framing</h2>
+      </div>
+      <div class="week-progress-mini">
+        <div class="pct" id="pct-3">0%</div>
+        <div class="pct-label">complete</div>
+      </div>
+    </div>
+    <div class="week-layout">
+      <div class="main-col">
+        <div class="card">
+          <div class="card-title">
+            Actions
+            <span id="count-3" style="color:var(--text-muted);font-weight:400">0 / 5</span>
+          </div>
+          <ul class="checklist" id="list-3">
+            <li onclick="toggleItem(this)" data-week="3" data-id="0">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Write an executive summary for your top 2 strategic deals. Format: 3–5 sentences. Lead with business impact. End with a clear recommendation. No jargon.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="3" data-id="1">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Share one executive summary with your manager before your 1:1. Use the meeting to workshop the framing — what's sharp, what's still too operational?</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="3" data-id="2">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Rewrite one existing deal recap to lead with the outcome and recommendation, not the activity log.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="3" data-id="3">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Practice a 60-second verbal summary of one deal as if briefing a VP. Record yourself or do it live with your manager.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="3" data-id="4">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Identify one deal where you've been reacting to the buyer's process. Write what you'd do differently to reestablish control and set the next milestone.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="success-card">
+          <div class="card-title">What Success Looks Like</div>
+          <p>You have a written executive summary for every strategic deal. You can deliver a 60-second verbal deal summary that leads with business impact — not features, not call history. Your manager can tell you what's sharp and what still sounds too operational.</p>
+        </div>
+        <div class="coaching-card">
+          <div class="card-title">Manager Coaching Questions</div>
+          <ul class="coaching-q">
+            <li>Does my executive summary for [Deal X] sound like something I'd send to a VP buyer?</li>
+            <li>Where am I leading with activity instead of impact?</li>
+            <li>Which deal do you think I have the weakest point of view on right now?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="focus-pill">
+          <div class="card-title">Primary Focus</div>
+          <div class="focus-tag blue">Executive Communication</div>
+          <p class="focus-description">Shift from reporting what happened to communicating what it means. A strong executive summary changes how buyers and managers perceive your command of the deal.</p>
+        </div>
+        <div class="week-progress-card">
+          <div class="card-title">30-Day Progress</div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 1</span><span id="sidebar-pct-1c">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill" id="sidebar-bar-1c" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 2</span><span id="sidebar-pct-2c">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill green" id="sidebar-bar-2c" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 3</span><span id="sidebar-pct-3c">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill blue" id="sidebar-bar-3c" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 4</span><span id="sidebar-pct-4c">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill orange" id="sidebar-bar-4c" style="width:0%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       WEEK 4
+  ══════════════════════════════════════════ -->
+  <div class="week-panel" id="week-4">
+    <div class="week-header">
+      <div class="week-header-left">
+        <div class="week-label">Week 4 · May 19 – May 25</div>
+        <h2>Systemize and Sustain</h2>
+      </div>
+      <div class="week-progress-mini">
+        <div class="pct" id="pct-4">0%</div>
+        <div class="pct-label">complete</div>
+      </div>
+    </div>
+    <div class="week-layout">
+      <div class="main-col">
+        <div class="card">
+          <div class="card-title">
+            Actions
+            <span id="count-4" style="color:var(--text-muted);font-weight:400">0 / 5</span>
+          </div>
+          <ul class="checklist" id="list-4">
+            <li onclick="toggleItem(this)" data-week="4" data-id="0">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Run a full pipeline review against all three SMART goal criteria: value narrative, MEDDPICC scorecard, executive summary. Score each deal across all three: complete / partial / missing.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="4" data-id="1">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Update or finalize your MEDDPICC scorecard template and value narrative template based on 4 weeks of use. These should be tools you'll keep using — refine them until they are.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="4" data-id="2">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Write or update executive summaries for all mid-to-late-stage deals. Confirm every summary leads with impact and closes with a recommendation.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="4" data-id="3">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">In your 1:1, walk your manager through the pipeline review results. Present at least two deals using your executive framing — no slides, just your words.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="4" data-id="4">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Write a one-paragraph personal retrospective: what changed, what's still inconsistent, and what to build on in Month 2.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="success-card">
+          <div class="card-title">What Success Looks Like</div>
+          <p>90%+ of Stage 2+ deals have complete value narratives. 80%+ of deals have a scored MEDDPICC card with no unaddressed red gaps. Every strategic deal has a polished executive summary. You can walk through your entire pipeline and explain each deal's status, risk, and next step without referring to slides.</p>
+        </div>
+        <div class="coaching-card">
+          <div class="card-title">Manager Coaching Questions</div>
+          <ul class="coaching-q">
+            <li>Across my pipeline, where does my deal control look strongest? Weakest?</li>
+            <li>Do my executive summaries reflect a confident point of view, or am I still hedging?</li>
+            <li>What's the one thing I should keep doing in Month 2, and what should I stop?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="focus-pill">
+          <div class="card-title">Primary Focus</div>
+          <div class="focus-tag orange">Prove Consistency</div>
+          <p class="focus-description">The goal this week is to demonstrate that the last three weeks weren't a sprint — they were a new baseline. Consistency across the full pipeline is the proof point.</p>
+        </div>
+        <div class="week-progress-card">
+          <div class="card-title">30-Day Progress</div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 1</span><span id="sidebar-pct-1d">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill" id="sidebar-bar-1d" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 2</span><span id="sidebar-pct-2d">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill green" id="sidebar-bar-2d" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 3</span><span id="sidebar-pct-3d">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill blue" id="sidebar-bar-3d" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 4</span><span id="sidebar-pct-4d">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill orange" id="sidebar-bar-4d" style="width:0%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       30-DAY OUTCOME
+  ══════════════════════════════════════════ -->
+  <div class="week-panel" id="week-5">
+    <div class="outcome-section">
+      <h3>30-Day Success Definition</h3>
+      <p>At the end of 30 days, you will have demonstrated consistent deal execution across three dimensions. These are not subjective — each is verifiable in a pipeline review or 1:1.</p>
+      <ul class="outcome-criteria">
+        <li>
+          <div class="outcome-icon accent">01</div>
+          <div><strong>Business value is documented</strong> for 90% of qualified opportunities — in the CRM or deal brief, ready for a deal review or internal handoff. Not in your head.</div>
+        </li>
+        <li>
+          <div class="outcome-icon green">02</div>
+          <div><strong>MEDDPICC is operational</strong> — every active deal has a scored card. You can walk into any 1:1, name the red and yellow gaps by dimension, and explain exactly what you're doing to close them.</div>
+        </li>
+        <li>
+          <div class="outcome-icon blue">03</div>
+          <div><strong>Executive communication is sharp</strong> — you can summarize any strategic deal in 60 seconds, lead with business impact, and offer a clear recommendation.</div>
+        </li>
+      </ul>
+      <p style="margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid rgba(108,92,231,0.15); color:var(--text-muted);">
+        If you hit those three marks, you've built real operating habits — not a one-time exercise. The discovery checklist and value narrative template you built in Week 1 should be the tools you're still using in Month 3.
+      </p>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+  const STORAGE_KEY = '30day-coaching-v1';
+
+  // State: {week: {id: boolean}}
+  let state = {};
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      state = raw ? JSON.parse(raw) : {};
+    } catch(e) { state = {}; }
+  }
+
+  function saveState() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  function toggleItem(li) {
+    const week = li.dataset.week;
+    const id = li.dataset.id;
+    if (!state[week]) state[week] = {};
+    state[week][id] = !state[week][id];
+    li.classList.toggle('done', state[week][id]);
+    saveState();
+    updateAll();
+  }
+
+  function weekDone(w) {
+    const list = document.querySelectorAll(`#list-${w} li`);
+    let done = 0;
+    list.forEach(li => { if (state[w] && state[w][li.dataset.id]) done++; });
+    return { done, total: list.length };
+  }
+
+  function updateAll() {
+    let totalDone = 0, totalItems = 0;
+
+    for (let w = 1; w <= 4; w++) {
+      const { done, total } = weekDone(w);
+      const pct = total ? Math.round(done / total * 100) : 0;
+
+      totalDone += done;
+      totalItems += total;
+
+      // Per-week header pct
+      const pctEl = document.getElementById(`pct-${w}`);
+      if (pctEl) pctEl.textContent = pct + '%';
+
+      // Count label
+      const countEl = document.getElementById(`count-${w}`);
+      if (countEl) countEl.textContent = `${done} / ${total}`;
+
+      // Tab badge
+      const badge = document.getElementById(`badge-${w}`);
+      if (badge) badge.textContent = done;
+
+      // Sidebar bars — all 4 panels × 4 bars
+      ['', 'b', 'c', 'd'].forEach(suffix => {
+        const barEl = document.getElementById(`sidebar-bar-${w}${suffix}`);
+        const pctLbl = document.getElementById(`sidebar-pct-${w}${suffix}`);
+        if (barEl) barEl.style.width = pct + '%';
+        if (pctLbl) pctLbl.textContent = pct + '%';
+      });
+    }
+
+    // Overall
+    const overallPct = totalItems ? Math.round(totalDone / totalItems * 100) : 0;
+    document.getElementById('overall-pct').textContent = overallPct + '%';
+    document.getElementById('overall-bar').style.width = overallPct + '%';
+    document.getElementById('overall-done').textContent = totalDone;
+    document.getElementById('overall-total').textContent = totalItems;
+  }
+
+  function applyState() {
+    document.querySelectorAll('.checklist li').forEach(li => {
+      const w = li.dataset.week;
+      const id = li.dataset.id;
+      if (state[w] && state[w][id]) li.classList.add('done');
+    });
+  }
+
+  function showWeek(n, btn) {
+    document.querySelectorAll('.week-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.week-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('week-' + n).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function toggleGoal(btn) {
+    const details = btn.nextElementSibling;
+    const open = details.classList.toggle('open');
+    btn.classList.toggle('open', open);
+  }
+
+  function resetAll() {
+    if (!confirm('Reset all progress? This cannot be undone.')) return;
+    state = {};
+    saveState();
+    document.querySelectorAll('.checklist li').forEach(li => li.classList.remove('done'));
+    updateAll();
+  }
+
+  // Init
+  loadState();
+  applyState();
+  updateAll();
+</script>
+</body>
+</html>

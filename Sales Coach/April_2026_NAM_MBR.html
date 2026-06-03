@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>April 2026 NAM MBR — Thomas R Lindsey</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  :root {
+    --bg:#0f1117; --surface:#1a1d27; --surface-2:#222632; --border:#2a2e3b;
+    --text:#e4e6ed; --muted:#8b8fa3;
+    --accent:#6c5ce7; --green:#00b894; --orange:#fdcb6e; --red:#e17055; --blue:#74b9ff;
+    --navy:#0d2340;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  .container{max-width:1200px;margin:0 auto;padding:2rem}
+
+  /* Slide */
+  .slide{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem 2.25rem;margin-bottom:1.5rem;page-break-after:always}
+  .slide-num{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);font-weight:600;margin-bottom:0.5rem}
+  .slide h2{font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1.25rem}
+  .slide h3{font-size:1rem;font-weight:700;margin:1rem 0 0.6rem;color:var(--text)}
+  .slide h4{font-size:0.85rem;font-weight:700;margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted)}
+
+  /* Title slide */
+  .title-slide{background:linear-gradient(135deg,#0d2340,#1a1d27);min-height:60vh;display:flex;flex-direction:column;justify-content:center;padding:3rem;border-radius:16px}
+  .title-slide h1{font-size:3.5rem;font-weight:800;letter-spacing:-0.03em;color:#fff;margin-bottom:1rem}
+  .title-slide .meta{font-size:1rem;color:#a0b0d0}
+  .title-slide .badge{display:inline-block;padding:0.45rem 1rem;background:rgba(225,112,85,0.15);color:var(--orange);border-radius:99px;font-size:0.85rem;font-weight:600;margin-top:1.5rem}
+
+  /* Result blocks */
+  .result-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1rem}
+  .result-block{background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem}
+  .result-block.green{border-left:4px solid var(--green)}
+  .result-block.red{border-left:4px solid var(--red)}
+  .result-block.orange{border-left:4px solid var(--orange)}
+  .result-block .label{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);font-weight:600;margin-bottom:0.4rem}
+  .result-block .big{font-size:2rem;font-weight:800;letter-spacing:-0.02em;line-height:1}
+  .result-block .big.green{color:var(--green)}
+  .result-block .big.red{color:var(--red)}
+  .result-block .big.orange{color:var(--orange)}
+  .result-block .sub{font-size:0.85rem;color:var(--muted);margin-top:0.4rem}
+
+  /* Two col */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+  .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem}
+  .col-card{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem}
+
+  /* Lists */
+  ul.tight{list-style:none;font-size:0.88rem;line-height:1.65}
+  ul.tight li{padding:0.25rem 0;padding-left:1.2rem;position:relative;color:var(--text)}
+  ul.tight li::before{content:'•';color:var(--accent);position:absolute;left:0;font-weight:700}
+  ul.tight li.win::before{content:'✓';color:var(--green)}
+  ul.tight li.fail::before{content:'✗';color:var(--red)}
+  ul.tight li.partial::before{content:'~';color:var(--orange)}
+  ul.tight li ul{list-style:none;margin-top:0.2rem;padding-left:0.5rem}
+  ul.tight li ul li{padding-left:1rem;font-size:0.82rem;color:var(--muted)}
+  ul.tight li ul li::before{content:'–';color:var(--muted)}
+
+  /* Tables */
+  table{width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:0.5rem}
+  th{text-align:left;padding:0.6rem 0.75rem;border-bottom:2px solid var(--border);font-weight:600;color:var(--muted);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;background:var(--surface-2)}
+  td{padding:0.6rem 0.75rem;border-bottom:1px solid var(--border)}
+  tr:hover td{background:var(--surface-2)}
+  td.amount,th.amount{text-align:right;font-variant-numeric:tabular-nums}
+  td.center,th.center{text-align:center}
+  .green-cell{color:var(--green);font-weight:600}
+  .red-cell{color:var(--red);font-weight:600}
+  .orange-cell{color:var(--orange);font-weight:600}
+
+  /* Pills */
+  .pill{display:inline-block;padding:0.18rem 0.55rem;border-radius:5px;font-size:0.7rem;font-weight:600}
+  .pill-green{background:rgba(0,184,148,0.15);color:var(--green)}
+  .pill-red{background:rgba(225,112,85,0.15);color:var(--red)}
+  .pill-orange{background:rgba(253,203,110,0.15);color:var(--orange)}
+  .pill-blue{background:rgba(116,185,255,0.15);color:var(--blue)}
+  .pill-accent{background:rgba(108,92,231,0.15);color:var(--accent)}
+
+  /* Callout */
+  .callout{background:linear-gradient(135deg,rgba(108,92,231,0.08),rgba(116,185,255,0.04));border:1px solid rgba(108,92,231,0.25);border-radius:12px;padding:1.1rem 1.4rem;margin:0.75rem 0;font-size:0.92rem;line-height:1.6}
+  .callout strong{color:var(--accent)}
+  .callout.warn{background:linear-gradient(135deg,rgba(253,203,110,0.08),rgba(225,112,85,0.04));border-color:rgba(253,203,110,0.25)}
+  .callout.warn strong{color:var(--orange)}
+  .callout.alert{background:linear-gradient(135deg,rgba(225,112,85,0.08),rgba(253,203,110,0.04));border-color:rgba(225,112,85,0.3)}
+  .callout.alert strong{color:var(--red)}
+
+  /* Stat row */
+  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1rem 0}
+  .stat{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:0.9rem 1.1rem}
+  .stat .label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);font-weight:600;margin-bottom:0.3rem}
+  .stat .v{font-size:1.4rem;font-weight:800;letter-spacing:-0.02em}
+  .stat .v.green{color:var(--green)}
+  .stat .v.red{color:var(--red)}
+  .stat .v.orange{color:var(--orange)}
+  .stat .sub{font-size:0.7rem;color:var(--muted);margin-top:0.2rem}
+
+  /* TOC */
+  .toc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+  .toc h3{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.6rem;font-weight:600}
+  .toc ol{list-style:none;font-size:0.85rem;display:grid;grid-template-columns:1fr 1fr;gap:0.3rem 1.5rem;counter-reset:s}
+  .toc ol li{counter-increment:s;padding:0.2rem 0;color:var(--text)}
+  .toc ol li::before{content:counter(s)'. ';color:var(--muted);font-weight:600}
+  .toc ol li a{color:var(--text);text-decoration:none}
+  .toc ol li a:hover{color:var(--accent)}
+
+  /* Sidebar layout */
+  .with-side{display:grid;grid-template-columns:1.6fr 1fr;gap:1.25rem}
+
+  /* Calendar */
+  .cal{display:grid;grid-template-columns:repeat(5,1fr);gap:0.4rem;font-size:0.72rem;margin-top:0.6rem}
+  .cal .day{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:0.5rem 0.6rem;min-height:200px}
+  .cal .day-h{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);font-weight:600;margin-bottom:0.4rem;padding-bottom:0.3rem;border-bottom:1px solid var(--border)}
+  .cal .blk{padding:0.3rem 0.4rem;border-radius:5px;margin-bottom:0.25rem;font-size:0.68rem;line-height:1.3}
+  .blk-am{background:rgba(116,185,255,0.15);color:var(--blue)}
+  .blk-cad{background:rgba(108,92,231,0.15);color:var(--accent)}
+  .blk-li{background:rgba(0,184,148,0.15);color:var(--green)}
+  .blk-mid{background:rgba(253,203,110,0.15);color:var(--orange)}
+  .blk-fri{background:rgba(225,112,85,0.15);color:var(--red)}
+  .blk-rew{background:rgba(116,185,255,0.10);color:var(--text)}
+
+  .footer{text-align:center;padding:1.5rem;color:var(--muted);font-size:0.75rem;border-top:1px solid var(--border);margin-top:1rem}
+
+  @media print {
+    body{background:#fff;color:#000}
+    .slide{break-inside:avoid;page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- TITLE SLIDE -->
+  <div class="title-slide">
+    <div style="font-size:0.8rem;color:#a0b0d0;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:1rem;font-weight:600">Monthly Business Review</div>
+    <h1>April NAM MBR</h1>
+    <div class="meta"><strong style="color:#fff">Thomas R Lindsey</strong> · 05.04.2026 · Supermetrics</div>
+    <div class="badge">⚠️ Worst revenue month in some time · 37% to quota · pipe gen at 103%</div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <h3>Agenda</h3>
+    <ol>
+      <li><a href="#s2">April Overview — Results vs Plan</a></li>
+      <li><a href="#s3">April Monthly Plan — Executed</a></li>
+      <li><a href="#s4">April Review — Wins / Improve / Learnings</a></li>
+      <li><a href="#s4b">Calligo Partnership — Kickoff Output</a></li>
+      <li><a href="#s5">April Pipeline Gen Recap</a></li>
+      <li><a href="#s6">YTD 2026 Pipeline Trend</a></li>
+      <li><a href="#s7">April Closed Deal Execution</a></li>
+      <li><a href="#s8">May MITs</a></li>
+      <li><a href="#s9">May Funnel Math</a></li>
+      <li><a href="#s10">May Daily Activity Targets</a></li>
+      <li><a href="#s11">How We Work the Activities</a></li>
+      <li><a href="#s12">May True Pipeline</a></li>
+      <li><a href="#s13">May Forecast</a></li>
+      <li><a href="#s13b">MEDDICC — Driving Deals</a></li>
+      <li><a href="#s13c">MEDDICC Scorecard Cadence</a></li>
+      <li><a href="#s13d">Per-Deal MEDDICC Targets</a></li>
+      <li><a href="#s14">Top Deal Closing Plans</a></li>
+      <li><a href="#s15">Coaching Focus</a></li>
+    </ol>
+  </div>
+
+  <!-- SLIDE 2 - APRIL OVERVIEW -->
+  <div class="slide" id="s2">
+    <div class="slide-num">Slide 2</div>
+    <h2>Apr Overview — Results I Planned to Achieve</h2>
+
+    <h4>Revenue Goals</h4>
+    <div class="result-row">
+      <div class="result-block red">
+        <div class="label">April FC (start of month)</div>
+        <div class="big red">$12,988 / $46,750 = 28%</div>
+        <div class="sub">Forecast at start was already short of quota</div>
+      </div>
+      <div class="result-block red">
+        <div class="label">Actual Revenue</div>
+        <div class="big red">$17,213 / $46,750 = 37%</div>
+        <div class="sub">Worst revenue month in some time. Wins all sub-$5.5k</div>
+      </div>
+    </div>
+
+    <h4 style="margin-top:1.25rem">Pipeline Goals</h4>
+    <div class="result-row">
+      <div class="result-block green">
+        <div class="label">April Pipeline Goal (start of month)</div>
+        <div class="big">$187,000</div>
+        <div class="sub">4× monthly quota</div>
+      </div>
+      <div class="result-block green">
+        <div class="label">Actual Pipeline Created</div>
+        <div class="big green">$193,100 / 103%</div>
+        <div class="sub">23 deals · first month over goal in 2026</div>
+      </div>
+    </div>
+
+    <div class="callout alert">
+      <strong>The headline:</strong> Pipe gen worked. Conversion didn't. April delivered the most pipeline of the year and the worst revenue of the year in the same month — that gap is the story of this MBR, and MEDDICC is how we close it.
+    </div>
+  </div>
+
+  <!-- SLIDE 3 - APRIL MONTHLY PLAN EXECUTED -->
+  <div class="slide" id="s3">
+    <div class="slide-num">Slide 3</div>
+    <h2>April Monthly Plan — What I Committed vs What I Executed</h2>
+
+    <div class="two-col">
+      <div class="col-card">
+        <h4>MITs (Committed)</h4>
+        <ul class="tight">
+          <li class="partial">TOFU TOFU TOFU <span class="pill pill-orange">PARTIAL</span>
+            <ul><li><strong>333 contacts enrolled vs 400 target (83%)</strong> — 153 in HubSpot cadence + ~180 enrolled offline · 23 deals created (103% pipe goal)</li></ul>
+          </li>
+          <li class="fail">MEDDICC / MAPs <span class="pill pill-red">FAIL</span>
+            <ul><li>Docs were not built for $15k+ deals by 04/10. No MAPs in flight.</li><li><strong>Effective immediately:</strong> MAPs are <em>non-negotiable</em> on every deal $15k+ — automation workflows are already in place</li></ul>
+          </li>
+          <li class="fail">Disqualification <span class="pill pill-red">FAIL</span>
+            <ul><li>4 fast-fails sub-30d (Speed Sport, Oversight, Fusable, Chefman). MNP died at 425 days.</li></ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-card">
+        <h4>Actions & Activities</h4>
+        <ul class="tight">
+          <li class="partial">100 contacts/wk (50 Exp / 50 OB)
+            <ul><li>~83 enrolled/wk avg (incl. offline) — close to target; pipe gen beat goal</li></ul>
+          </li>
+          <li class="win">SUPER Framework / Deal Doc
+            <ul><li><strong>Bump threshold to deals $8k+</strong> (down from $5k) to save time — automation already covers this today</li></ul>
+          </li>
+          <li class="win">Daily structure / discipline
+            <ul><li>21 Call Prep blocks · 16 Cadence Actions · 14 Opp Check-ins</li></ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <h4 style="margin-top:1.25rem">Coaching Theme — Navigating UP</h4>
+    <ul class="tight">
+      <li class="win"><strong>Tracer ($100k)</strong> — multi-threaded successfully · qualification moving · now considered <span class="pill pill-blue">Qualified</span></li>
+      <li class="fail">Multi-threading with value — did NOT happen on Uniphore ($40k loss)</li>
+      <li class="partial">Making the ask (EB, cell, exec sponsor) — still inconsistent. Single-threaded on too many $10k+ deals.
+        <ul><li><strong>Hard next steps + make the ask</strong> — every meeting must end with a confirmed next step on calendar AND the explicit ask (EB intro / cell / exec sponsor / signature path)</li></ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 4 - APRIL REVIEW -->
+  <div class="slide" id="s4">
+    <div class="slide-num">Slide 4</div>
+    <h2>April Review</h2>
+
+    <div class="three-col">
+      <div class="col-card" style="border-left:4px solid var(--green)">
+        <h4 style="color:var(--green)">What I did well</h4>
+        <ul class="tight">
+          <li class="win">Pipe gen at 103% — 23 deals, $193k</li>
+          <li class="win"><strong>Mid-market mix improving — ACV creeping up</strong> · 6 deals at $10k+ credit (DTCC, StayTuned, Revibe, Upwork, AMN, DS18, BlueDoor) — meaningful step up from prior months</li>
+          <li class="win">MCP/AI positioning landed (Paxos closed in 3 days; Upwork, Dale Howard, IA all MCP plays)</li>
+          <li class="win">Daily structure held — Call Prep, Cadence, Opp Check-ins every business day</li>
+          <li class="win">Account-mgmt saves: Hawaiian backfill same-day, BBC de-escalation, Spectrum CSM handoff, PRH renewal recovery</li>
+          <li class="win"><strong>Calligo partner kickoff was a strong session</strong> — 5 co-built campaign plays in flight (see right column)</li>
+        </ul>
+      </div>
+
+      <div class="col-card" style="border-left:4px solid var(--red)">
+        <h4 style="color:var(--red)">Where I need to improve</h4>
+        <ul class="tight">
+          <li class="fail"><strong>Uniphore $40k — no EB conversation booked before pricing → lost.</strong> This is the MEDDICC headline lesson. Will not repeat.</li>
+          <li class="fail">Disqualification — 4 sub-30d fast-fails entered pipe before fit confirmed</li>
+          <li class="fail">Large-deal stalling — 11 Qualified deals worth $74k didn't progress</li>
+          <li class="fail">Email-to-call ratio 3.5:1 — too email-heavy on $10k+ deals</li>
+        </ul>
+      </div>
+
+      <div class="col-card" style="border-left:4px solid var(--accent)">
+        <h4 style="color:var(--accent)">Key Deal Learnings</h4>
+        <ul class="tight">
+          <li><strong>Uniphore $40k autopsy:</strong> shallow discovery + no EB + 69-day cycle = the headline miss. Bringing 1-pager to 1:1.</li>
+          <li><strong>Q1 carryover graveyard cost $85k</strong> on Apr 1 alone (Downstream, Equitable, Poco Bero, Tellus, IRIS). No more month-end dispositioning.</li>
+          <li><strong>MCP win pattern is repeatable:</strong> existing customer + clear use case + AI positioning = sub-30-day close.</li>
+          <li><strong>Calligo partnership unlocked</strong> — strong kickoff w/ 5 campaign plays. Honest read: low confidence in Nick Mishko (slow, not a deal-driver) — I'll need to drive the motion.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SLIDE 4b - CALLIGO PARTNER PLAYS -->
+  <div class="slide" id="s4b">
+    <div class="slide-num">Slide 4b · Partner Motion</div>
+    <h2>Calligo Partnership — Kickoff Output</h2>
+    <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1rem">Strong kickoff session · 5 co-built campaign plays. Partnership is the lever to move OB% from 9% toward 25%+ in May/June.</p>
+
+    <div class="three-col">
+      <div class="col-card" style="border-left:3px solid var(--accent)">
+        <h4 style="color:var(--accent);margin-bottom:0.4rem">1 · AI Roadmap Campaign</h4>
+        <p style="font-size:0.82rem;color:var(--text);line-height:1.55"><strong>Target:</strong> existing customers focused on AI readiness + automation.</p>
+        <p style="font-size:0.78rem;color:var(--muted);line-height:1.55;margin-top:0.5rem"><strong>Offer:</strong></p>
+        <ul class="tight" style="font-size:0.78rem">
+          <li>Half-day AI roadmap session</li>
+          <li>Identify practical AI use cases</li>
+          <li>Prioritize where marketing data supports automation</li>
+          <li>Connect SM data pipelines to Calligo's AI/process automation work</li>
+        </ul>
+        <p style="font-size:0.78rem;color:var(--muted);line-height:1.55;margin-top:0.5rem;font-style:italic">"You already have access to the data. The next question is what workflows, decisions, or processes can be automated on top of it."</p>
+      </div>
+
+      <div class="col-card" style="border-left:3px solid var(--blue)">
+        <h4 style="color:var(--blue);margin-bottom:0.4rem">2 · Snowflake Expansion</h4>
+        <p style="font-size:0.82rem;color:var(--text);line-height:1.55"><strong>Target:</strong> SM customers using Snowflake or considering a warehouse.</p>
+        <p style="font-size:0.78rem;color:var(--muted);line-height:1.55;margin-top:0.5rem"><strong>Offer:</strong></p>
+        <ul class="tight" style="font-size:0.78rem">
+          <li>Review current SM setup</li>
+          <li>Identify missing warehouse / data modeling opportunities</li>
+          <li>Show how Calligo helps build the staging / modeling layer</li>
+          <li>Expand SM usage into the DWH motion</li>
+        </ul>
+      </div>
+
+      <div class="col-card" style="border-left:3px solid var(--green)">
+        <h4 style="color:var(--green);margin-bottom:0.4rem">3 · Sports & Entertainment</h4>
+        <p style="font-size:0.82rem;color:var(--text);line-height:1.55"><strong>Target:</strong> MLS teams · national sports orgs · ticketing · venue operators · entertainment groups.</p>
+        <p style="font-size:0.78rem;color:var(--muted);line-height:1.55;margin-top:0.5rem;font-style:italic">"Supermetrics centralizes marketing and performance data. Calligo helps structure it into a warehouse and build reporting, AI, and automation layers on top."</p>
+        <p style="font-size:0.78rem;color:var(--muted);margin-top:0.5rem">Use current opportunities as proof points.</p>
+      </div>
+    </div>
+
+    <div class="three-col" style="margin-top:1rem">
+      <div class="col-card" style="border-left:3px solid var(--orange)">
+        <h4 style="color:var(--orange);margin-bottom:0.4rem">4 · Customer Re-Engagement</h4>
+        <p style="font-size:0.82rem;color:var(--text);line-height:1.55"><strong>Target customers with:</strong></p>
+        <ul class="tight" style="font-size:0.78rem">
+          <li>Low usage</li>
+          <li>Stalled expansion</li>
+          <li>Known reporting complexity</li>
+          <li>Past lost opportunities</li>
+          <li>Unclear warehouse strategy</li>
+          <li>Heavy manual reporting workflows</li>
+        </ul>
+        <p style="font-size:0.78rem;color:var(--muted);margin-top:0.5rem">Use Calligo as the reason to restart the conversation.</p>
+      </div>
+
+      <div class="col-card" style="border-left:3px solid var(--accent)">
+        <h4 style="color:var(--accent);margin-bottom:0.4rem">5 · LinkedIn Awareness</h4>
+        <p style="font-size:0.82rem;color:var(--text);line-height:1.55"><strong>Light co-branded LI campaign · post themes:</strong></p>
+        <ul class="tight" style="font-size:0.78rem">
+          <li>AI readiness for marketing teams</li>
+          <li>Moving beyond dashboards</li>
+          <li>Automating campaign decisions</li>
+          <li>Building a clean marketing data foundation</li>
+          <li>Supermetrics + Calligo customer use cases</li>
+        </ul>
+      </div>
+
+      <div class="col-card" style="background:rgba(253,203,110,0.06);border:1px solid rgba(253,203,110,0.25)">
+        <h4 style="color:var(--orange);margin-bottom:0.4rem">⚠ Honest Read on the Counterpart</h4>
+        <p style="font-size:0.82rem;color:var(--text);line-height:1.55">Low confidence in <strong>Nick Mishko</strong> at Calligo — dry, slow, not a go-getter, doesn't think outside the box to get deals done.</p>
+        <p style="font-size:0.78rem;color:var(--muted);line-height:1.55;margin-top:0.5rem"><strong>So what:</strong> The plays are good and worth executing. But I'll need to <em>drive</em> the motion — set the timelines, push the meetings, own the follow-ups. Don't sit on partner-led pace.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 - APRIL PIPELINE GEN RECAP -->
+  <div class="slide" id="s5">
+    <div class="slide-num">Slide 5</div>
+    <h2>April Pipeline Gen Recap</h2>
+
+    <table>
+      <thead>
+        <tr><th>Source</th><th class="center">Count</th><th class="center">% of Pipe</th><th class="amount">Value</th><th class="center">% Value</th><th class="amount">ACV</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Inbound</td><td class="center">12</td><td class="center">52%</td><td class="amount">$95,000</td><td class="center">49.2%</td><td class="amount">$7,917</td></tr>
+        <tr><td>Outbound</td><td class="center">2</td><td class="center">9%</td><td class="amount">$18,000</td><td class="center">9.3%</td><td class="amount">$9,000</td></tr>
+        <tr><td>Expansion</td><td class="center">9</td><td class="center">39%</td><td class="amount">$80,100</td><td class="center">41.5%</td><td class="amount">$8,900</td></tr>
+        <tr style="font-weight:700;background:var(--surface-2)"><td>TOTAL</td><td class="center">23</td><td class="center">100%</td><td class="amount">$193,100</td><td class="center">100%</td><td class="amount">$8,396</td></tr>
+        <tr style="background:rgba(0,184,148,0.08)"><td><strong>Pipeline Goal</strong></td><td colspan="2" class="amount"><strong>$187,000</strong></td><td colspan="3" class="green-cell"><strong>103%</strong> · first month over goal in 2026</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout warn">
+      <strong>So what:</strong> Pipeline machine is working — but mix is heavily Inbound + Expansion (~91%). <strong>Outbound contributed just ~9%</strong> — the May daily TOFU discipline (slides 9–11) is where Outbound % needs to climb. <em>Note: source split is approximate pending HubSpot validation.</em>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 - YTD 2026 TREND -->
+  <div class="slide" id="s6">
+    <div class="slide-num">Slide 6</div>
+    <h2>YTD 2026 Pipeline Trend</h2>
+
+    <table>
+      <thead>
+        <tr><th>Month</th><th class="center">Deals</th><th class="amount">Pipe Value</th><th class="amount">Goal</th><th class="center">% to Goal</th><th class="amount">ACV</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>January</td><td class="center">9</td><td class="amount">$80,572</td><td class="amount">$160,824</td><td class="center red-cell">50%</td><td class="amount">$8,952</td></tr>
+        <tr><td>February</td><td class="center">18</td><td class="amount">$145,292</td><td class="amount">$160,824</td><td class="center orange-cell">90%</td><td class="amount">$8,072</td></tr>
+        <tr><td>March</td><td class="center">16</td><td class="amount">$155,853</td><td class="amount">$176,000</td><td class="center orange-cell">89%</td><td class="amount">$9,741</td></tr>
+        <tr style="background:rgba(0,184,148,0.08);font-weight:700"><td>April</td><td class="center">23</td><td class="amount">$193,100</td><td class="amount">$187,000</td><td class="center green-cell">103%</td><td class="amount">$8,396</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>Trend:</strong> 50% → 90% → 89% → <strong>103%</strong>. Pipeline gen is on a clean upward arc. The arc is real — what's missing is the conversion arc behind it.
+    </div>
+  </div>
+
+  <!-- SLIDE 7 - APRIL CLOSED EXECUTION -->
+  <div class="slide" id="s7">
+    <div class="slide-num">Slide 7</div>
+    <h2>April Closed Deal Execution — The Real Story</h2>
+
+    <div class="stat-row">
+      <div class="stat"><div class="label">Win Rate</div><div class="v orange">24%</div><div class="sub">5 won / 21 closed</div></div>
+      <div class="stat"><div class="label">Closed Won</div><div class="v green">$17.2k</div><div class="sub">all sub-$5.5k</div></div>
+      <div class="stat"><div class="label">Closed Lost (Y1 ACV)</div><div class="v red">$177k</div><div class="sub">16 deals · 10× the wins</div></div>
+      <div class="stat"><div class="label">Net Closed Activity</div><div class="v red">−$160k</div><div class="sub">Won minus lost</div></div>
+    </div>
+
+    <h3>3 Stories Inside the Losses</h3>
+    <table>
+      <thead>
+        <tr><th>Story</th><th>Deals</th><th class="amount">Lost ACV</th><th>So what</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Q1 carryover cleanup</strong> <span class="pill pill-blue">Apr 1</span></td>
+          <td>Downstream (390d), Equitable (112d), Poco Bero, Tellus, IRIS</td>
+          <td class="amount red-cell">$85,200</td>
+          <td>Should have died in March. Inflated forecast, masked stalls.</td>
+        </tr>
+        <tr>
+          <td><strong>Mid-cycle big-deal loss</strong></td>
+          <td>Uniphore ($40k, 69d), Comcast (137d), MNP (425d)</td>
+          <td class="amount red-cell">$60,000</td>
+          <td>Uniphore is the coachable miss. MEDDICC red flag: no EB.</td>
+        </tr>
+        <tr>
+          <td><strong>Fast disqualification failures</strong></td>
+          <td>Speed Sport (11d), Oversight (11d), Fusable (24d), Chefman (26d)</td>
+          <td class="amount red-cell">$21,900</td>
+          <td>Got into pipe before fit confirmed. MEDDICC card at Day 1 prevents this.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout warn">
+      <strong>April wins were all small + fast (Paxos 3d, DQ 29d, Cousin Labs 28d, Viewsonic 48d, ISLAND TECH 58d).</strong> Zero $10k+ wins. That's not coincidence — every $10k+ deal that closed in April closed lost. May focus: protect the $10k+ pipe with MEDDICC.
+    </div>
+  </div>
+
+  <!-- SLIDE 8 - MAY MITs -->
+  <div class="slide" id="s8">
+    <div class="slide-num">Slide 8 · May Plan</div>
+    <h2>May MITs</h2>
+
+    <div class="two-col">
+      <div class="col-card" style="border-left:4px solid var(--accent)">
+        <h4 style="color:var(--accent)">1. MEDDICC Operationalized</h4>
+        <p style="font-size:0.92rem;color:var(--text);line-height:1.6">
+          80% of Stage 2+ deals scored. Weakest dimension named per deal. Doc artifacts produced (scorecard, value narrative, MAP, exec summary). MAPs <strong>non-negotiable</strong> on every $15k+ deal · SUPER framework on every $8k+ deal — both already automated.
+        </p>
+        <p style="font-size:0.8rem;color:var(--muted);margin-top:0.5rem"><em>The headline MIT — April proved deal management is the gap. Disqualification-at-Day-14 lives inside this (MEDDICC card at Day 1 = the gate; 60-day rule = the floor).</em></p>
+      </div>
+      <div class="col-card" style="border-left:4px solid var(--blue)">
+        <h4 style="color:var(--blue)">2. TOFU at the Activity Level</h4>
+        <p style="font-size:0.92rem;color:var(--text);line-height:1.6">
+          Daily and measurable, not a vibe. Per-day enrollment, emails, dials, LinkedIn, net-new accounts, booked meetings — all tracked. See slides 9–11 for the math and the playbook.
+        </p>
+        <p style="font-size:0.8rem;color:var(--muted);margin-top:0.5rem"><em>April hit 103% pipe gen at ~83% of contact-enrollment target. May tightens both — but with realistic numbers, not aspirational ones.</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9 - MAY FUNNEL MATH -->
+  <div class="slide" id="s9">
+    <div class="slide-num">Slide 9</div>
+    <h2>May Funnel Math — Top-Down Derivation</h2>
+
+    <div class="two-col">
+      <div class="col-card">
+        <h4>Locked Inputs</h4>
+        <ul class="tight">
+          <li>May quota: <strong>$46,750</strong></li>
+          <li>4× pipeline goal: <strong>$187,000</strong></li>
+          <li>Plan target: <strong>$200,000</strong> (+7% overage for slippage)</li>
+          <li><strong>ACV baseline:</strong> Closed-won avg last 6 months ≈ <strong>$11,000</strong> <em>(better anchor than April's depressed $2.9k closed-won ACV; pipeline-gen ACV was $8.4k but heavily Growth-tier-weighted)</em></li>
+        </ul>
+
+        <h4 style="margin-top:1rem">Backed-Out Targets</h4>
+        <ul class="tight">
+          <li>Deals needed: <strong>~18</strong> ($200k ÷ $11k ACV)</li>
+          <li>Booked meetings: <strong>~60</strong> (~33% meeting → deal · slightly below April's 72)</li>
+          <li>Contacts enrolled: <strong>~330</strong> (matches April's true 333 incl. offline)</li>
+          <li>Account base: <strong>~70 net-new</strong> (mix shift: lift OB% from 9% toward 25%)</li>
+        </ul>
+      </div>
+
+      <div class="col-card">
+        <h4>April Baseline → May Target</h4>
+        <table>
+          <thead>
+            <tr><th>Activity</th><th class="amount">Apr</th><th class="amount">May</th><th class="amount">Δ</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Contacts enrolled (incl. offline)</td><td class="amount">333</td><td class="amount">330</td><td class="amount">flat</td></tr>
+            <tr><td>Calls logged</td><td class="amount">280</td><td class="amount">300</td><td class="amount green-cell">+7%</td></tr>
+            <tr><td>Emails sent</td><td class="amount">979</td><td class="amount">1,000</td><td class="amount">flat</td></tr>
+            <tr><td>Meetings</td><td class="amount">72</td><td class="amount">60</td><td class="amount orange-cell">−17% (quality over volume)</td></tr>
+            <tr><td>New deals</td><td class="amount">23</td><td class="amount">~18</td><td class="amount orange-cell">fewer · larger</td></tr>
+            <tr style="font-weight:700"><td>Pipe generated</td><td class="amount">$193k</td><td class="amount">$200k</td><td class="amount green-cell">+4%</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.78rem;color:var(--muted);margin-top:0.5rem">Realistic over aspirational. <strong style="color:var(--text)">25 deals + 80 meetings was a hustle in April — not repeatable as the plan.</strong> Shift focus: fewer, larger, mid-market deals at $11k+ ACV.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>The shift:</strong> April proved volume is doable. May proves <em>quality</em> is doable. Same pipe goal, fewer deals, higher ACV — and MEDDICC discipline behind every $10k+ deal so they actually close.
+    </div>
+  </div>
+
+  <!-- SLIDE 10 - DAILY ACTIVITY TARGETS -->
+  <div class="slide" id="s10">
+    <div class="slide-num">Slide 10</div>
+    <h2>May Daily Activity Targets</h2>
+    <p style="color:var(--muted);font-size:0.88rem;margin-bottom:0.75rem"><strong style="color:var(--text)">18 working days in May</strong> (21 minus 3 PTO). Same monthly targets, consolidated into the days I'm actually working. <strong style="color:var(--text)">If the daily numbers hit, the monthly goal is mathematical.</strong></p>
+
+    <table>
+      <thead>
+        <tr><th>Activity</th><th class="amount">Monthly</th><th class="amount">Weekly (avg)</th><th class="amount">Daily (18 days)</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>New contacts enrolled</strong></td><td class="amount">330</td><td class="amount">~83</td><td class="amount green-cell"><strong>~18/day</strong></td><td>~9 OB + ~9 Exp · email-verified before enroll · matches April true rate (incl. offline)</td></tr>
+        <tr><td>Emails sent (cadence steps)</td><td class="amount">1,000</td><td class="amount">~250</td><td class="amount green-cell"><strong>~56/day</strong></td><td>Cadence queue worked AM</td></tr>
+        <tr><td>Calls / dials</td><td class="amount">300</td><td class="amount">~75</td><td class="amount green-cell"><strong>~17/day</strong></td><td>Live conversations on $10k+ deals — replace email</td></tr>
+        <tr><td>LinkedIn touches</td><td class="amount">~210</td><td class="amount">~52</td><td class="amount green-cell"><strong>~12/day</strong></td><td>5 connect + 3 InMail + 3 comments</td></tr>
+        <tr><td>Net-new accounts worked</td><td class="amount">~70</td><td class="amount">~17</td><td class="amount green-cell"><strong>~4/day</strong></td><td>Mon list-build + daily research/contact-pull</td></tr>
+        <tr><td>Booked meetings</td><td class="amount">60</td><td class="amount">~15</td><td class="amount green-cell"><strong>~3-4/day</strong></td><td>Down from April's 72 — quality over volume</td></tr>
+        <tr style="background:var(--surface-2)"><td><strong>Net-new deals created</strong></td><td class="amount">~18</td><td class="amount">~4-5</td><td class="amount green-cell"><strong>~1/day</strong></td><td>Fewer, larger · target $11k+ ACV mid-market</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>The "no exceptions" lines:</strong> 18 contacts enrolled/day + 4 net-new accounts/day on every working day. <strong>3 PTO days × the daily target = the catch-up that has to happen on either side of time off</strong> — not slipped to next month.
+    </div>
+  </div>
+
+  <!-- SLIDE 11 - HOW WE WORK -->
+  <div class="slide" id="s11">
+    <div class="slide-num">Slide 11 · Operational Playbook</div>
+    <h2>How We Work the Activities — Calendar Blocks, Not Vibes</h2>
+
+    <div class="callout" style="margin-bottom:1rem;background:linear-gradient(135deg,rgba(108,92,231,0.12),rgba(0,184,148,0.06));border-color:rgba(108,92,231,0.35)">
+      <strong>Commit:</strong> Rework my calendar in <strong>Reclaim</strong> by Mon 5/5 to enforce the daily output for each week. Every block below becomes a recurring Reclaim task w/ a habit window — auto-rescheduled around customer mtgs but never dropped. The calendar is the contract.
+    </div>
+
+    <ul class="tight">
+      <li><strong>Account list build</strong> — Mondays, 60 min
+        <ul><li>Pull 20 net-new accounts: ZoomInfo + intent signals + 2025 closed-lost rework</li><li>Drop into HubSpot with vertical tag + assigned cadence</li></ul>
+      </li>
+      <li><strong>Contact enrollment</strong> — daily, 30 min, AM
+        <ul><li>~18 contacts/day · ~9 OB + ~9 Exp (consolidated for 18 working days)</li><li>Verify email in Sales Nav <em>before</em> enroll (April BRP had >50% bounce)</li></ul>
+      </li>
+      <li><strong>Cadence actions</strong> — daily, 60 min, AM
+        <ul><li>Work the queue first thing: ~56 emails + ~17 dials due today</li></ul>
+      </li>
+      <li><strong>LinkedIn block</strong> — daily, 20 min, midday
+        <ul><li>5 connect requests + 3 InMails + 3 thoughtful comments on target-account posts</li><li>Tagged as activities in HubSpot</li></ul>
+      </li>
+      <li><strong>Mid-funnel block</strong> — daily, 60 min, PM
+        <ul><li>One <em>live</em> touch on every Qualified / POV deal stagnant 7+ days</li><li><strong>No more pure-email follow-ups on $10k+ deals.</strong></li></ul>
+      </li>
+      <li><strong>Friday hygiene block</strong> — weekly, 90 min
+        <ul><li>Disposition every deal with zero activity in 14 days</li><li>Update MEDDICC card on every Stage 2+ deal</li><li>No more April-1 cleanup days</li></ul>
+      </li>
+      <li><strong>Closed-lost rework</strong> — Tuesdays, 45 min
+        <ul><li>5 accounts/wk from 2025 closed-lost · restart cadence with new angle (usually MCP/AI)</li></ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 12 - MAY TRUE PIPELINE -->
+  <div class="slide" id="s12">
+    <div class="slide-num">Slide 12</div>
+    <h2>May True Pipeline — $168k Open · 16 Deals</h2>
+
+    <table>
+      <thead>
+        <tr><th>Account</th><th>Opportunity</th><th class="amount">ERR</th><th>Stage</th><th class="center">% Close</th><th class="amount">Weighted</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Scotiabank</strong></td><td>MIC | KCG | $40k</td><td class="amount">$39,000</td><td><span class="pill pill-orange">Proposal</span></td><td class="center">82%</td><td class="amount green-cell">$32,000</td></tr>
+        <tr><td><strong>AMBSE</strong></td><td>MIC | $15k</td><td class="amount">$15,000</td><td><span class="pill pill-accent">Proof of Value</span></td><td class="center">50%</td><td class="amount">$7,500</td></tr>
+        <tr><td>DTCC</td><td>MIC? | $25k</td><td class="amount">$25,000</td><td><span class="pill pill-blue">Qualified</span></td><td class="center">30%</td><td class="amount">$7,500</td></tr>
+        <tr><td>StayTuned</td><td>DACT | $20k</td><td class="amount">$20,000</td><td><span class="pill pill-blue">Qualification</span></td><td class="center">20%</td><td class="amount">$4,000</td></tr>
+        <tr><td>Revibe</td><td>MIC | $20k</td><td class="amount">$20,000</td><td><span class="pill pill-accent">Proof of Value</span></td><td class="center">35%</td><td class="amount">$7,000</td></tr>
+        <tr><td>Upwork</td><td>MIC/MCP | $15k</td><td class="amount">$15,000</td><td><span class="pill pill-accent">Proof of Value</span></td><td class="center">40%</td><td class="amount">$6,000</td></tr>
+        <tr><td>Grafton</td><td>DWH | $15k</td><td class="amount">$15,000</td><td><span class="pill pill-blue">Qualified</span></td><td class="center">25%</td><td class="amount">$3,750</td></tr>
+        <tr><td>AMN</td><td>SNO | $12k</td><td class="amount">$12,000</td><td><span class="pill pill-blue">Qualified</span></td><td class="center">30%</td><td class="amount">$3,600</td></tr>
+        <tr><td>DS18</td><td>MIC | $12k</td><td class="amount">$12,000</td><td><span class="pill pill-blue">Qualified</span></td><td class="center">25%</td><td class="amount">$3,000</td></tr>
+        <tr><td>Future Builds</td><td>API | $12k</td><td class="amount">$12,000</td><td><span class="pill pill-orange">Proposal</span></td><td class="center">40%</td><td class="amount">$4,800</td></tr>
+        <tr><td>BlueDoor</td><td>MIC | $10k</td><td class="amount">$10,000</td><td><span class="pill pill-accent">Proof of Value</span></td><td class="center">45%</td><td class="amount">$4,500</td></tr>
+        <tr><td>WELL</td><td>MIC | $4k</td><td class="amount">$4,000</td><td><span class="pill pill-blue">Qualified</span></td><td class="center">35%</td><td class="amount">$1,400</td></tr>
+        <tr><td>Furnished Finder</td><td>MCP | $4k</td><td class="amount">$3,800</td><td><span class="pill pill-blue">Qualified</span></td><td class="center">75%</td><td class="amount">$2,850</td></tr>
+        <tr><td>Other (3)</td><td>Growth/MCP/Starter</td><td class="amount">$6,000</td><td>—</td><td class="center">—</td><td class="amount">$1,500</td></tr>
+        <tr style="font-weight:700;background:var(--surface-2)"><td>TOTAL</td><td>16 deals</td><td class="amount">$208,800</td><td>—</td><td class="center">~42%</td><td class="amount green-cell">$89,400</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SLIDE 13 - MAY FORECAST -->
+  <div class="slide" id="s13">
+    <div class="slide-num">Slide 13</div>
+    <h2>May Forecast</h2>
+
+    <div class="with-side">
+      <div>
+        <h4>Forecast (high-confidence)</h4>
+        <ul class="tight">
+          <li><strong>Scotiabank — $32k weighted (82%)</strong> · final security review · wider-team call 5/15 · pushing security/procurement call this week or next</li>
+          <li>Furnished Finder — $2.9k (75%) · MCP closeout</li>
+          <li>WELL — $1.4k (35%)</li>
+        </ul>
+
+        <h4 style="margin-top:1rem">Swing Deals</h4>
+        <ul class="tight">
+          <li><strong>AMBSE ($15k) — main swing</strong> · POV active · MEDDICC focus this week</li>
+          <li>Revibe ($20k) — POV active · pain re-discovery needed</li>
+          <li>StayTuned ($20k) — MEDDICC = build value narrative + ROI by 5/12</li>
+          <li>Upwork ($15k) — POV active · multi-thread / champion test</li>
+          <li>BlueDoor ($10k) — POV · pulling June go-live forward</li>
+          <li>Future Builds ($12k) — Proposal · wild card</li>
+          <li>AMN / Grafton / DS18 — $10k+ Qualified pool</li>
+        </ul>
+
+        <div class="callout">
+          <strong>The narrative:</strong> May starts <em>over-covered</em> on quota. The discipline is converting weighted pipe to closed — the exact thing April failed at. <strong>Don't let May become April Part Two.</strong>
+        </div>
+      </div>
+
+      <div class="col-card">
+        <h4>Forecast / Open Pipeline</h4>
+        <table style="font-size:0.82rem">
+          <tbody>
+            <tr><td>Total Quota</td><td class="amount"><strong>$46,750</strong></td></tr>
+            <tr><td>Confirmed FC</td><td class="amount green-cell"><strong>$44,800</strong></td></tr>
+            <tr><td>Weighted FC</td><td class="amount green-cell"><strong>$74,400</strong></td></tr>
+            <tr><td>Open Pipeline</td><td class="amount">$168,000</td></tr>
+            <tr><td>Weighted Open</td><td class="amount">$74,400</td></tr>
+            <tr style="font-weight:700"><td>Gap to Quota</td><td class="amount green-cell"><strong>−$27,700</strong></td></tr>
+            <tr><td># Open Deals</td><td class="amount">16</td></tr>
+            <tr><td>Closed Won (MTD)</td><td class="amount">$0</td></tr>
+            <tr><td>Closed Lost (MTD)</td><td class="amount">$0</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.72rem;color:var(--muted);margin-top:0.5rem;line-height:1.5">Quota covered on paper from Day 1. Coverage doesn't equal cash — MEDDICC is what converts coverage into revenue.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 13b - MEDDICC HOW DEALS GET DRIVEN -->
+  <div class="slide" id="s13b">
+    <div class="slide-num">Slide 13b · MEDDICC</div>
+    <h2>MEDDICC — How May Deals Get Driven</h2>
+    <div class="callout warn" style="margin-bottom:1rem">
+      April had pipe but couldn't close. <strong>The conversion lever is MEDDICC discipline</strong> — operationalize it, don't just name-check it. This is the bridge between "pipeline at 103%" and "revenue at 37%": deal management was the missing piece, MEDDICC is how we fix it.
+    </div>
+
+    <div class="three-col">
+      <div class="col-card">
+        <h4>The 8 Dimensions — in a Supermetrics deal</h4>
+        <ul class="tight" style="font-size:0.82rem">
+          <li><strong>M</strong>etrics — quantified value: "saves 10 hrs/wk", "$X attributable revenue from attribution"</li>
+          <li><strong>E</strong>conomic Buyer — confirmed name + budget authority + direct conversation booked</li>
+          <li><strong>D</strong>ecision Criteria — written list of what they need to see to say yes</li>
+          <li><strong>D</strong>ecision Process — steps from now → contract, with owners + dates</li>
+          <li><strong>P</strong>aper Process — procurement, legal, security, finance routes mapped</li>
+          <li><strong>I</strong>dentify Pain — quantified, urgent, owned, top-3 priority</li>
+          <li><strong>C</strong>hampion — willing to sell internally, has capital, tested</li>
+          <li><strong>C</strong>ompetition — incumbent or alternatives named; "do nothing" included</li>
+        </ul>
+      </div>
+
+      <div class="col-card">
+        <h4>Documents we produce per deal</h4>
+        <ul class="tight" style="font-size:0.82rem">
+          <li><strong>MEDDICC Scorecard</strong> — HubSpot deal field or Google Doc · R/Y/G on each of 8 dims · updated every 14 days</li>
+          <li><strong>Value Narrative (1-page)</strong> — pain → impact → metrics → recommendation · <em>Coaching Goal 1</em></li>
+          <li><strong>Mutual Action Plan (MAP)</strong> — shared with buyer · dates + owners through close · re-introduce after March's MSP failure</li>
+          <li><strong>Executive Summary</strong> — for $20k+ deals · the vehicle for the EB conversation · <em>Coaching Goal 3</em></li>
+        </ul>
+      </div>
+
+      <div class="col-card">
+        <h4>What changes in conversations</h4>
+        <ul class="tight" style="font-size:0.82rem">
+          <li><strong>Discovery call:</strong> must surface 1 quantified Metric + named Pain owner</li>
+          <li><strong>2nd call:</strong> Champion test ("would you bring this to your VP?") + Decision Criteria asked explicitly</li>
+          <li><strong>Proposal stage:</strong> MAP shared as a working doc, not after the fact</li>
+          <li><strong>Every $10k+ deal:</strong> direct EB conversation booked <em>before</em> sending pricing
+            <ul><li>April lost Uniphore $40k partly because we never met the EB</li></ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 13c - MEDDICC CADENCE -->
+  <div class="slide" id="s13c">
+    <div class="slide-num">Slide 13c · MEDDICC</div>
+    <h2>MEDDICC Scorecard Cadence — Operational Rhythm</h2>
+
+    <table>
+      <thead><tr><th>When</th><th>What</th></tr></thead>
+      <tbody>
+        <tr><td>Day 1 of any new deal</td><td>Open MEDDICC card · rate every dimension R/Y/G</td></tr>
+        <tr><td>Every 14 days</td><td>Update card · flag any dimension that hasn't moved</td></tr>
+        <tr><td>Weekly 1:1 with Andrew</td><td>Walk through 1 deal card dimension by dimension</td></tr>
+        <tr><td>Stage progression gate</td><td>Cannot move to Proposal without ≥6/8 green-or-yellow</td></tr>
+        <tr><td>60-day rule</td><td>$10k+ deal at 60d with reds in EB / Pain / Decision Criteria → disqualify</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>Target by 5/31:</strong> 80% of Stage 2+ deals have a completed MEDDICC scorecard with no unaddressed reds. Matches the SMART metric in the 30-day coaching plan (Goal 2).
+    </div>
+  </div>
+
+  <!-- SLIDE 13d - PER DEAL MEDDICC -->
+  <div class="slide" id="s13d">
+    <div class="slide-num">Slide 13d · MEDDICC</div>
+    <h2>May MEDDICC Targets — Per Active Deal</h2>
+    <p style="color:var(--muted);font-size:0.88rem;margin-bottom:0.75rem">Each major open deal · which dimension is the red-to-fix · the May action.</p>
+
+    <table>
+      <thead>
+        <tr><th>Deal</th><th class="amount">ERR</th><th>Weakest Dimension</th><th>May Action</th><th>Due</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Scotiabank</strong></td><td class="amount">$39k</td><td><span class="pill pill-orange">Decision Process</span> (procurement path)</td><td>Lock signature path with King · working session Wk 1</td><td>5/9</td></tr>
+        <tr><td><strong>DTCC</strong></td><td class="amount">$25k</td><td><span class="pill pill-red">Economic Buyer</span></td><td>Identify + book EB intro · build Exec Summary</td><td>5/9</td></tr>
+        <tr><td><strong>StayTuned</strong></td><td class="amount">$20k</td><td><span class="pill pill-orange">Metrics</span></td><td>Value narrative + ROI calc · share back to champion</td><td>5/12</td></tr>
+        <tr><td><strong>Revibe</strong></td><td class="amount">$20k</td><td><span class="pill pill-red">Pain (urgency)</span></td><td>Re-discover · what's the trigger event? Without urgency, disqualify</td><td>5/15</td></tr>
+        <tr><td><strong>Upwork</strong></td><td class="amount">$15k</td><td><span class="pill pill-orange">Champion</span></td><td>Test champion w/ "bring to VP" ask · multi-thread</td><td>5/15</td></tr>
+        <tr><td><strong>Grafton</strong></td><td class="amount">$15k</td><td><span class="pill pill-orange">Decision Criteria</span></td><td>Get written list of must-haves this week</td><td>5/9</td></tr>
+        <tr><td><strong>AMN</strong></td><td class="amount">$12k</td><td><span class="pill pill-orange">Decision Criteria</span></td><td>Get written list · verify SNO scope</td><td>5/15</td></tr>
+        <tr><td><strong>DS18</strong></td><td class="amount">$12k</td><td><span class="pill pill-red">Economic Buyer</span></td><td>EB intro from current champion</td><td>5/16</td></tr>
+        <tr><td><strong>BlueDoor</strong></td><td class="amount">$10k</td><td><span class="pill pill-orange">Pain</span></td><td>Quantify pain or disqualify by 60d</td><td>5/22</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>Pattern:</strong> 4 of 9 are weak on EB or Decision Criteria — same gaps that killed Uniphore. Fix these in May or repeat April in May.
+    </div>
+  </div>
+
+  <!-- SLIDE 14 - TOP DEAL CLOSING PLANS -->
+  <div class="slide" id="s14">
+    <div class="slide-num">Slide 14</div>
+    <h2>Top Deal Closing Plans</h2>
+
+    <div class="two-col">
+      <div class="col-card" style="border-left:3px solid var(--green)">
+        <h4 style="color:var(--green)">Scotiabank — $39k · Proposal · 82% <span class="pill pill-green">FORECAST</span></h4>
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:0.5rem"><strong>Target Close:</strong> 05/29/2026 · timeline looks OK</p>
+        <ul class="tight" style="font-size:0.82rem">
+          <li><strong>Stage:</strong> Final security review</li>
+          <li><strong>Wider-team call locked for 5/15</strong></li>
+          <li><strong>This week / next:</strong> trying to set up direct call with security + procurement team to get a clear line to close by EOM</li>
+          <li><strong>MEDDICC red:</strong> Decision Process — procurement path</li>
+          <li><strong>Top action:</strong> Lock the security/procurement working session · confirm owners, approvals, signature path</li>
+          <li><strong>Timeline:</strong> Wk 1 sec/proc call · 5/15 wider team · 5/20 final legal · 5/26 signature routing · 5/29 signed</li>
+        </ul>
+      </div>
+
+      <div class="col-card" style="border-left:3px solid var(--accent)">
+        <h4 style="color:var(--accent)">AMBSE — $15k · POV · 50% <span class="pill pill-accent">MAIN SWING</span></h4>
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:0.5rem"><strong>Target Close:</strong> 05/29/2026</p>
+        <ul class="tight" style="font-size:0.82rem">
+          <li><strong>Stage:</strong> Proof of Value active</li>
+          <li><strong>MEDDICC red:</strong> EB / Decision Criteria — confirm both this week</li>
+          <li><strong>Top action:</strong> Drive POV success criteria → proposal · book EB intro · MAP shared by 5/12</li>
+          <li><strong>Timeline:</strong> 5/9 POV checkpoint · 5/13 EB conversation · 5/16 proposal · 5/22 agreement · 5/29 close</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:1rem">
+      <div class="col-card" style="border-left:3px solid var(--orange)">
+        <h4 style="color:var(--orange)">BlueDoor — $10k · POV · 45% <span class="pill pill-orange">SWING / PULL-FORWARD</span></h4>
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:0.5rem"><strong>Buyer's natural close:</strong> June · <strong>Pull-forward target:</strong> 05/30/2026 · go-live in June either way</p>
+        <ul class="tight" style="font-size:0.82rem">
+          <li><strong>Stage:</strong> POV active · looking to move forward in June</li>
+          <li><strong>Strategy:</strong> Pull contract signature into May for May credit + still hit June go-live</li>
+          <li><strong>MEDDICC red:</strong> Pain (urgency to act in May)</li>
+          <li><strong>Top action:</strong> Make the ask — "any reason we can't paper this in May to lock the go-live and EOM incentive?"</li>
+        </ul>
+      </div>
+
+      <div class="col-card" style="border-left:3px solid var(--blue)">
+        <h4 style="color:var(--blue)">Future Builds — $12k · Proposal · 40% <span class="pill pill-blue">WILD CARD</span></h4>
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:0.5rem"><strong>Target Close:</strong> 05/29/2026 (stretch)</p>
+        <ul class="tight" style="font-size:0.82rem">
+          <li><strong>Stage:</strong> Proposal · API motion</li>
+          <li><strong>MEDDICC red:</strong> Decision Process — verify signer + paper path</li>
+          <li><strong>Top action:</strong> Confirm signer + paper path this week · push for signature in May</li>
+          <li><strong>Why wild card:</strong> Could close in May if paper moves fast; otherwise slips to June</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:1rem">
+      <strong>Coverage math:</strong> Scotiabank (forecast) + AMBSE (swing) + BlueDoor (pull-forward) + Future Builds (wild card) = up to <strong>$76k of close potential</strong> in May vs $46.75k quota. Even half of these landing puts the month in the green.
+    </div>
+  </div>
+
+  <!-- SLIDE 15 - COACHING -->
+  <div class="slide" id="s15">
+    <div class="slide-num">Slide 15</div>
+    <h2>Coaching Focus — Rebuilt Around MEDDICC</h2>
+    <p style="color:var(--muted);font-size:0.88rem;margin-bottom:0.75rem">The 30-day coaching plan had 3 SMART goals: Value Narrative, MEDDPICC, Executive Summary. April's data confirms <strong style="color:var(--text)">MEDDICC is THE coaching focus</strong> — pipe gen is fine, deal management isn't.</p>
+
+    <div class="two-col">
+      <div class="col-card" style="border-left:4px solid var(--accent)">
+        <h4 style="color:var(--accent)">Primary — MEDDICC Scorecard</h4>
+        <ul class="tight" style="font-size:0.86rem">
+          <li>80% of Stage 2+ deals scored by 5/31</li>
+          <li>1 deal card brought to every weekly 1:1 (Andrew challenges yellows + reds)</li>
+          <li>R/Y/G updated every 14 days, on every Stage 2+ deal</li>
+        </ul>
+      </div>
+
+      <div class="col-card" style="border-left:4px solid var(--blue)">
+        <h4 style="color:var(--blue)">Secondary — Value Narrative</h4>
+        <ul class="tight" style="font-size:0.86rem">
+          <li>Every $10k+ deal has a 1-page narrative before Proposal stage</li>
+          <li>Quantified Metric + named Pain owner = required</li>
+          <li>Carry forward Coaching Goal 1 from 30-day plan</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:1rem">
+      <div class="col-card" style="border-left:4px solid var(--green)">
+        <h4 style="color:var(--green)">Secondary — Executive Summaries</h4>
+        <ul class="tight" style="font-size:0.86rem">
+          <li>Top 3 May deals: DTCC, StayTuned, Revibe (and Scotiabank as needed)</li>
+          <li>The vehicle for the EB conversation</li>
+          <li>Bring all 3 to 1:1 on 5/19</li>
+        </ul>
+      </div>
+
+      <div class="col-card" style="border-left:4px solid var(--orange)">
+        <h4 style="color:var(--orange)">New — Disqualification at Day 14</h4>
+        <ul class="tight" style="font-size:0.86rem">
+          <li>April's lesson: Speed Sport, Oversight, Fusable, Chefman all entered pipe before fit confirmed</li>
+          <li>MEDDICC scorecard at Day 1 = the gate</li>
+          <li>60-day rule on $10k+ deals = the floor</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:1rem">
+      <strong>Carried forward from March:</strong> Discovery, Value Selling, Enterprise Motions — but reframed as MEDDICC mechanics. Discovery = surfacing M+I+C. Enterprise Motions = mapping P + Decision Process. Same skills, sharper container.
+      <br><br>
+      <a href="30-Day Coaching Plan.html" style="color:var(--accent)">→ 30-Day Coaching Plan</a> · <a href="April_2026_Dashboard.html" style="color:var(--accent)">→ April Dashboard</a> · <a href="April_2026_Execution.html" style="color:var(--accent)">→ April Execution Detail</a>
+    </div>
+  </div>
+
+  <!-- 1:1 OPENING -->
+  <div class="slide" id="opening" style="background:linear-gradient(135deg,rgba(0,184,148,0.08),rgba(108,92,231,0.04));border-color:rgba(0,184,148,0.25)">
+    <div class="slide-num" style="color:var(--green)">📝 1:1 Opening Line</div>
+    <p style="font-size:1.05rem;line-height:1.7;font-style:italic;color:var(--text)">
+      "April had a split personality — pipe gen at <strong>103% on 23 deals ($193k)</strong>, but revenue at <strong>37% / $17.2k</strong> against quota. The TOFU machine works; the conversion machine broke. Uniphore $40k is the headline loss — autopsy in hand. The May plan is two things: <strong>realistic activity targets</strong> consolidated into 18 working days (18 contacts, ~56 emails, 17 dials, 12 LinkedIn, 3-4 meetings booked per working day), and <strong>MEDDICC operationalized</strong> — every Stage 2+ deal scored, weakest dimension named, doc artifacts produced. May starts over-covered on quota; the job is converting the weighted pipe to closed."
+    </p>
+  </div>
+
+  <div class="footer">
+    <strong>Source:</strong> HubSpot CRM · Salesforce <code>OpportunitySplit</code> · Calendar + Gmail · April 2026<br>
+    Companions: <a href="April_2026_Dashboard.html" style="color:var(--accent)">April Pipeline Dashboard</a> · <a href="April_2026_Execution.html" style="color:var(--accent)">April Execution Detail</a> · <a href="30-Day Coaching Plan.html" style="color:var(--accent)">30-Day Coaching Plan</a>
+  </div>
+
+</div>
+</body>
+</html>
