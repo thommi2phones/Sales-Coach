@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>30-Day Coaching Plan — June — Thomas</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface-hover: #222632;
+    --border: #2a2e3b;
+    --text: #e4e6ed;
+    --text-muted: #8b8fa3;
+    --accent: #6c5ce7;
+    --accent-light: rgba(108,92,231,0.15);
+    --green: #00b894;
+    --green-light: rgba(0,184,148,0.12);
+    --orange: #fdcb6e;
+    --orange-light: rgba(253,203,110,0.12);
+    --blue: #74b9ff;
+    --blue-light: rgba(116,185,255,0.12);
+    --red: #e17055;
+    --red-light: rgba(225,112,85,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 2rem;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* ── Header ── */
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .header-left h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+  }
+  .header-left h1 span { color: var(--accent); }
+  .header-left p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+  .header-right {
+    text-align: right;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.8;
+    flex-shrink: 0;
+  }
+
+  /* ── Overall Progress ── */
+  .overall-progress {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .progress-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .progress-label strong {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.2;
+  }
+  .progress-bar-wrap {
+    flex: 1;
+    background: #1e2130;
+    border-radius: 99px;
+    height: 8px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--accent), #a29bfe);
+    transition: width 0.4s ease;
+  }
+  .progress-stats {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .progress-stats strong { color: var(--text); }
+
+  /* ── SMART Goals ── */
+  .section-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .goals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .goal-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .goal-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .goal-card.goal-1::before { background: var(--blue); }
+  .goal-card.goal-2::before { background: var(--accent); }
+  .goal-card.goal-3::before { background: var(--green); }
+
+  .goal-number {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .goal-1 .goal-number { color: var(--blue); }
+  .goal-2 .goal-number { color: var(--accent); }
+  .goal-3 .goal-number { color: var(--green); }
+
+  .goal-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    line-height: 1.35;
+  }
+  .goal-card p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  .goal-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    user-select: none;
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--text-muted);
+  }
+  .goal-toggle:hover { color: var(--text); }
+  .goal-toggle svg { transition: transform 0.2s; }
+  .goal-toggle.open svg { transform: rotate(180deg); }
+
+  .goal-details {
+    display: none;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+  .goal-details.open { display: block; }
+  .smart-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  .smart-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+  .goal-1 .smart-tag { background: var(--blue-light); color: var(--blue); }
+  .goal-2 .smart-tag { background: var(--accent-light); color: var(--accent); }
+  .goal-3 .smart-tag { background: var(--green-light); color: var(--green); }
+  .smart-row span { color: var(--text-muted); }
+
+  /* ── Week Tabs ── */
+  .week-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0;
+  }
+  .week-tab {
+    padding: 0.6rem 1.1rem;
+    border-radius: 8px 8px 0 0;
+    border: 1px solid transparent;
+    border-bottom: none;
+    background: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    position: relative;
+    bottom: -1px;
+    transition: color 0.15s, background 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .week-tab:hover { color: var(--text); background: var(--surface); }
+  .week-tab.active {
+    color: var(--text);
+    background: var(--surface);
+    border-color: var(--border);
+    border-bottom-color: var(--surface);
+  }
+  .tab-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.1rem 0.35rem;
+    border-radius: 99px;
+    background: var(--surface-hover);
+    color: var(--text-muted);
+  }
+  .week-tab.active .tab-badge {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  /* ── Week Panel ── */
+  .week-panel { display: none; }
+  .week-panel.active { display: block; }
+
+  .week-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  /* Week header */
+  .week-header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .week-header-left .week-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+  }
+  .week-header-left h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .week-progress-mini {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .week-progress-mini .pct {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .week-progress-mini .pct-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 0.1rem;
+  }
+
+  /* Actions card */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .card-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Checklist */
+  .checklist { list-style: none; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li:hover { background: var(--surface-hover); margin: 0 -1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; border-radius: 6px; }
+
+  .check-box {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border);
+    border-radius: 5px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+  .checklist li.done .check-box {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .checklist li.done .check-box svg { display: block; }
+  .check-box svg { display: none; width: 11px; height: 11px; }
+
+  .check-text {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--text);
+    transition: color 0.15s;
+  }
+  .checklist li.done .check-text {
+    color: var(--text-muted);
+    text-decoration: line-through;
+    text-decoration-color: #3a3d4d;
+  }
+
+  /* Success card */
+  .success-card {
+    background: var(--green-light);
+    border: 1px solid rgba(0,184,148,0.2);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .success-card .card-title { color: var(--green); }
+  .success-card p {
+    font-size: 0.875rem;
+    color: var(--text);
+    line-height: 1.65;
+  }
+
+  /* Coaching questions */
+  .coaching-card {
+    background: var(--accent-light);
+    border: 1px solid rgba(108,92,231,0.2);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+  }
+  .coaching-card .card-title { color: var(--accent); }
+  .coaching-q {
+    list-style: none;
+  }
+  .coaching-q li {
+    font-size: 0.845rem;
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(108,92,231,0.12);
+    padding-left: 1rem;
+    position: relative;
+  }
+  .coaching-q li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .coaching-q li:last-child { border-bottom: none; }
+
+  /* Sidebar */
+  .sidebar {}
+
+  /* Focus pill */
+  .focus-pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .focus-pill .card-title { margin-bottom: 0.75rem; }
+  .focus-tag {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+  .focus-tag.accent { background: var(--accent-light); color: var(--accent); }
+  .focus-tag.green  { background: var(--green-light);  color: var(--green); }
+  .focus-tag.blue   { background: var(--blue-light);   color: var(--blue); }
+  .focus-tag.orange { background: var(--orange-light); color: var(--orange); }
+
+  .focus-description {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-top: 0.75rem;
+  }
+
+  /* Week progress bar */
+  .week-progress-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .week-progress-card .card-title { margin-bottom: 0.9rem; }
+  .week-bar-row {
+    margin-bottom: 0.6rem;
+    font-size: 0.78rem;
+  }
+  .week-bar-row .wk-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.3rem;
+    color: var(--text-muted);
+  }
+  .week-bar-row .wk-label span:last-child { color: var(--text); font-weight: 500; }
+  .mini-bar-wrap {
+    background: #1e2130;
+    border-radius: 99px;
+    height: 5px;
+    overflow: hidden;
+  }
+  .mini-bar-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: var(--accent);
+    transition: width 0.4s ease;
+  }
+  .mini-bar-fill.green { background: var(--green); }
+  .mini-bar-fill.blue  { background: var(--blue); }
+  .mini-bar-fill.orange { background: var(--orange); }
+
+  /* 30-day outcome section */
+  .outcome-section {
+    margin-top: 1.25rem;
+    background: linear-gradient(135deg, rgba(108,92,231,0.08), rgba(116,185,255,0.05));
+    border: 1px solid rgba(108,92,231,0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .outcome-section h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+  }
+  .outcome-section p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .outcome-criteria {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .outcome-criteria li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--text);
+  }
+  .outcome-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 0.65rem;
+  }
+  .outcome-icon.blue   { background: var(--blue-light);   color: var(--blue); }
+  .outcome-icon.accent { background: var(--accent-light); color: var(--accent); }
+  .outcome-icon.green  { background: var(--green-light);  color: var(--green); }
+
+  /* Reset button */
+  .reset-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-family: inherit;
+    padding: 0.35rem 0.75rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .reset-btn:hover { color: var(--red); border-color: var(--red); }
+
+  /* Context banner */
+  .context-banner {
+    background: linear-gradient(135deg, rgba(0,184,148,0.08), rgba(225,112,85,0.05));
+    border: 1px solid rgba(0,184,148,0.2);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .context-banner strong { color: var(--green); }
+  .context-banner .warn { color: var(--orange); }
+
+  /* Responsive */
+  @media (max-width: 820px) {
+    .goals-grid { grid-template-columns: 1fr; }
+    .week-layout { grid-template-columns: 1fr; }
+    .sidebar { order: -1; }
+    body { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <h1>30-Day <span>Coaching Plan</span> — June</h1>
+      <p>Thomas Lindsey · Account Executive, Supermetrics</p>
+    </div>
+    <div class="header-right">
+      <strong>June 1 – June 30, 2026</strong><br>
+      Pipeline engine · MEDDICC breadth · Sustain not sprint<br>
+      <button class="reset-btn" onclick="resetAll()" style="margin-top:0.5rem;">Reset all progress</button>
+    </div>
+  </div>
+
+  <!-- Context banner -->
+  <div class="context-banner">
+    <strong>Why this month is different:</strong> May proved the conversion engine works — Scotiabank closed at $35k via a textbook MEDDICC motion (multi-threaded into engineering, technical call with prep brief, security review navigated, EB engaged), and revenue jumped to 86%. <span class="warn">But it was bought by coming off the phones</span> — calls fell 280 → 39, pipe gen fell to ~54%, and DTCC ($25k) and Industry Dive ($20k, 262-day stale death) were lost <em>without</em> the motion that won Scotiabank. April built the MEDDICC tools; May proved them on one deal. <strong>June is about doing both motions at once — and not learning the same lesson a third time.</strong>
+  </div>
+
+  <!-- Overall progress -->
+  <div class="overall-progress">
+    <div class="progress-label">
+      <strong id="overall-pct">0%</strong>
+      Complete
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="overall-bar" style="width:0%"></div>
+    </div>
+    <div class="progress-stats">
+      <strong id="overall-done">0</strong> / <span id="overall-total">0</span> actions checked
+    </div>
+  </div>
+
+  <!-- SMART Goals -->
+  <div class="section-title">SMART Goals</div>
+  <div class="goals-grid">
+
+    <div class="goal-card goal-1">
+      <div class="goal-number">Goal 01 · Pipeline Engine</div>
+      <h3>Restore daily dial discipline and refill the top of the funnel</h3>
+      <p>Convert every Call Prep block into ≥15 logged dials (300+ for June). The blocks already exist — the job is making the calls inside them so pipeline gen returns toward the $187k goal.</p>
+      <button class="goal-toggle" onclick="toggleGoal(this)">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        SMART breakdown
+      </button>
+      <div class="goal-details">
+        <div class="smart-row"><span class="smart-tag">S</span><span>Make ≥15 outbound dials inside the daily Call Prep block and build 20 net-new accounts per week.</span></div>
+        <div class="smart-row"><span class="smart-tag">M</span><span>90% of working days hit the 15-dial floor, logged in HubSpot; 300+ calls and ~330 contacts enrolled for the month.</span></div>
+        <div class="smart-row"><span class="smart-tag">A</span><span>The Reclaim blocks held in May — only the execution inside them slipped. This is a habit fix, not a calendar fix.</span></div>
+        <div class="smart-row"><span class="smart-tag">R</span><span>May's revenue was bought by starving the funnel; restoring dials protects July and August pipeline.</span></div>
+        <div class="smart-row"><span class="smart-tag">T</span><span>Dial floor hit consistently within 30 days; pipe gen back above 85% of goal.</span></div>
+      </div>
+    </div>
+
+    <div class="goal-card goal-2">
+      <div class="goal-number">Goal 02 · MEDDICC Breadth</div>
+      <h3>Run the Scotiabank motion on every $10k+ deal — not just one</h3>
+      <p>100% of $10k+ late-stage deals get the full motion: EB engaged before pricing, technical multi-thread, security/paper early, MAP shared. Disqualify anything 60+ days with no next step.</p>
+      <button class="goal-toggle" onclick="toggleGoal(this)">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        SMART breakdown
+      </button>
+      <div class="goal-details">
+        <div class="smart-row"><span class="smart-tag">S</span><span>Apply the proven Scotiabank playbook (EB, technical multi-thread, early security docs, prep brief, MAP) to every $10k+ deal: US Soccer, Upwork, Grafton, AMBSE, BlueDoor, BT1D.</span></div>
+        <div class="smart-row"><span class="smart-tag">M</span><span>Every $10k+ deal has a current MEDDICC card with no unaddressed reds; any deal 60+ days with no next step is disqualified.</span></div>
+        <div class="smart-row"><span class="smart-tag">A</span><span>Scotiabank proved the motion converts. Replicate it across the portfolio; walk one deal card per weekly 1:1.</span></div>
+        <div class="smart-row"><span class="smart-tag">R</span><span>Depth on one deal won May's revenue; breadth across the portfolio is what carries a month with no single anchor.</span></div>
+        <div class="smart-row"><span class="smart-tag">T</span><span>Full coverage across the $10k+ pipe within 30 days.</span></div>
+      </div>
+    </div>
+
+    <div class="goal-card goal-3">
+      <div class="goal-number">Goal 03 · Sustain Not Sprint</div>
+      <h3>Lift the revenue line AND the pipe-gen line in the same month</h3>
+      <p>The thing neither April nor May managed: run conversion and prospecting in parallel. Revenue ≥80% to quota AND pipeline gen ≥85% of goal — simultaneously.</p>
+      <button class="goal-toggle" onclick="toggleGoal(this)">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        SMART breakdown
+      </button>
+      <div class="goal-details">
+        <div class="smart-row"><span class="smart-tag">S</span><span>Hold late-stage closing discipline while keeping the daily prospecting engine running — no trading one for the other.</span></div>
+        <div class="smart-row"><span class="smart-tag">M</span><span>Month-end: revenue ≥80% to quota AND pipeline gen ≥85% of the $187k goal, in the same month.</span></div>
+        <div class="smart-row"><span class="smart-tag">A</span><span>Protect both the AM closing blocks (dials/cadence) and the PM mid-funnel block every day; no skipped weeks like 5/18–5/22.</span></div>
+        <div class="smart-row"><span class="smart-tag">R</span><span>April and May each won one line and lost the other; sustained performance requires both.</span></div>
+        <div class="smart-row"><span class="smart-tag">T</span><span>Both lines green by June 30 — the proof that May wasn't a one-month sprint.</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Week tabs -->
+  <div class="week-tabs">
+    <button class="week-tab active" onclick="showWeek(1,this)">
+      Week 1 <span class="tab-badge" id="badge-1">0</span>
+    </button>
+    <button class="week-tab" onclick="showWeek(2,this)">
+      Week 2 <span class="tab-badge" id="badge-2">0</span>
+    </button>
+    <button class="week-tab" onclick="showWeek(3,this)">
+      Week 3 <span class="tab-badge" id="badge-3">0</span>
+    </button>
+    <button class="week-tab" onclick="showWeek(4,this)">
+      Week 4 <span class="tab-badge" id="badge-4">0</span>
+    </button>
+    <button class="week-tab" onclick="showWeek(5,this)" style="margin-left:auto;">
+      30-Day Outcome
+    </button>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       WEEK 1
+  ══════════════════════════════════════════ -->
+  <div class="week-panel active" id="week-1">
+    <div class="week-header">
+      <div class="week-header-left">
+        <div class="week-label">Week 1 · Jun 1 – Jun 7</div>
+        <h2>Restart the Dial Engine</h2>
+      </div>
+      <div class="week-progress-mini">
+        <div class="pct" id="pct-1">0%</div>
+        <div class="pct-label">complete</div>
+      </div>
+    </div>
+    <div class="week-layout">
+      <div class="main-col">
+        <div class="card">
+          <div class="card-title">
+            Actions
+            <span id="count-1" style="color:var(--text-muted);font-weight:400">0 / 5</span>
+          </div>
+          <ul class="checklist" id="list-1">
+            <li onclick="toggleItem(this)" data-week="1" data-id="0">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Set the dial floor: ≥15 logged calls every working day, made <em>inside</em> the existing Call Prep block. Log them in HubSpot so the count is visible — May's 39 calls is the number we're fixing.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="1" data-id="1">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Build a 20-account net-new list (ZoomInfo + intent + 2025 closed-lost rework) and enroll verified contacts into cadence to refill the funnel May thinned.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="1" data-id="2">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Re-date or disqualify US Soccer ($40k, close date already past 5/28). Get one real next step or move the close date with a documented reason — by Jun 5.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="1" data-id="3">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Write the DTCC ($25k) and Industry Dive ($20k, 262 days) loss autopsies — 1 page each: where the MEDDICC motion that won Scotiabank was missing.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="1" data-id="4">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Codify the Scotiabank playbook into a one-page checklist (EB before pricing, technical multi-thread, security docs early, prep brief) — the standard you'll apply to every $10k+ deal this month.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="success-card">
+          <div class="card-title">What Success Looks Like</div>
+          <p>The dial floor (15/day) is hit every day of Week 1 and visible in HubSpot. US Soccer has a real next step or a clean close-date update. The two loss autopsies are written and the Scotiabank playbook checklist exists — ready to apply across the pipe.</p>
+        </div>
+        <div class="coaching-card">
+          <div class="card-title">Manager Coaching Questions</div>
+          <ul class="coaching-q">
+            <li>What actually stopped me from making dials in May — capacity, avoidance, or the Scotiabank crunch? How do I prevent it recurring?</li>
+            <li>Looking at the DTCC and Industry Dive autopsies — which MEDDICC dimension do I most consistently skip on mid-size deals?</li>
+            <li>Is US Soccer a real June deal, or am I holding a $40k wish past its close date?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="focus-pill">
+          <div class="card-title">Primary Focus</div>
+          <div class="focus-tag blue">Dials Back On</div>
+          <p class="focus-description">The calendar held in May; the calls didn't. This week is about proving the block converts to dials — the single most coachable miss of last month. Everything in the pipeline funnel starts here.</p>
+        </div>
+        <div class="week-progress-card">
+          <div class="card-title">30-Day Progress</div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 1</span><span id="sidebar-pct-1">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill blue" id="sidebar-bar-1" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 2</span><span id="sidebar-pct-2">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill" id="sidebar-bar-2" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 3</span><span id="sidebar-pct-3">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill orange" id="sidebar-bar-3" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 4</span><span id="sidebar-pct-4">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill green" id="sidebar-bar-4" style="width:0%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       WEEK 2
+  ══════════════════════════════════════════ -->
+  <div class="week-panel" id="week-2">
+    <div class="week-header">
+      <div class="week-header-left">
+        <div class="week-label">Week 2 · Jun 8 – Jun 14</div>
+        <h2>MEDDICC Breadth Across the $10k+ Pipe</h2>
+      </div>
+      <div class="week-progress-mini">
+        <div class="pct" id="pct-2">0%</div>
+        <div class="pct-label">complete</div>
+      </div>
+    </div>
+    <div class="week-layout">
+      <div class="main-col">
+        <div class="card">
+          <div class="card-title">
+            Actions
+            <span id="count-2" style="color:var(--text-muted);font-weight:400">0 / 5</span>
+          </div>
+          <ul class="checklist" id="list-2">
+            <li onclick="toggleItem(this)" data-week="2" data-id="0">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Score all $10k+ open deals (Upwork, Grafton, AMBSE, BlueDoor, BT1D, US Soccer) against MEDDICC. Mark each dimension green / yellow / red. Be honest about EB and Decision Process.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="2" data-id="1">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">AMBSE ($15k): book the Economic Buyer conversation <em>before</em> sending pricing — by Jun 10. This is the exact step that won Scotiabank and lost DTCC.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="2" data-id="2">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Upwork ($15k): run the champion test ("would you bring this to your VP?") and multi-thread into a second stakeholder. Grafton ($15k): get the written decision criteria.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="2" data-id="3">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">BT1D ($19k, new): build the value narrative + ROI early — don't let a $19k deal coast on email like Industry Dive did. Maintain the dial floor all week (no Week-1 backslide).</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="2" data-id="4">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Bring one scored MEDDICC card to the 1:1 and walk it dimension by dimension — let it get challenged on its yellows and reds.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="success-card">
+          <div class="card-title">What Success Looks Like</div>
+          <p>Every $10k+ deal has a scored MEDDICC card with named reds and a plan to close them. AMBSE's EB conversation is booked or done. The dial floor held through a MEDDICC-heavy week — proof that conversion work and prospecting can coexist.</p>
+        </div>
+        <div class="coaching-card">
+          <div class="card-title">Manager Coaching Questions</div>
+          <ul class="coaching-q">
+            <li>On AMBSE and Upwork, do I actually have the Economic Buyer, or am I single-threaded through a champion like I was on Uniphore and DTCC?</li>
+            <li>Which of my $10k+ deals looks most like Industry Dive (drifting, no next step) right now?</li>
+            <li>Where am I still defaulting to email on a deal that needs a live, multi-threaded motion?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="focus-pill">
+          <div class="card-title">Primary Focus</div>
+          <div class="focus-tag accent">Replicate Scotiabank</div>
+          <p class="focus-description">EB before pricing · technical multi-thread · security/paper early · prep brief. The motion is proven — this week is about running it on the whole $10k+ portfolio, not just one flagship.</p>
+        </div>
+        <div class="week-progress-card">
+          <div class="card-title">30-Day Progress</div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 1</span><span id="sidebar-pct-1b">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill blue" id="sidebar-bar-1b" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 2</span><span id="sidebar-pct-2b">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill" id="sidebar-bar-2b" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 3</span><span id="sidebar-pct-3b">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill orange" id="sidebar-bar-3b" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 4</span><span id="sidebar-pct-4b">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill green" id="sidebar-bar-4b" style="width:0%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       WEEK 3
+  ══════════════════════════════════════════ -->
+  <div class="week-panel" id="week-3">
+    <div class="week-header">
+      <div class="week-header-left">
+        <div class="week-label">Week 3 · Jun 15 – Jun 21</div>
+        <h2>Disqualification Discipline &amp; Balance</h2>
+      </div>
+      <div class="week-progress-mini">
+        <div class="pct" id="pct-3">0%</div>
+        <div class="pct-label">complete</div>
+      </div>
+    </div>
+    <div class="week-layout">
+      <div class="main-col">
+        <div class="card">
+          <div class="card-title">
+            Actions
+            <span id="count-3" style="color:var(--text-muted);font-weight:400">0 / 5</span>
+          </div>
+          <ul class="checklist" id="list-3">
+            <li onclick="toggleItem(this)" data-week="3" data-id="0">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Enforce the 60-day rule: any deal 60+ days old with no real next step gets disqualified or re-dated with a reason. Industry Dive (262 days) is the cautionary tale — don't carry zombies.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="3" data-id="1">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">BlueDoor ($10k): quantify the pain/urgency or disqualify by day 60. Make the call — don't let it drift.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="3" data-id="2">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Mid-week balance check: confirm both the AM dial block AND the PM mid-funnel/MEDDICC block ran every day this week. Catch any Juneteenth (6/19) gap on either side — don't let a short week become a skipped week (the 5/18–5/22 mistake).</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="3" data-id="3">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Write executive summaries for the top 3 strategic deals (lead with impact, end with a recommendation) — the vehicle for any EB conversation.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="3" data-id="4">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Mid-month scoreboard: check both lines — revenue % to quota AND pipe gen % to goal. If either is lagging, name the specific fix for the back half of the month.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="success-card">
+          <div class="card-title">What Success Looks Like</div>
+          <p>No deal older than 60 days sits without a next step. BlueDoor has a clear go/no-go. Both daily blocks ran every working day (Juneteenth handled, not skipped). You can state mid-month exactly where both the revenue line and the pipe-gen line stand — and what closes the gap.</p>
+        </div>
+        <div class="coaching-card">
+          <div class="card-title">Manager Coaching Questions</div>
+          <ul class="coaching-q">
+            <li>Which deals am I emotionally holding onto that the 60-day rule says I should disqualify?</li>
+            <li>Halfway through June — is either line (revenue or pipe gen) slipping back into an April/May single-track pattern?</li>
+            <li>Did the short Juneteenth week cost me a dial day, and how do I make it up?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="focus-pill">
+          <div class="card-title">Primary Focus</div>
+          <div class="focus-tag orange">Kill Zombies, Hold Both Lines</div>
+          <p class="focus-description">Disqualification is a forecasting gift, not a loss. A clean pipe plus a running dial engine is what keeps both lines moving — the balance May couldn't hold.</p>
+        </div>
+        <div class="week-progress-card">
+          <div class="card-title">30-Day Progress</div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 1</span><span id="sidebar-pct-1c">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill blue" id="sidebar-bar-1c" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 2</span><span id="sidebar-pct-2c">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill" id="sidebar-bar-2c" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 3</span><span id="sidebar-pct-3c">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill orange" id="sidebar-bar-3c" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 4</span><span id="sidebar-pct-4c">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill green" id="sidebar-bar-4c" style="width:0%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       WEEK 4
+  ══════════════════════════════════════════ -->
+  <div class="week-panel" id="week-4">
+    <div class="week-header">
+      <div class="week-header-left">
+        <div class="week-label">Week 4 · Jun 22 – Jun 30</div>
+        <h2>Prove Both Lines Up</h2>
+      </div>
+      <div class="week-progress-mini">
+        <div class="pct" id="pct-4">0%</div>
+        <div class="pct-label">complete</div>
+      </div>
+    </div>
+    <div class="week-layout">
+      <div class="main-col">
+        <div class="card">
+          <div class="card-title">
+            Actions
+            <span id="count-4" style="color:var(--text-muted);font-weight:400">0 / 5</span>
+          </div>
+          <ul class="checklist" id="list-4">
+            <li onclick="toggleItem(this)" data-week="4" data-id="0">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Drive the June-close deals to signature: the 6/25 cohort (Upwork, Grafton, BlueDoor, Liberty, Charter One, TaskRabbit) and the 6/29 cohort (BT1D, Cortica, DS18, Furnished Finder). Each gets a confirmed next step.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="4" data-id="1">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Tally the month: did calls hit 300+, contacts ~330, pipe gen ≥85% of goal? Record the actuals against the targets — no hand-waving.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="4" data-id="2">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Run a full pipeline review: every $10k+ deal scored on MEDDICC, value narrative, and exec summary — complete / partial / missing. Confirm no unaddressed reds heading into July.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="4" data-id="3">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Build July's net-new account list now (don't repeat the May mistake of starving the next month). Confirm the dial engine carries into July's first week.</span>
+            </li>
+            <li onclick="toggleItem(this)" data-week="4" data-id="4">
+              <div class="check-box"><svg viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-text">Write a one-paragraph retrospective: did I lift both lines at once? What kept the dials and the MEDDICC motion running together, and what nearly broke it?</span>
+            </li>
+          </ul>
+        </div>
+        <div class="success-card">
+          <div class="card-title">What Success Looks Like</div>
+          <p>Both lines are green: revenue ≥80% to quota AND pipe gen ≥85% of goal — the thing neither April nor May achieved. Every $10k+ deal has a current MEDDICC card with no unaddressed reds. July's funnel is already loaded, so the month doesn't start from zero.</p>
+        </div>
+        <div class="coaching-card">
+          <div class="card-title">Manager Coaching Questions</div>
+          <ul class="coaching-q">
+            <li>Did I lift both lines this month, or did I quietly trade one for the other again?</li>
+            <li>What's the one habit that kept the dial engine and the MEDDICC motion running in parallel — and how do I lock it in for July?</li>
+            <li>Where is July's pipeline coming from, and is it already in motion?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="focus-pill">
+          <div class="card-title">Primary Focus</div>
+          <div class="focus-tag green">Sustain, Don't Sprint</div>
+          <p class="focus-description">The proof point: both lines up in the same month, and July already loaded. That's the difference between a one-month sprint (May) and a durable operating rhythm.</p>
+        </div>
+        <div class="week-progress-card">
+          <div class="card-title">30-Day Progress</div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 1</span><span id="sidebar-pct-1d">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill blue" id="sidebar-bar-1d" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 2</span><span id="sidebar-pct-2d">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill" id="sidebar-bar-2d" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 3</span><span id="sidebar-pct-3d">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill orange" id="sidebar-bar-3d" style="width:0%"></div></div>
+          </div>
+          <div class="week-bar-row">
+            <div class="wk-label"><span>Week 4</span><span id="sidebar-pct-4d">0%</span></div>
+            <div class="mini-bar-wrap"><div class="mini-bar-fill green" id="sidebar-bar-4d" style="width:0%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       30-DAY OUTCOME
+  ══════════════════════════════════════════ -->
+  <div class="week-panel" id="week-5">
+    <div class="outcome-section">
+      <h3>30-Day Success Definition</h3>
+      <p>At the end of June, you will have proven that May's revenue recovery wasn't a one-month sprint — that conversion and prospecting can run at the same time. These are verifiable in a pipeline review or 1:1.</p>
+      <ul class="outcome-criteria">
+        <li>
+          <div class="outcome-icon blue">01</div>
+          <div><strong>The dial engine is back on</strong> — 300+ calls for the month, ≥15 on 90% of working days, logged in HubSpot. Pipeline generation is back above 85% of goal.</div>
+        </li>
+        <li>
+          <div class="outcome-icon accent">02</div>
+          <div><strong>MEDDICC runs on the whole portfolio</strong> — every $10k+ deal has a current scorecard with no unaddressed reds, EB engaged before pricing, and nothing 60+ days old sitting without a next step.</div>
+        </li>
+        <li>
+          <div class="outcome-icon green">03</div>
+          <div><strong>Both lines are up at once</strong> — revenue ≥80% to quota AND pipe gen ≥85% of goal in the same month, with July's funnel already loaded. The thing neither April nor May managed.</div>
+        </li>
+      </ul>
+      <p style="margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid rgba(108,92,231,0.15); color:var(--text-muted);">
+        If you hit those three marks, you've turned the Scotiabank win into a repeatable system instead of a single highlight — and you've stopped trading the top of the funnel for the bottom. That's the operating rhythm that carries Q3.
+      </p>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+  const STORAGE_KEY = '30day-coaching-june-v1';
+
+  // State: {week: {id: boolean}}
+  let state = {};
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      state = raw ? JSON.parse(raw) : {};
+    } catch(e) { state = {}; }
+  }
+
+  function saveState() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  function toggleItem(li) {
+    const week = li.dataset.week;
+    const id = li.dataset.id;
+    if (!state[week]) state[week] = {};
+    state[week][id] = !state[week][id];
+    li.classList.toggle('done', state[week][id]);
+    saveState();
+    updateAll();
+  }
+
+  function weekDone(w) {
+    const list = document.querySelectorAll(`#list-${w} li`);
+    let done = 0;
+    list.forEach(li => { if (state[w] && state[w][li.dataset.id]) done++; });
+    return { done, total: list.length };
+  }
+
+  function updateAll() {
+    let totalDone = 0, totalItems = 0;
+
+    for (let w = 1; w <= 4; w++) {
+      const { done, total } = weekDone(w);
+      const pct = total ? Math.round(done / total * 100) : 0;
+
+      totalDone += done;
+      totalItems += total;
+
+      const pctEl = document.getElementById(`pct-${w}`);
+      if (pctEl) pctEl.textContent = pct + '%';
+
+      const countEl = document.getElementById(`count-${w}`);
+      if (countEl) countEl.textContent = `${done} / ${total}`;
+
+      const badge = document.getElementById(`badge-${w}`);
+      if (badge) badge.textContent = done;
+
+      ['', 'b', 'c', 'd'].forEach(suffix => {
+        const barEl = document.getElementById(`sidebar-bar-${w}${suffix}`);
+        const pctLbl = document.getElementById(`sidebar-pct-${w}${suffix}`);
+        if (barEl) barEl.style.width = pct + '%';
+        if (pctLbl) pctLbl.textContent = pct + '%';
+      });
+    }
+
+    const overallPct = totalItems ? Math.round(totalDone / totalItems * 100) : 0;
+    document.getElementById('overall-pct').textContent = overallPct + '%';
+    document.getElementById('overall-bar').style.width = overallPct + '%';
+    document.getElementById('overall-done').textContent = totalDone;
+    document.getElementById('overall-total').textContent = totalItems;
+  }
+
+  function applyState() {
+    document.querySelectorAll('.checklist li').forEach(li => {
+      const w = li.dataset.week;
+      const id = li.dataset.id;
+      if (state[w] && state[w][id]) li.classList.add('done');
+    });
+  }
+
+  function showWeek(n, btn) {
+    document.querySelectorAll('.week-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.week-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('week-' + n).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function toggleGoal(btn) {
+    const details = btn.nextElementSibling;
+    const open = details.classList.toggle('open');
+    btn.classList.toggle('open', open);
+  }
+
+  function resetAll() {
+    if (!confirm('Reset all progress? This cannot be undone.')) return;
+    state = {};
+    saveState();
+    document.querySelectorAll('.checklist li').forEach(li => li.classList.remove('done'));
+    updateAll();
+  }
+
+  // Init
+  loadState();
+  applyState();
+  updateAll();
+</script>
+
+<!-- Overall progress markup is referenced by JS; placed inline above goals in source order -->
+<script>
+  // Ensure overall progress elements exist even if user scrolled; no-op guard.
+</script>
+</body>
+</html>
