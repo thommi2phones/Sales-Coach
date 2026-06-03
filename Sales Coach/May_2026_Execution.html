@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>May 2026 Execution Detail — Thomas Lindsey</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  :root {
+    --bg:#0f1117; --surface:#1a1d27; --surface-2:#222632; --border:#2a2e3b;
+    --text:#e4e6ed; --muted:#8b8fa3;
+    --accent:#6c5ce7; --green:#00b894; --orange:#fdcb6e; --red:#e17055; --blue:#74b9ff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);padding:2rem;line-height:1.5}
+  .container{max-width:1200px;margin:0 auto}
+  .header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border)}
+  .header h1{font-size:1.75rem;font-weight:800;letter-spacing:-0.02em}
+  .header h1 span{color:var(--accent)}
+  .header .meta{color:var(--muted);font-size:0.85rem;text-align:right;line-height:1.7}
+  .header .meta strong{color:var(--text)}
+
+  .hero{background:linear-gradient(135deg,rgba(0,184,148,0.10),rgba(116,185,255,0.05));border:1px solid rgba(0,184,148,0.25);border-radius:16px;padding:1.75rem 2rem;margin-bottom:1.5rem}
+  .hero h2{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);font-weight:600;margin-bottom:0.5rem}
+  .hero-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:1rem}
+  .hero-stat .label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.4rem;font-weight:600}
+  .hero-stat .value{font-size:2rem;font-weight:800;letter-spacing:-0.02em;line-height:1}
+  .hero-stat .value.green{color:var(--green)}
+  .hero-stat .value.red{color:var(--red)}
+  .hero-stat .value.orange{color:var(--orange)}
+  .hero-stat .value.blue{color:var(--blue)}
+  .hero-stat .sub{font-size:0.78rem;color:var(--muted);margin-top:0.3rem}
+
+  .section-title{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);font-weight:600;margin:1.25rem 0 0.85rem}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem}
+
+  table{width:100%;border-collapse:collapse;font-size:0.85rem}
+  th{text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);font-weight:600;color:var(--muted);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em}
+  td{padding:0.6rem 0.75rem;border-bottom:1px solid var(--border)}
+  tr:last-child td{border-bottom:none}
+  tr:hover{background:var(--surface-2)}
+  .amount{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem}
+
+  .callouts{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem}
+  .callout{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-align:center}
+  .callout .big{font-size:2.2rem;font-weight:800;line-height:1;letter-spacing:-0.02em;margin-bottom:0.4rem}
+  .callout .label{font-size:0.78rem;color:var(--muted);font-weight:600;line-height:1.4}
+  .callout.alert .big{color:var(--red)}
+  .callout.warn .big{color:var(--orange)}
+  .callout.win .big{color:var(--green)}
+
+  .patterns{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+  .pattern{padding:1.25rem;border-radius:12px;border:1px solid var(--border);background:var(--surface)}
+  .pattern.win{border-left:3px solid var(--green)}
+  .pattern.loss{border-left:3px solid var(--red)}
+  .pattern h4{font-size:0.92rem;font-weight:700;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.4rem}
+  .pattern ul{list-style:none;font-size:0.83rem;color:var(--muted);line-height:1.65}
+  .pattern ul li{padding:0.3rem 0;padding-left:1.1rem;position:relative}
+  .pattern.win ul li::before{content:'✓';color:var(--green);position:absolute;left:0;font-weight:700}
+  .pattern.loss ul li::before{content:'✗';color:var(--red);position:absolute;left:0;font-weight:700}
+
+  .recs{background:linear-gradient(135deg,rgba(108,92,231,0.06),rgba(116,185,255,0.04));border:1px solid rgba(108,92,231,0.25);border-radius:14px;padding:1.5rem 1.75rem;margin-bottom:1.5rem}
+  .recs h3{font-size:1rem;font-weight:700;margin-bottom:1rem}
+  .rec-item{display:flex;gap:1rem;padding:0.85rem 0;border-bottom:1px solid rgba(108,92,231,0.12)}
+  .rec-item:last-child{border-bottom:none}
+  .rec-num{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--accent);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem}
+  .rec-body strong{display:block;margin-bottom:0.2rem;font-size:0.92rem}
+  .rec-body p{font-size:0.82rem;color:var(--muted);line-height:1.55}
+  .rec-body .due{display:inline-block;margin-top:0.35rem;font-size:0.72rem;background:var(--surface-2);padding:0.15rem 0.5rem;border-radius:5px;color:var(--text)}
+
+  .narrative{background:var(--surface);border-left:3px solid var(--accent);padding:1.1rem 1.4rem;border-radius:8px;font-size:0.95rem;line-height:1.65;margin-bottom:1.5rem}
+  .narrative strong{color:var(--accent)}
+
+  .pill{display:inline-block;padding:0.18rem 0.55rem;border-radius:5px;font-size:0.7rem;font-weight:600}
+  .pill-fast{background:rgba(0,184,148,0.15);color:var(--green)}
+  .pill-slow{background:rgba(225,112,85,0.15);color:var(--red)}
+  .pill-mid{background:rgba(253,203,110,0.15);color:var(--orange)}
+  .pill-q1{background:rgba(116,185,255,0.15);color:var(--blue)}
+
+  /* activity / calendar add-ons (reuse same tokens) */
+  .actgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-bottom:1.5rem}
+  .actcell{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem;text-align:center}
+  .actcell .label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);font-weight:600;margin-bottom:0.45rem}
+  .actcell .value{font-size:1.7rem;font-weight:800;letter-spacing:-0.02em;line-height:1}
+  .actcell .delta{font-size:0.74rem;margin-top:0.35rem;font-weight:600}
+  .actcell .delta.down{color:var(--red)}
+  .actcell .delta.up{color:var(--green)}
+  .actcell .delta.flat{color:var(--muted)}
+
+  .bar-row{display:flex;align-items:center;gap:0.85rem;margin:0.55rem 0;font-size:0.83rem}
+  .bar-row .bl{width:160px;color:var(--text);flex-shrink:0}
+  .bar-track{flex:1;height:14px;background:var(--surface-2);border-radius:7px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:7px}
+  .bar-row .bv{width:70px;text-align:right;color:var(--muted);font-variant-numeric:tabular-nums;flex-shrink:0}
+
+  .footer{text-align:center;padding:1rem;color:var(--muted);font-size:0.72rem;border-top:1px solid var(--border);margin-top:1rem}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1><span>May 2026</span> · Execution Detail</h1>
+    <div class="meta">
+      <strong>Thomas R Lindsey</strong> · 06.03.2026 · Supermetrics<br>
+      NAM Brand Portfolio · Companion to May MBR deck<br>
+      Data: HubSpot CRM · Google Calendar · Gmail
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h2>Execution Snapshot · May 2026 · The Mirror Image of April</h2>
+    <div class="hero-grid">
+      <div class="hero-stat">
+        <div class="label">Revenue Attainment</div>
+        <div class="value green">86%</div>
+        <div class="sub">$40,379 / $46,750 quota</div>
+      </div>
+      <div class="hero-stat">
+        <div class="label">Pipe Gen Attainment</div>
+        <div class="value orange">~54%</div>
+        <div class="sub">20 deals · ~$101k ERR generated</div>
+      </div>
+      <div class="hero-stat">
+        <div class="label">Total Activity</div>
+        <div class="value red">837</div>
+        <div class="sub">vs 1,331 in April (−37%)</div>
+      </div>
+      <div class="hero-stat">
+        <div class="label">Dials (Calls)</div>
+        <div class="value red">39</div>
+        <div class="sub">vs 280 in April · COLLAPSED</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KEY CALLOUTS -->
+  <div class="callouts">
+    <div class="callout win">
+      <div class="big">$35k</div>
+      <div class="label">Scotiabank closed 5/28 · 421-day cycle · full MEDDICC motion · THE headline win</div>
+    </div>
+    <div class="callout alert">
+      <div class="big">18 blocks → 39 dials</div>
+      <div class="label">~18 Call Prep blocks on the calendar produced only 39 dials · the block was scheduled, the call wasn't made inside it</div>
+    </div>
+    <div class="callout warn">
+      <div class="big">−$85k</div>
+      <div class="label">Net closed activity: +$40k won − $125k lost (18 deals) · heads-down closing month emptied the funnel</div>
+    </div>
+  </div>
+
+  <!-- NARRATIVE -->
+  <div class="narrative">
+    May was the <strong>mirror image of April</strong>. April had great pipe (103%) and awful revenue (37%); May flipped it — <strong>strong revenue at 86%</strong> and <strong>weak pipe gen at ~54%</strong>. The cause is one decision visible in the activity data: a <strong>top-of-funnel pullback</strong>. Calls collapsed from 280 to 39 as the month went heads-down to close <strong>Scotiabank ($35k)</strong> — a 421-day deal won on a full MEDDICC motion that validates April's coaching plan, since Scotiabank was the #1 named MEDDICC target. The execution cost: the pipeline emptied, 18 deals died for $125k, and the calendar tells the story — <strong>the Call Prep blocks held, but the dials inside them didn't happen.</strong>
+  </div>
+
+  <!-- ACTIVITY: MAY vs APRIL -->
+  <div class="section-title">Activity · May vs April (HubSpot)</div>
+  <div class="actgrid">
+    <div class="actcell">
+      <div class="label">Calls</div>
+      <div class="value" style="color:var(--red)">39</div>
+      <div class="delta down">▼ from 280 (−86%)</div>
+    </div>
+    <div class="actcell">
+      <div class="label">Emails</div>
+      <div class="value" style="color:var(--orange)">567</div>
+      <div class="delta down">▼ from 979 (−42%)</div>
+    </div>
+    <div class="actcell">
+      <div class="label">Meetings</div>
+      <div class="value">54</div>
+      <div class="delta down">▼ from 72 (−25%)</div>
+    </div>
+    <div class="actcell">
+      <div class="label">New Contacts</div>
+      <div class="value" style="color:var(--green)">177</div>
+      <div class="delta up">▲ from 153 (+16%)</div>
+    </div>
+    <div class="actcell">
+      <div class="label">Total Activity</div>
+      <div class="value" style="color:var(--red)">837</div>
+      <div class="delta down">▼ from 1,331 (−37%)</div>
+    </div>
+  </div>
+  <div class="card">
+    <p style="font-size:0.83rem;color:var(--muted);line-height:1.6">
+      <strong style="color:var(--text)">The single signal:</strong> calls fell off a cliff (280 → 39) while contact creation actually <strong style="color:var(--green)">rose</strong> (153 → 177). Thomas was still <em>finding</em> people — he just stopped <em>dialing</em> them. The month was structurally a closing month: emails and meetings stayed alive (567 / 54) because those were tied to Scotiabank and Flor, but the phone went quiet. That is the difference between an 86% revenue month and a ~54% pipe month.
+    </p>
+  </div>
+
+  <!-- CALENDAR STRUCTURE -->
+  <div class="card">
+    <div class="section-title">Calendar Structure · May (Google Calendar)</div>
+    <div class="bar-row"><div class="bl">Daily Call Prep</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--blue)"></div></div><div class="bv">~18 blocks</div></div>
+    <div class="bar-row"><div class="bl">Cadence Actions</div><div class="bar-track"><div class="bar-fill" style="width:56%;background:var(--orange)"></div></div><div class="bv">~10 (↓16)</div></div>
+    <div class="bar-row"><div class="bl">SFDC Hygiene</div><div class="bar-track"><div class="bar-fill" style="width:44%;background:var(--green)"></div></div><div class="bv">~8 (↑4)</div></div>
+    <div class="bar-row"><div class="bl">Weekly Timesheet</div><div class="bar-track"><div class="bar-fill" style="width:28%;background:var(--accent)"></div></div><div class="bv">5</div></div>
+    <div class="bar-row"><div class="bl">Postal Outreach</div><div class="bar-track"><div class="bar-fill" style="width:17%;background:var(--muted)"></div></div><div class="bv">3</div></div>
+    <p style="font-size:0.82rem;color:var(--muted);margin-top:1rem;padding-top:0.85rem;border-top:1px solid var(--border);line-height:1.6">
+      <strong style="color:var(--text)">The calendar held — the execution inside it didn't.</strong> Reclaim auto-scheduled <strong>~18 Daily Call Prep blocks</strong> and they held strong almost every business day. <strong style="color:var(--green)">SFDC Hygiene doubled (4 → 8)</strong> — a real win that shows up directly in cleaner pipeline data. But <strong>Cadence Actions dropped from 16 to ~10</strong>, with a visible <strong style="color:var(--red)">gap the week of 5/18–5/22</strong>. The headline execution gap: ~18 Call Prep blocks produced only <strong>39 dials</strong>. The block existed; the call inside it didn't.
+    </p>
+  </div>
+
+  <!-- THE EXECUTION GAP -->
+  <div class="card" style="background:linear-gradient(135deg,rgba(225,112,85,0.08),rgba(253,203,110,0.04));border-color:rgba(225,112,85,0.25)">
+    <div class="section-title" style="color:var(--red)">⚠ The Single Most Coachable Item of the Month</div>
+    <p style="font-size:1.02rem;line-height:1.65;color:var(--text)">
+      <strong style="color:var(--red)">~18 Daily Call Prep blocks on the calendar → 39 dials made.</strong> That is roughly 2 dials per block. The block was scheduled, defended, and honored — Thomas showed up to the time. But the work the block was reserved for didn't happen inside it. This is not a calendar problem (the calendar was excellent) and not a discipline problem at the block level — it's the <strong>gap between "block scheduled" and "dial made."</strong> Closing that gap is the entire top-of-funnel recovery plan for June.
+    </p>
+  </div>
+
+  <!-- WINS / LOSSES SIDE BY SIDE -->
+  <div class="two-col">
+    <div class="card">
+      <div class="section-title" style="color:var(--green)">2 May Wins · $40,379 (86% of quota)</div>
+      <table>
+        <thead><tr><th>Deal</th><th>Type / Cycle</th><th class="amount">Credit</th></tr></thead>
+        <tbody>
+          <tr><td>Scotiabank | MIC | KCG</td><td>Cross-sell · <span class="pill pill-slow">421 days</span></td><td class="amount">$35,000</td></tr>
+          <tr><td>Flor / Adv | Claude</td><td>MCP/Claude · <span class="pill pill-fast">fast</span></td><td class="amount">$5,379</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.78rem;color:var(--muted);margin-top:0.85rem;padding-top:0.75rem;border-top:1px solid var(--border)"><strong style="color:var(--text)">Scotiabank is the first $10k+ win in two months</strong> — and it came from the exact MEDDICC motion the April plan prescribed. Flor is the same fast-MCP/Claude pattern that worked in April (Paxos).</p>
+    </div>
+    <div class="card">
+      <div class="section-title" style="color:var(--red)">18 May Losses · ~$125k Y1 ACV</div>
+      <table>
+        <thead><tr><th>Deal</th><th>Cycle</th><th class="amount">Y1 ACV</th></tr></thead>
+        <tbody>
+          <tr><td>DTCC</td><td><span class="pill pill-fast">28 days</span></td><td class="amount">$25,000</td></tr>
+          <tr><td>Industry Dive</td><td><span class="pill pill-slow">262 days</span></td><td class="amount">$20,000</td></tr>
+          <tr><td>Diablo | Azure</td><td><span class="pill pill-fast">14 days</span></td><td class="amount">$18,000</td></tr>
+          <tr><td>Maxio | BQ</td><td><span class="pill pill-fast">13 days</span></td><td class="amount">$12,000</td></tr>
+          <tr><td>Future Builds | API</td><td><span class="pill pill-mid">43 days</span></td><td class="amount">$12,000</td></tr>
+          <tr><td>Manhattan</td><td><span class="pill pill-slow">84 days</span></td><td class="amount">$8,000</td></tr>
+          <tr><td>Havas DS</td><td><span class="pill pill-slow">138 days</span></td><td class="amount">$6,000</td></tr>
+          <tr><td>Promega</td><td><span class="pill pill-slow">68 days</span></td><td class="amount">$5,000</td></tr>
+          <tr><td>WELL</td><td><span class="pill pill-mid">29 days</span></td><td class="amount">$4,000</td></tr>
+          <tr><td>S88</td><td><span class="pill pill-fast">11 days</span></td><td class="amount">$3,800</td></tr>
+          <tr><td>Organicare</td><td><span class="pill pill-slow">99 days</span></td><td class="amount">$2,000</td></tr>
+          <tr><td>Graff Auto</td><td><span class="pill pill-fast">9 days</span></td><td class="amount">$2,000</td></tr>
+          <tr><td>CFG</td><td><span class="pill pill-mid">—</span></td><td class="amount">$2,000</td></tr>
+          <tr><td>Dale Howard</td><td><span class="pill pill-mid">—</span></td><td class="amount">$2,000</td></tr>
+          <tr><td>Arcadia</td><td><span class="pill pill-mid">—</span></td><td class="amount">$2,000</td></tr>
+          <tr><td>Vooks</td><td><span class="pill pill-slow">61 days</span></td><td class="amount">~$1,000</td></tr>
+          <tr><td>Chefman</td><td><span class="pill pill-fast">0 days</span></td><td class="amount">$800</td></tr>
+          <tr><td>Parc Safari</td><td><span class="pill pill-fast">0 days</span></td><td class="amount">$400</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SCOTIABANK DEEP DIVE -->
+  <div class="card" style="background:linear-gradient(135deg,rgba(0,184,148,0.08),rgba(108,92,231,0.04));border-color:rgba(0,184,148,0.25)">
+    <div class="section-title" style="color:var(--green)">🏆 Closed-Deal Execution Detail · Scotiabank | MIC | KCG · $35,000</div>
+    <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">
+      Cross-sell · 421-day cycle · closed 5/28 · the validation of the April coaching plan, where Scotiabank was the <strong style="color:var(--text)">#1 named MEDDICC target</strong>. This deal was won on a textbook full-motion execution:
+    </p>
+    <table>
+      <thead><tr><th>MEDDICC Lever</th><th>What Thomas Executed</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Multi-thread (engineering org)</strong></td><td>Threaded into Director of Engineering <strong>Sebin Panicker</strong>, Lead Solutions Architect <strong>Ankuj Jhalani</strong>, Senior SA <strong>Prateek Kapoor</strong>, plus <strong>Kyle Bi</strong> — never single-threaded.</td></tr>
+        <tr><td><strong>Technical close (SE call)</strong></td><td>SE call on <strong>5/27</strong> backed by a written prep brief that pre-anticipated the SFTP vs API vs Hub/BigQuery objections before they were raised.</td></tr>
+        <tr><td><strong>Security / DR review</strong></td><td>Security + DR docs delivered to vendor reviewer <strong>Chethana Wickramasinghe</strong> 4/24–4/28, receipt confirmed — cleared procurement risk ahead of signature.</td></tr>
+        <tr><td><strong>Economic Buyer / decision path</strong></td><td>EB and decision path kept live all the way to signature on <strong>5/28</strong> — no late-stage surprise approver.</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.82rem;color:var(--text);margin-top:1rem;padding-top:0.85rem;border-top:1px solid rgba(0,184,148,0.2);line-height:1.6">
+      <strong style="color:var(--green)">So what:</strong> This is the proof the MEDDICC investment pays. The same month, <strong>DTCC ($25k, 28d)</strong> and <strong>Industry Dive ($20k, 262d)</strong> were lost <em>without</em> an EB or technical motion running. Scotiabank is the template; the lost big deals are what happens without it.
+    </p>
+  </div>
+
+  <!-- WIN PATTERNS / LOSS PATTERNS -->
+  <div class="patterns">
+    <div class="pattern win">
+      <h4>What Worked in May</h4>
+      <ul>
+        <li>Scotiabank $35k closed via full MEDDICC — multi-threaded, technical SE call, security cleared, EB held to signature</li>
+        <li>Revenue recovered hard: <strong>37% → 86%</strong> month over month</li>
+        <li>Flor/Claude — the fast MCP play that also worked in April (Paxos pattern repeats)</li>
+        <li><strong>SFDC Hygiene blocks doubled (4 → 8)</strong> — cleaner pipeline data</li>
+        <li>Fast disqualification working: <strong>Graff Auto (9d), S88 (11d), Chefman/Parc Safari (0d)</strong> — killed fast, no wasted cycles</li>
+        <li>Contact creation held (153 → 177) — sourcing engine still alive</li>
+      </ul>
+    </div>
+    <div class="pattern loss">
+      <h4>What Hurt in May</h4>
+      <ul>
+        <li><strong>Calls collapsed 280 → 39</strong> — the top-of-funnel pullback that caused the weak pipe month</li>
+        <li>Pipe gen only ~54% — only $5,050 ACV / ~$101k ERR generated</li>
+        <li>MEDDICC <em>not</em> applied broadly: <strong>DTCC ($25k, 28d)</strong> and <strong>Industry Dive ($20k, 262d)</strong> lost with no EB/technical motion</li>
+        <li>Industry Dive at 262 days = a stale-deal death the <strong>60-day rule should have prevented</strong></li>
+        <li>Cadence Actions lapsed entirely the week of <strong>5/18–5/22</strong></li>
+        <li>~18 Call Prep blocks → only 39 dials: the block-to-dial execution gap</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- THE THREE STORIES IN LOSSES -->
+  <div class="card">
+    <div class="section-title">3 Stories Inside May's Losses</div>
+    <table>
+      <thead><tr><th>Story</th><th>Deals</th><th class="amount">Lost ACV</th><th>So What</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Big Mid-Funnel Deaths</strong> <span class="pill pill-slow">no MEDDICC</span></td>
+          <td>DTCC ($25k, 28d), Industry Dive ($20k, 262d), Diablo|Azure ($18k, 14d), Maxio|BQ ($12k, 13d), Future Builds|API ($12k, 43d)</td>
+          <td class="amount">~$87,000</td>
+          <td>The $25k DTCC and $20k Industry Dive losses ran with no EB or technical motion — the exact motion that won Scotiabank. This is where MEDDICC wasn't applied.</td>
+        </tr>
+        <tr>
+          <td><strong>Stale Carryover</strong> <span class="pill pill-q1">60-day rule</span></td>
+          <td>Manhattan ($8k, 84d), Promega ($5k, 68d), Vooks (61d), Organicare ($2k, 99d)</td>
+          <td class="amount">~$17,000</td>
+          <td>Every one is past 60 days. These are exactly the deaths the 60-day disqualification rule from the April plan should have prevented.</td>
+        </tr>
+        <tr>
+          <td><strong>Fast Disqualifications</strong> <span class="pill pill-fast">GOOD behavior</span></td>
+          <td>S88 ($3.8k, 11d), Graff Auto ($2k, 9d), Chefman ($0.8k, 0d), Parc Safari ($0.4k, 0d)</td>
+          <td class="amount">~$7,000</td>
+          <td>This is the win hiding in the loss column — fit confirmed-as-no fast, cycles protected. Keep doing this.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PIPELINE GENERATED -->
+  <div class="card">
+    <div class="section-title" style="color:var(--blue)">Pipeline Generated · May · 20 deals · ~$101k ERR · ~$5,050 ACV (~54% of target)</div>
+    <table>
+      <thead><tr><th>Deal</th><th>Type</th><th class="amount">ERR</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>BT1D | S3</td><td>New Business</td><td class="amount">$19,000</td><td>Biggest new pipe of the month</td></tr>
+        <tr><td>Diablo</td><td>New Business</td><td class="amount">$18,000</td><td><span class="pill pill-slow">lost same month (14d)</span></td></tr>
+        <tr><td>Maxio</td><td>New Business</td><td class="amount">$12,000</td><td><span class="pill pill-slow">lost same month (13d)</span></td></tr>
+        <tr><td>Liberty | Copilot</td><td>New Business</td><td class="amount">$6,000</td><td>Open</td></tr>
+        <tr><td>Charter One | API</td><td>New Business</td><td class="amount">$6,000</td><td>Open</td></tr>
+        <tr><td>Flor</td><td>New Business</td><td class="amount">$5,000</td><td><span class="pill pill-fast">won same month</span></td></tr>
+        <tr><td>TaskRabbit | Gem Agent</td><td>New Business</td><td class="amount">$5,000</td><td>Open</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.8rem;color:var(--muted);margin-top:0.9rem;padding-top:0.75rem;border-top:1px solid var(--border);line-height:1.6">
+      <strong style="color:var(--text)">Mix:</strong> 13 New Business · 3 Cross-sell · 2 Upsell · 2 Growth.
+      <strong style="color:var(--red)">Quality concern:</strong> the #2 and #3 biggest new deals (Diablo $18k, Maxio $12k) were both <strong>lost the same month they were created</strong> — pipe was generated but not qualified. The thin top of funnel (39 dials) plus same-month churn is why ~54% pipe gen understates the real gap.
+    </p>
+  </div>
+
+  <!-- RECS -->
+  <div class="recs">
+    <h3>🎯 May Execution Lessons → June Plan</h3>
+
+    <div class="rec-item">
+      <div class="rec-num">1</div>
+      <div class="rec-body">
+        <strong>Close the block-to-dial gap — the #1 coachable item</strong>
+        <p>~18 Call Prep blocks produced only 39 dials. The calendar is already perfect; the work inside it isn't happening. Set a minimum-dials-per-block target (e.g. 8) and track dials made inside each Reclaim block against the block itself. This single metric is the entire top-of-funnel recovery.</p>
+        <span class="due">Daily · starting June 1</span>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">2</div>
+      <div class="rec-body">
+        <strong>Bank the Scotiabank MEDDICC playbook as the template</strong>
+        <p>Multi-thread into engineering, written SE prep brief that pre-answers technical objections, security/DR docs early, EB held to signature. Write this up as the named "$10k+ deal motion" and apply it to every open $10k+ deal (Liberty, Charter One, BT1D). It just delivered $35k — make it repeatable.</p>
+        <span class="due">Due June 8</span>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">3</div>
+      <div class="rec-body">
+        <strong>Don't let a closing month empty the funnel</strong>
+        <p>The Scotiabank close was worth it, but calls went 280 → 39 and pipe gen fell to ~54%. Protect a non-negotiable daily dial floor even during heads-down close weeks, so June doesn't inherit an empty top of funnel the way May inherited April's. Revenue and pipe cannot trade off month to month.</p>
+        <span class="due">Apply this week</span>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">4</div>
+      <div class="rec-body">
+        <strong>Run MEDDICC on DTCC and Industry Dive losses — the $45k that got away without it</strong>
+        <p>DTCC ($25k, 28d) and Industry Dive ($20k, 262d) were lost with no EB and no technical motion — the exact opposite of Scotiabank. One-page autopsy each: where was the EB, where was the SE call, and why did MEDDICC apply to one $25k deal but not these two?</p>
+        <span class="due">Due June 8 · Bring to 1:1</span>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">5</div>
+      <div class="rec-body">
+        <strong>The 60-day rule still isn't firing — Industry Dive proves it</strong>
+        <p>Industry Dive died at 262 days; Organicare (99d), Manhattan (84d), Promega (68d), Vooks (61d) all past 60. The April plan put a hard 60-day disqualification rule on $10k+ deals — it didn't run in May. Re-instate it and tie it to the doubled SFDC Hygiene blocks (which are working) so stale deals get dispositioned inside those blocks.</p>
+        <span class="due">Weekly · starting June 5</span>
+      </div>
+    </div>
+
+    <div class="rec-item">
+      <div class="rec-num">6</div>
+      <div class="rec-body">
+        <strong>Restore the cadence — close the 5/18–5/22 gap</strong>
+        <p>Cadence Actions dropped 16 → ~10 with a full gap the week of 5/18–5/22. That gap week lines up with the heads-down close. Rebuild cadence to ~16 blocks and treat a missed cadence week as a leading indicator the funnel is about to thin.</p>
+        <span class="due">Weekly · starting June 1</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1:1 OPENING -->
+  <div class="card" style="background:linear-gradient(135deg,rgba(0,184,148,0.08),rgba(108,92,231,0.04));border-color:rgba(0,184,148,0.25)">
+    <div class="section-title" style="color:var(--green)">📝 1:1 Talking Point — May Execution</div>
+    <p style="font-size:1.05rem;line-height:1.65;font-style:italic;color:var(--text)">
+      "May was the mirror image of April — I flipped revenue from 37% to <strong>86%</strong> on the back of <strong>Scotiabank ($35k)</strong>, which I won on exactly the MEDDICC motion we built in the April plan: multi-threaded into their engineering org, ran the SE call with a written prep brief, cleared security and DR early, and held the EB to signature on a 421-day deal. The trade-off was real and it's the thing I want to coach on: <strong>calls collapsed from 280 to 39</strong> and pipe gen fell to ~54% because I went heads-down to close. The clearest execution gap is that my <strong>~18 Call Prep blocks only produced 39 dials</strong> — the block was there, the dial wasn't. My June plan is a minimum-dials-per-block floor so a closing month never empties the funnel again, plus re-firing the 60-day rule that Industry Dive (262 days) slipped through."
+    </p>
+  </div>
+
+  <div class="footer">
+    Source: HubSpot CRM · Google Calendar · Gmail · Activity & deals May 1–31, 2026 (excl. renewals) · Won = quota credit · Lost = Y1 ACV<br>
+    May 2026 · Thomas R Lindsey · 06.03.2026 · Supermetrics · NAM Brand Portfolio · Companion to the May MBR deck
+  </div>
+
+</div>
+</body>
+</html>
