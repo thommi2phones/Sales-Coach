@@ -111,21 +111,35 @@ Net closed activity = **+$40.6k won − ~$93k lost = ~−$52k**. The losses are,
 
 ## Open Pipeline (as of July 8) — July Forecast Setup
 
-Near-term coverage is thinner and more concentrated than a month ago; the risk is that it leans on a few mid-size deals with no anchor.
+**Reconciled against the Sales Command Center (Jul 8).** July carries a **reduced revenue quota of $23,400** (July only; full $46,750 resumes August). Against that, coverage is strong — but it's a no-anchor portfolio of mid-size deals, so the risk is conversion quality, not coverage.
 
-**July-close pipeline (~$110k open name-encoded):**
+**Command-center forecast:**
 
-| Deal | ERR | Stage | Flag |
-|---|---|---|---|
-| RLE \| BQ | $20,000 | Proof of Value | New (created 6/23) · main swing |
-| Upwork \| MIC/MCP | $15,000 | **Agreement** | 🟢 In legal/DPA now — strongest close signal (Gmail thread through 6/29) |
-| Shubert \| JSON/API | $12,000 | Qualified | New (created 6/12) |
-| HA \| AI / Gemini Agent | $7,500 | Qualification | Long-running |
-| WestGate \| MCP | $7,500 | Proof of Value | New expansion |
-| HubSpot \| MCP | $7,000 | Qualified | |
-| + ~16 smaller ($2–5k) | ~$41,000 | various | Growth/MCP/Claude tier |
+| Card | Value | % of $23.4k quota |
+|---|---|---|
+| Closed Won (MTD) | $0 | 0% |
+| **Confirmed FC** (4 committed deals) | **$18,800** | **81%** |
+| **Weighted FC** | **$46,100** | **197%** |
+| Open Pipeline (22 July-close deals) | $106,900 | 457% |
+| Gap to Quota | $4,500 | 19% |
 
-**Swing / overdue (must be re-dated or disqualified):** US Soccer $40k (🔴 overdue since **May 28**), BlueDoor $10k (overdue Jun 25), IA $5k (overdue May 28).
+**July-close pipeline — top deals (ERR × close % = weighted):**
+
+| Deal | ERR | Close % | Weighted | Flag |
+|---|---|---|---|---|
+| Shopify \| X Ads | $1,750 | 90% | $1.6k | ✅ Committed |
+| Upwork \| MIC/MCP | $11,500 | **85%** | $9.8k | ✅ Committed · Agreement, in legal/DPA (Gmail thru 6/29) — strongest signal |
+| Shronk \| Growth | $2,124 | 75% | $1.6k | ✅ Committed |
+| Kraken \| MCP | $3,468 | 70% | $2.4k | ✅ Committed · pending Sales Ops reopen |
+| HA \| AI / Gemini Agent | $7,500 | 65% | $4.9k | Qualification |
+| TaskRabbit \| Gem Agent | $5,000 | 56% | $2.8k | Qualification |
+| RLE \| BQ | $20,000 | 50% | $10.0k | New (6/23) · main swing / largest weighted |
+| + ~15 smaller ($2–4k) | ~$55,500 | ~23% | ~$13.0k | Growth/MCP/Claude tier |
+| **Total** | **$106,900** | — | **$46,100** | 22 deals |
+
+*Note: **HubSpot \| MCP ($7k)** was moved to an August close (out of July). **Kraken** is committed but paused pending a Sales Ops reopen.*
+
+**Swing / overdue (must be re-dated or disqualified — not in the $106.9k July-close):** US Soccer $40k (🔴 overdue since **May 28**), BlueDoor $10k (overdue Jun 25), IA $5k (overdue May 28).
 
 **Later-stage pipeline (Aug–Dec close):** Tracer $100k (long shot), Alaska $40k, Havas Edge $40k, Tadi $25k, MS Buildon $25k, BRP DACT $25k, Rocket Loans $25k, 1800 Acct $15k, DS18 $12k, BRUNT $12k, ProShip $12k.
 
@@ -193,7 +207,7 @@ Contact creation halved (90) and calls hit zero. The ~$179k created is inbound +
 | New contacts | HubSpot CRM | `CONTACT createdate ∈ June`, owner = Thomas |
 | Calendar structure | Google Calendar | Primary calendar, "Daily Call Prep" (Reclaim), June 1–30, 2026 |
 | Open pipeline | HubSpot CRM | `hs_is_closed = false`, owner = Thomas, as of 2026-07-08 |
-| Quota | Carried from April/May MBR (`QUOTAS['2026-06'] = $46,750`) | unchanged for July |
+| Quota | June $46,750 (carried from Apr/May MBR). **July reduced to $23,400** — July-only; full $46,750 resumes August | Sales Command Center (Jul 8) |
 
 **Methodology note:** As in the May MBR, the like-for-like pipeline-gen credit pipeline (Salesforce AE-Automation `OpportunitySplit`) is **not available in this environment**, so June's ~$179k pipeline-gen is computed from HubSpot deal-name-encoded ERR — directionally comparable to prior months but not identical methodology. Revenue, activity, contact, and calendar figures are direct HubSpot/Google pulls. HubSpot home currency is EUR; figures are reported as-is and labeled `$` consistent with the prior MBRs in this series.
 

@@ -316,8 +316,8 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   s.addShape('rect', { x: 0.4, y: 1.4, w: 6.2, h: 4.5, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
   s.addText('LOCKED INPUTS', { x: 0.6, y: 1.5, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
   s.addText([
-    { text: '• July quota: ', options: { color: C.text, fontSize: 12 } }, { text: '$46,750', options: { bold: true, color: C.text, fontSize: 12 } }, { text: ' (unchanged)\n', options: { color: C.text, fontSize: 12 } },
-    { text: '• 4× pipeline goal: ', options: { color: C.text, fontSize: 12 } }, { text: '$187,000\n', options: { bold: true, color: C.text, fontSize: 12 } },
+    { text: '• July revenue quota: ', options: { color: C.text, fontSize: 12 } }, { text: '$23,400', options: { bold: true, color: C.orange, fontSize: 12 } }, { text: ' (reduced — July only; full $46,750 resumes Aug)\n', options: { color: C.text, fontSize: 12 } },
+    { text: '• Pipeline goal: ', options: { color: C.text, fontSize: 12 } }, { text: '$187,000', options: { bold: true, color: C.text, fontSize: 12 } }, { text: ' (held at full-month 4×)\n', options: { color: C.text, fontSize: 12 } },
     { text: '• Plan target: ', options: { color: C.text, fontSize: 12 } }, { text: '$200,000', options: { bold: true, color: C.text, fontSize: 12 } }, { text: ' (+7% buffer)\n', options: { color: C.text, fontSize: 12 } },
     { text: '• ACV baseline: ', options: { color: C.text, fontSize: 12 } }, { text: '$11,000', options: { bold: true, color: C.text, fontSize: 12 } }, { text: ' (6-mo avg) — but June\'s actual win ACV was ~$3.4k; the gap IS the coaching point', options: { color: C.text, fontSize: 12 } }
   ], { x: 0.6, y: 1.85, w: 5.8, h: 1.7, fontFace: F.body });
@@ -429,17 +429,18 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
 
 // ===== S12 TRUE PIPELINE =====
 { const s = pres.addSlide({ masterName: 'DARK' });
-  slideTitle(s, 12, 'July True Pipeline — ~$110k Open (July-Close)');
+  slideTitle(s, 12, 'July True Pipeline — $106.9k Open (Command Center · Jul 8)');
   const headers = ['Account', 'Opportunity', 'ERR', 'Stage', '% Close', 'Weighted'];
   const dealRows = [
-    ['RLE', 'BQ | $20k', '$20,000', 'Proof of Value', '45%', '$9,000', C.accent, true],
-    ['Upwork', 'MIC/MCP | $15k', '$15,000', 'Agreement', '70%', '$10,500', C.green, true],
-    ['Shubert', 'JSON/API | $12k', '$12,000', 'Qualified', '30%', '$3,600', C.blue, false],
-    ['WestGate', 'MCP | $7.5k', '$7,500', 'Proof of Value', '45%', '$3,375', C.accent, false],
-    ['HA', 'Gemini Agent | $7.5k', '$7,500', 'Qualification', '30%', '$2,250', C.blue, false],
-    ['HubSpot', 'MCP | $7k', '$7,000', 'Qualified', '35%', '$2,450', C.blue, false],
-    ['Other (~16)', 'Growth/MCP/Claude $2-5k', '~$41,000', '—', '~30%', '~$12,300', C.muted, false],
-    ['TOTAL', '~22 July-close deals', '~$110,000', '—', '~40%', '~$43,500', C.green, true]
+    ['Shopify', 'X Ads | $2k', '$1,750', 'Committed', '90%', '$1,600', C.green, true],
+    ['Upwork', 'MIC/MCP | $15k', '$11,500', 'Agreement · legal/DPA', '85%', '$9,800', C.green, true],
+    ['Shronk', 'Growth | $2k', '$2,124', 'Committed', '75%', '$1,600', C.green, true],
+    ['Kraken', 'MCP | $3.5k', '$3,468', 'Pending Sales Ops reopen', '70%', '$2,400', C.orange, true],
+    ['HA', 'Gemini Agent | $7.5k', '$7,500', 'Qualification', '65%', '$4,900', C.blue, false],
+    ['TaskRabbit', 'Gem Agent | $5k', '$5,000', 'Qualification', '56%', '$2,800', C.blue, false],
+    ['RLE', 'BQ | $20k', '$20,000', 'Proof of Value · main swing', '50%', '$10,000', C.accent, true],
+    ['Other (~15)', 'Growth/MCP/Claude $2-4k', '~$55,500', '—', '~23%', '~$13,000', C.muted, false],
+    ['TOTAL', '22 July-close deals', '$106,900', '—', '43%', '$46,100', C.green, true]
   ];
   const tbl = [
     headers.map(h => ({ text: h, options: { bold: true, color: C.muted, fontSize: 10, fill: { color: C.surface2 }, align: h === 'Account' || h === 'Opportunity' || h === 'Stage' ? 'left' : 'right' } })),
@@ -459,10 +460,10 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   s.addTable(tbl, tableOpts(0.4, 1.4, 12.55, [2.0, 2.7, 1.4, 2.2, 1.4, 2.85], 0.42));
   s.addShape('rect', { x: 0.4, y: 5.55, w: 12.55, h: 0.55, fill: { color: '3A2520' }, line: { color: C.red, width: 0.5 } });
   s.addText([
-    { text: 'Swing / overdue (re-date or disqualify): ', options: { bold: true, color: C.red } },
+    { text: 'Swing / overdue (re-date or disqualify · not in the $106.9k July-close): ', options: { bold: true, color: C.red } },
     { text: 'US Soccer $40k (overdue 5/28), BlueDoor $10k (overdue 6/25), IA $5k (overdue 5/28)', options: { color: C.text } }
   ], { x: 0.6, y: 5.6, w: 12.2, h: 0.45, fontFace: F.body, fontSize: 12, valign: 'middle' });
-  s.addText('Upwork (Agreement) is the closest to a lock — but there is no Scotiabank-sized anchor. July is a portfolio of $7–20k deals; that\'s why MEDDICC breadth is the MIT — depth on one deal won\'t carry the month.', { x: 0.4, y: 6.25, w: 12.6, h: 0.6, fontFace: F.body, fontSize: 10, color: C.muted, italic: true });
+  s.addText('Command-center reconciled (Jul 8): $18.8k already committed (81% of the reduced $23.4k July quota), $46.1k weighted (197%). Coverage is not the risk — it\'s a no-anchor portfolio of $7–20k deals. MEDDICC breadth on RLE, Upwork, HA is the MIT. Kraken pending Sales Ops reopen; HubSpot|MCP moved to Aug.', { x: 0.4, y: 6.25, w: 12.6, h: 0.6, fontFace: F.body, fontSize: 10, color: C.muted, italic: true });
 }
 
 // ===== S13 FORECAST =====
@@ -471,41 +472,41 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   s.addShape('rect', { x: 0.4, y: 1.4, w: 8.0, h: 5.5, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
   s.addText('FORECAST (HIGH-CONFIDENCE)', { x: 0.6, y: 1.5, w: 7.6, h: 0.3, fontFace: F.body, fontSize: 11, color: C.green, bold: true, charSpacing: 2 });
   s.addText([
-    { text: '■  Upwork — $10.5k (70%) ', options: { bold: true, color: C.green, fontSize: 12 } },
+    { text: '■  Upwork — $9.8k (85%) ', options: { bold: true, color: C.green, fontSize: 12 } },
     { text: '· in Agreement, moving through legal/DPA — strongest close signal (Gmail thread through 6/29)\n', options: { color: C.text, fontSize: 11 } },
-    { text: '■  HubSpot — $2.45k (35%) ', options: { bold: true, color: C.text, fontSize: 12 } },
-    { text: '· MCP expansion, Qualified', options: { color: C.muted, fontSize: 11 } }
+    { text: '■  Shopify $1.6k (90%) · Shronk $1.6k (75%) · Kraken $2.4k (70%) ', options: { bold: true, color: C.text, fontSize: 12 } },
+    { text: '· the other committed deals · $18.8k confirmed FC total (81% of quota). Kraken pending Sales Ops reopen.', options: { color: C.muted, fontSize: 11 } }
   ], { x: 0.6, y: 1.85, w: 7.6, h: 1.1, fontFace: F.body });
   s.addText('SWING DEALS (THE MONTH IS MADE HERE)', { x: 0.6, y: 3.0, w: 7.6, h: 0.3, fontFace: F.body, fontSize: 11, color: C.orange, bold: true, charSpacing: 2 });
   s.addText([
-    { text: '■  US Soccer ($40k) — overdue since 5/28, must re-date or disqualify by 7/11. ', options: { bold: true, color: C.red, fontSize: 12 } },
-    { text: 'Biggest single swing.\n', options: { color: C.text, fontSize: 11 } },
-    { text: '■  RLE ($20k) — new POV, main swing ', options: { bold: true, color: C.accent, fontSize: 12 } },
-    { text: '· value narrative + ROI on the POV\n', options: { color: C.text, fontSize: 11 } },
-    { text: '■  Shubert ($12k) ', options: { bold: true, color: C.text, fontSize: 12 } },
-    { text: '— EB conversation before pricing\n', options: { color: C.muted, fontSize: 11 } },
-    { text: '■  TaxAct ($10k) ', options: { bold: true, color: C.text, fontSize: 12 } },
-    { text: '— multi-thread / champion test\n', options: { color: C.muted, fontSize: 11 } },
-    { text: '■  WestGate ($7.5k) ', options: { bold: true, color: C.text, fontSize: 12 } },
+    { text: '■  RLE ($20k, 50%) — new POV, main swing ', options: { bold: true, color: C.accent, fontSize: 12 } },
+    { text: '· $10k weighted · value narrative + ROI on the POV\n', options: { color: C.text, fontSize: 11 } },
+    { text: '■  HA ($7.5k, 65%) ', options: { bold: true, color: C.text, fontSize: 12 } },
+    { text: '— Gemini Agent · drive qualification → proposal\n', options: { color: C.muted, fontSize: 11 } },
+    { text: '■  Shubert ($12k, 10%) ', options: { bold: true, color: C.text, fontSize: 12 } },
+    { text: '— early · EB conversation before pricing\n', options: { color: C.muted, fontSize: 11 } },
+    { text: '■  WestGate ($7.5k, 10%) ', options: { bold: true, color: C.text, fontSize: 12 } },
     { text: '— POV expansion · quantify value\n', options: { color: C.muted, fontSize: 11 } },
+    { text: '■  US Soccer ($40k) — overdue 5/28, re-date or disqualify by 7/11 ', options: { bold: true, color: C.red, fontSize: 12 } },
+    { text: '· not in the $106.9k July-close\n', options: { color: C.text, fontSize: 11 } },
     { text: '■  BlueDoor ($10k) ', options: { bold: true, color: C.text, fontSize: 12 } },
-    { text: '— overdue · quantify pain or disqualify by day-60', options: { color: C.muted, fontSize: 11 } }
+    { text: '— overdue 6/25 · quantify pain or disqualify by day-60', options: { color: C.muted, fontSize: 11 } }
   ], { x: 0.6, y: 3.35, w: 7.6, h: 2.4, fontFace: F.body });
   s.addShape('roundRect', { x: 0.6, y: 5.9, w: 7.6, h: 0.85, fill: { color: '3D2E0D' }, line: { color: C.orange, width: 1 }, rectRadius: 0.08 });
   s.addText([
     { text: 'The narrative: ', options: { bold: true, color: C.orange } },
-    { text: 'July opens at ~$0 closed with no Scotiabank-sized lock. Coverage is a portfolio of mid-size deals — converts only if MEDDICC runs on all of them. And the dials must finally come back, or a green June hides a cold-outbound Q3.', options: { color: C.text } }
+    { text: 'July opens $0 closed but 197% weighted-covered ($46.1k) on the reduced $23.4k quota — $18.8k already committed (81%). Coverage is not the risk; conversion is. A no-anchor portfolio converts only if MEDDICC runs on every $10k+, and the dials must come back — or a green forecast hides a cold-outbound Q3.', options: { color: C.text } }
   ], { x: 0.75, y: 5.96, w: 7.3, h: 0.73, fontFace: F.body, fontSize: 10.5, valign: 'middle' });
 
   s.addShape('rect', { x: 8.6, y: 1.4, w: 4.4, h: 5.5, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
   s.addText('FORECAST / OPEN PIPELINE', { x: 8.8, y: 1.5, w: 4.0, h: 0.3, fontFace: F.body, fontSize: 10, color: C.muted, bold: true, charSpacing: 2 });
   const fcRows = [
-    ['Total Quota', '$46,750', false, C.text],
-    ['Closed Won (MTD)', '~$0', false, C.text],
-    ['Open Pipeline (Jul)', '~$110,000', false, C.text],
-    ['Weighted Open', '~$43,500', true, C.orange],
-    ['# Open Deals', '~47', false, C.text],
-    ['Coverage vs Quota', '~0.93×', true, C.orange]
+    ['July Quota (reduced)', '$23,400', true, C.orange],
+    ['Closed Won (MTD)', '$0', false, C.text],
+    ['Confirmed FC', '$18,800 · 81%', false, C.green],
+    ['Weighted FC', '$46,100 · 197%', true, C.green],
+    ['Open Pipeline', '$106,900 · 457%', false, C.text],
+    ['# Open Deals', '22', false, C.text]
   ];
   let fy = 1.95;
   fcRows.forEach(r => {
@@ -513,7 +514,7 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
     s.addText(r[1], { x: 11.0, y: fy, w: 1.85, h: 0.35, fontFace: F.body, fontSize: 12, color: r[3], bold: r[2], align: 'right' });
     fy += 0.5;
   });
-  s.addText('Weighted pipe covers quota only ~0.93× — a thinner, more concentrated cushion than a month ago, and no anchor. Every $10k+ deal matters; none can be left without the MEDDICC motion.', { x: 8.8, y: 5.1, w: 4.0, h: 1.6, fontFace: F.body, fontSize: 10, color: C.muted, italic: true });
+  s.addText('Weighted pipe covers the reduced July quota 1.97× and $18.8k is already committed (81%). Coverage is healthy — the risk is the no-anchor, all-inbound mix. Every $10k+ deal still needs the MEDDICC motion. (Full $46,750 quota resumes Aug.)', { x: 8.8, y: 5.1, w: 4.0, h: 1.6, fontFace: F.body, fontSize: 10, color: C.muted, italic: true });
 }
 
 // ===== S13b MEDDICC REPLICATE =====

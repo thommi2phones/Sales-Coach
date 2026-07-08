@@ -116,18 +116,20 @@ April proved the TOFU machine works. May proved the conversion machine works (Sc
 
 ---
 
-## July Forecast Snapshot (today)
+## July Forecast Snapshot (Sales Command Center · today)
 
 | | Value |
 |---|---|
-| Quota | $46,750 |
-| Closed Won (MTD) | ~$0 |
-| Open Pipeline (July-close) | ~$110,000 |
-| Anchor deals | Upwork $15k (Agreement/legal), RLE $20k (POV), Shubert $12k, WestGate $7.5k, HA $7.5k |
-| Swing / overdue | US Soccer $40k (overdue), BlueDoor $10k (overdue), IA $5k |
-| # Open Deals (active) | ~47 |
+| July Quota (reduced) | $23,400 · July-only; full $46,750 resumes Aug |
+| Closed Won (MTD) | $0 |
+| Confirmed FC | $18,800 · 81% of quota |
+| Weighted FC | $46,100 · **197%** of quota |
+| Open Pipeline (22 July-close) | $106,900 · 457% |
+| Committed deals | Upwork $9.8k (85%, Agreement/legal), Shopify (90%), Shronk (75%), Kraken (70%, pending Sales Ops reopen) |
+| Top swing | RLE $20k (50%, $10k wtd, main swing), HA $7.5k (65%) |
+| Overdue (not in July-close) | US Soccer $40k, BlueDoor $10k, IA $5k |
 
-**Anchor:** **Upwork ($15k)** is the closest thing to a lock — it's in Agreement and moving through legal/DPA (targeting a July close). But there is **no Scotiabank-sized deal** this month. July is a portfolio month again — which is exactly why the two MITs (dials + $10k+ conversion breadth) matter. **Don't let a green June hide a cold-outbound Q3.**
+**Read:** July opens **197% weighted-covered** on the reduced $23.4k quota, with **$18.8k already committed (81%)** — coverage is not the risk. It's a **no-anchor portfolio** (largest weighted is RLE at $10k), so the two MITs — dials + $10k+ conversion breadth — are still what matter. **Don't let a green forecast hide a cold-outbound Q3.** *(HubSpot | MCP moved to Aug.)*
 
 ---
 
