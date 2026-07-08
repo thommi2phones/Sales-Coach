@@ -251,7 +251,7 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
     ])
   ];
   s.addTable(projT, tableOpts(7.0, 4.95, 5.8, [1.7, 1.2, 1.5, 1.4], 0.28));
-  s.addText('Jul = confirmed FC ($18.8k, 81%) + weighted upside to $46.1k. Aug–Oct = H1 run-rate (~$40k) with 2025 seasonality applied — Sep/Oct are historically the strongest months (both ~$63k in 2025); Aug a summer lull. H2 paces above quota if the KAM book\'s renewals + expansion convert.', { x: 7.0, y: 6.42, w: 5.8, h: 0.5, fontFace: F.body, fontSize: 9.5, color: C.muted, italic: true });
+  s.addText('Jul = confirmed FC ($18.8k, 81%) + weighted upside to $62.0k. Aug–Oct = H1 run-rate (~$40k) with 2025 seasonality applied — Sep/Oct are historically the strongest months (both ~$63k in 2025); Aug a summer lull. H2 paces above quota if the KAM book\'s renewals + expansion convert.', { x: 7.0, y: 6.42, w: 5.8, h: 0.5, fontFace: F.body, fontSize: 9.5, color: C.muted, italic: true });
 }
 
 // ===== S7 CLOSED EXECUTION =====
@@ -332,14 +332,14 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   s.addText([
     { text: '• July revenue quota: ', options: { color: C.text, fontSize: 13 } }, { text: '$23,400', options: { bold: true, color: C.orange, fontSize: 13 } }, { text: ' (reduced; full $46,750 resumes Aug)\n', options: { color: C.text, fontSize: 13 } },
     { text: '• The book: ', options: { color: C.text, fontSize: 13 } }, { text: '~145 accounts', options: { bold: true, color: C.text, fontSize: 13 } }, { text: ' — 75 Gold + 70 Scaled/Bronze\n', options: { color: C.text, fontSize: 13 } },
-    { text: '• Open July pipe: ', options: { color: C.text, fontSize: 13 } }, { text: '$106.9k', options: { bold: true, color: C.green, fontSize: 13 } }, { text: ' · 457% coverage · $46.1k weighted (197%)\n', options: { color: C.text, fontSize: 13 } },
+    { text: '• Open July pipe: ', options: { color: C.text, fontSize: 13 } }, { text: '$141.9k', options: { bold: true, color: C.green, fontSize: 13 } }, { text: ' · 607% coverage · $62.0k weighted (265%)\n', options: { color: C.text, fontSize: 13 } },
     { text: '• The July math is ', options: { color: C.text, fontSize: 13 } }, { text: 'book coverage', options: { bold: true, color: C.blue, fontSize: 13 } }, { text: ', not cold-funnel throughput — cover the Gold base and surface the expansion/renewal that funds H2 quota.', options: { color: C.text, fontSize: 13 } }
   ], { x: 0.6, y: 1.9, w: 5.8, h: 2.1, fontFace: F.body, valign: 'top' });
   s.addText('PATH TO H2 QUOTA', { x: 0.6, y: 4.05, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 12, color: C.muted, bold: true, charSpacing: 2 });
   s.addText([
     { text: '• Retain the renewals in the book (e.g. Hawaiian Airlines $20k)\n', options: { color: C.text, fontSize: 13 } },
     { text: '• Expand the installed base — June\'s expansion wins (BRP, Tracer, YMCA) are the template\n', options: { color: C.text, fontSize: 13 } },
-    { text: '• Convert the $106.9k open with MEDDICC discipline on every $10k+', options: { color: C.text, fontSize: 13 } }
+    { text: '• Convert the $141.9k open with MEDDICC discipline on every $10k+', options: { color: C.text, fontSize: 13 } }
   ], { x: 0.6, y: 4.4, w: 5.8, h: 1.45, fontFace: F.body, valign: 'top' });
 
   // Right: June activity baseline
@@ -372,7 +372,7 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
     { text: 'The shift: ', options: { bold: true, color: C.accent } },
     { text: 'the old top-down funnel math (quota → pipe → dials) retires with the AE motion. ', options: { color: C.text } },
     { text: 'July\'s math is book coverage', options: { bold: true, color: C.blue } },
-    { text: ' — 75 Gold accounts mapped and planned, expansion/renewal surfaced, the $106.9k open converted.', options: { color: C.text } }
+    { text: ' — 75 Gold accounts mapped and planned, expansion/renewal surfaced, the $141.9k open converted.', options: { color: C.text } }
   ], { x: 0.6, y: 6.18, w: 12.2, h: 0.7, fontFace: F.body, fontSize: 12, valign: 'middle' });
 }
 
@@ -392,7 +392,7 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
       { text: '• Build account plans', options: { bold: true, color: C.text, fontSize: 13 } }, { text: ' for the top ~25 Gold accounts (ARR + renewals first)\n\n', options: { color: C.muted, fontSize: 12.5 } },
       { text: '• Run QBRs / value reviews', options: { bold: true, color: C.text, fontSize: 13 } }, { text: ' — quantify ROI delivered to date\n\n', options: { color: C.muted, fontSize: 12.5 } },
       { text: '• Drive expansion + renewal', options: { bold: true, color: C.text, fontSize: 13 } }, { text: ' ops surfaced in July\n\n', options: { color: C.muted, fontSize: 12.5 } },
-      { text: '• Advance the open $106.9k', options: { bold: true, color: C.text, fontSize: 13 } }, { text: ' — MEDDICC on every $10k+\n\n', options: { color: C.muted, fontSize: 12.5 } },
+      { text: '• Advance the open $141.9k', options: { bold: true, color: C.text, fontSize: 13 } }, { text: ' — MEDDICC on every $10k+\n\n', options: { color: C.muted, fontSize: 12.5 } },
       { text: '• Lock the named path to H2 quota', options: { bold: true, color: C.green, fontSize: 13 } }
     ] }
   ];
@@ -424,7 +424,7 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
     ['Monday book review', 'Mondays · 60 min', 'Rank Gold accounts by ARR, renewal timing, and whitespace; set the week\'s target accounts and the plays to run.'],
     ['Account planning', 'Daily AM · 60 min', 'Build / update account plans for top Gold accounts — stakeholders, value realized, expansion paths.'],
     ['Customer conversations', 'Daily · 2–3 mtgs', 'QBRs, check-ins, and expansion discovery across the book — retention + growth, not net-new cold.'],
-    ['Pipeline advancement', 'Daily PM · 45 min', 'MEDDICC on every $10k+ open op (RLE, Upwork, HA) — EB, next step, drive it forward.'],
+    ['Pipeline advancement', 'Daily PM · 45 min', 'MEDDICC on every $10k+ open op (RLE, Hawk, Upwork, HA) — EB, next step, drive it forward.'],
     ['Renewal watch', 'Weekly · 30 min', 'Track upcoming renewals (e.g. Hawaiian Airlines $20k, Q3 2027) — no surprise churn, plan each early.'],
     ['Friday hygiene + MEDDICC', 'Weekly · 90 min', 'Day-60 disqualification sweep; update MEDDICC cards on every open op; keep the book clean.']
   ];
@@ -447,8 +447,8 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   const fc = [
     { label: 'JULY QUOTA (REDUCED)', val: '$23.4k', sub: 'full $46.75k resumes Aug', color: C.orange },
     { label: 'CONFIRMED FC', val: '$18.8k', sub: '81% of quota · 4 committed', color: C.green },
-    { label: 'WEIGHTED FC', val: '$46.1k', sub: '197% of quota', color: C.green },
-    { label: 'OPEN PIPELINE', val: '$106.9k', sub: '457% · 22 July-close', color: C.text }
+    { label: 'WEIGHTED FC', val: '$62.0k', sub: '265% of quota', color: C.green },
+    { label: 'OPEN PIPELINE', val: '$141.9k', sub: '607% · 25 July-close', color: C.text }
   ];
   fc.forEach((c, i) => {
     const x = 0.4 + i * 3.19;
@@ -461,12 +461,13 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   const dealRows = [
     ['Shopify', 'X Ads | $2k', '$1,750', 'Committed', '90%', '$1,600', C.green, true],
     ['Upwork', 'MIC/MCP | $15k', '$11,500', 'Agreement · legal/DPA', '85%', '$9,800', C.green, true],
-    ['Shronk', 'Growth | $2k', '$2,124', 'Committed', '75%', '$1,600', C.green, true],
-    ['Kraken', 'MCP | $3.5k', '$3,468', 'Committed', '70%', '$2,400', C.green, true],
+    ['Kraken', 'MCP | $3.5k', '$3,468', 'Committed', '85%', '$2,900', C.green, true],
+    ['Shronk', 'Growth | $2k', '$2,124', 'Committed', '76%', '$1,600', C.green, true],
+    ['Hawk', 'MCP | $12.5k', '$12,500', 'Qualification · new', '69%', '$8,600', C.blue, false],
     ['HA', 'Gemini Agent | $7.5k', '$7,500', 'Qualification', '65%', '$4,900', C.blue, false],
     ['RLE', 'BQ | $20k', '$20,000', 'Proof of Value · main swing', '50%', '$10,000', C.accent, true],
-    ['Other (~16)', 'Growth/MCP/Claude $2-5k', '~$60,500', '—', '~26%', '~$15,800', C.muted, false],
-    ['TOTAL', '22 July-close deals', '$106,900', '—', '43%', '$46,100', C.green, true]
+    ['Other (~18)', 'Growth/MCP/Claude $2-5k', '~$83,000', '—', '~27%', '~$22,600', C.muted, false],
+    ['TOTAL', '25 July-close deals', '$141,900', '—', '44%', '$62,000', C.green, true]
   ];
   const tbl = [
     headers.map(h => ({ text: h, options: { bold: true, color: C.muted, fontSize: 10, fill: { color: C.surface2 }, align: h === 'Account' || h === 'Opportunity' || h === 'Stage' ? 'left' : 'right' } })),
@@ -483,16 +484,16 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
       ];
     })
   ];
-  s.addTable(tbl, tableOpts(0.4, 2.55, 12.55, [1.7, 2.7, 1.3, 2.55, 1.3, 3.0], 0.34));
+  s.addTable(tbl, tableOpts(0.4, 2.55, 12.55, [1.7, 2.7, 1.3, 2.55, 1.3, 3.0], 0.30));
   s.addShape('rect', { x: 0.4, y: 5.75, w: 12.55, h: 0.5, fill: { color: '3A2520' }, line: { color: C.red, width: 0.5 } });
   s.addText([
-    { text: 'Swing / overdue (not in the $106.9k July-close): ', options: { bold: true, color: C.red } },
+    { text: 'Swing / overdue (not in the $141.9k July-close): ', options: { bold: true, color: C.red } },
     { text: 'US Soccer $40k (overdue 5/28), BlueDoor $10k (overdue 6/25), IA $5k (overdue 5/28) — re-date or disqualify', options: { color: C.text } }
   ], { x: 0.6, y: 5.8, w: 12.2, h: 0.4, fontFace: F.body, fontSize: 11, valign: 'middle' });
   s.addShape('roundRect', { x: 0.4, y: 6.35, w: 12.55, h: 0.65, fill: { color: '143A2E' }, line: { color: C.green, width: 1 }, rectRadius: 0.08 });
   s.addText([
     { text: 'The read: ', options: { bold: true, color: C.green } },
-    { text: 'July opens 197% weighted-covered with $18.8k already committed (81%) on the reduced $23.4k quota — coverage is not the risk. A no-anchor portfolio (largest weighted RLE $10k) converts on MEDDICC breadth; Upwork (85%, legal/DPA) is the strongest signal. HubSpot|MCP moved to Aug.', options: { color: C.text } }
+    { text: 'July opens 265% weighted-covered ($62.0k) with $18.8k committed (81%) on the reduced $23.4k quota. New op Hawk ($12.5k, 69%, $8.6k weighted) adds a second $10k+ swing alongside RLE ($10k). Upwork (85%, legal/DPA) is the strongest signal; MEDDICC breadth on RLE, Hawk, HA is the play.', options: { color: C.text } }
   ], { x: 0.6, y: 6.4, w: 12.2, h: 0.6, fontFace: F.body, fontSize: 10.5, valign: 'middle' });
 }
 
@@ -514,7 +515,7 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   s.addText([
     { text: '• Renewals first — Hawaiian Airlines $20k (Q3 2027) and every dated renewal, planned early\n\n', options: { color: C.text, fontSize: 13 } },
     { text: '• Expand the June-proven way — BRP, Tracer, YMCA are the template\n\n', options: { color: C.text, fontSize: 13 } },
-    { text: '• MEDDICC discipline on the open $10k+ ops (RLE, Upwork, HA)', options: { color: C.text, fontSize: 13 } }
+    { text: '• MEDDICC discipline on the open $10k+ ops (RLE, Hawk, Upwork, HA)', options: { color: C.text, fontSize: 13 } }
   ], { x: 7.0, y: 2.05, w: 5.8, h: 1.85, fontFace: F.body, valign: 'top' });
 
   s.addText('THEME & CARRY-FORWARD', { x: 0.4, y: 4.25, w: 12, h: 0.3, fontFace: F.body, fontSize: 12.5, color: C.muted, bold: true, charSpacing: 2 });
