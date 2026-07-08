@@ -347,10 +347,9 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   s.addText('JUNE OUTREACH — HubSpot + Command Center', { x: 7.0, y: 1.5, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 12, color: C.muted, bold: true, charSpacing: 1 });
   const actRows = [
     ['Emails Sent', '394', '3,093', '3,487'],
-    ['Contacts Enrolled', '—', '90', '90'],
     ['Contacts Reached', '—', '427', '427'],
     ['Accounts Touched', '—', '32', '32'],
-    ['Replies', '—', '2', '2']
+    ['Contacts Enrolled', '—', '90', '90']
   ];
   const actT = [
     [{ text: 'Metric', options: { bold: true, color: C.muted, fontSize: 11, fill: { color: C.surface } } },
@@ -364,15 +363,20 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
       { text: r[3], options: { color: i === 0 ? C.green : C.text, fontSize: 11.5, align: 'right', bold: true, fill: { color: C.surface2 } } }
     ])
   ];
-  s.addTable(actT, tableOpts(7.0, 1.9, 5.8, [2.0, 1.2, 1.3, 1.3], 0.34));
+  s.addTable(actT, tableOpts(7.0, 1.9, 5.8, [2.0, 1.2, 1.3, 1.3], 0.32));
+  s.addText('REPLY RATE — WARM (1:1) vs COLD (CADENCE)', { x: 7.0, y: 3.5, w: 5.8, h: 0.25, fontFace: F.body, fontSize: 10.5, color: C.muted, bold: true, charSpacing: 1 });
   s.addText([
-    { text: 'Reply rate 0.6%', options: { bold: true, color: C.text, fontSize: 11 } },
-    { text: '  ·  HubSpot also: 62 meetings, 0 calls  ·  Tiers: Gold 3 (498) · Bronze 17 (1,115) · Prospect 12 (975)', options: { color: C.muted, fontSize: 10 } }
-  ], { x: 7.0, y: 4.02, w: 5.8, h: 0.5, fontFace: F.body });
+    { text: '● Warm · HubSpot 1:1:  ~30%', options: { bold: true, color: C.green, fontSize: 12 } },
+    { text: '   93 replies on 313 sent', options: { color: C.muted, fontSize: 10.5 } }
+  ], { x: 7.0, y: 3.8, w: 5.8, h: 0.28, fontFace: F.body });
+  s.addText([
+    { text: '● Cold · CMS cadence:  0.6%', options: { bold: true, color: C.red, fontSize: 12 } },
+    { text: '   2 replies · Gold 3 (498) · Bronze 17 (1,115) · Prospect 12 (975)', options: { color: C.muted, fontSize: 10 } }
+  ], { x: 7.0, y: 4.12, w: 5.8, h: 0.4, fontFace: F.body });
   s.addText([
     { text: 'The read: ', options: { bold: true, color: C.blue, fontSize: 12 } },
-    { text: '3,487 total emails but low-yield — 427 reached, 0.6% reply, 2 replies — skewed to Bronze/Prospect (Gold just 3 accts). Cadence on autopilot; the KAM pivot redirects effort to the Gold base.', options: { color: C.text, fontSize: 12 } }
-  ], { x: 7.0, y: 4.62, w: 5.8, h: 1.25, fontFace: F.body, valign: 'top' });
+    { text: 'warm 1:1 emails reply ~50× the cold cadence (30% vs 0.6%). 3,487 sent but cold volume is near-dead and skewed to Bronze/Prospect — the KAM case for working warm Gold relationships, not cold volume.', options: { color: C.text, fontSize: 12 } }
+  ], { x: 7.0, y: 4.6, w: 5.8, h: 1.3, fontFace: F.body, valign: 'top' });
 
   s.addShape('roundRect', { x: 0.4, y: 6.1, w: 12.55, h: 0.85, fill: { color: C.surface2 }, line: { color: C.accent, width: 1 }, rectRadius: 0.1 });
   s.addText([
