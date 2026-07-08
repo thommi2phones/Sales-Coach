@@ -236,7 +236,7 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   s.addText('PROJECTED ATTAINMENT — JUL → OCT', { x: 7.0, y: 4.6, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 12, color: C.green, bold: true, charSpacing: 1 });
   const proj = [
     ['Month', 'Quota', 'Proj Rev', 'Pace'],
-    ['July', '$23.4k', '$46.1k wtd', '197%', C.green],
+    ['July', '$23.4k', '$18.8k conf', '81%', C.green],
     ['August', '$46.8k', '~$40k', '~86%', C.orange],
     ['September', '$46.8k', '~$40k+', '~86%+', C.orange],
     ['October', '$46.8k', '~$40k+', '~86%+', C.orange]
@@ -251,7 +251,7 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
     ])
   ];
   s.addTable(projT, tableOpts(7.0, 4.95, 5.8, [1.7, 1.2, 1.5, 1.4], 0.28));
-  s.addText('Jul over-covered on the reduced quota. Aug–Oct pace ~85% at the current ~$43k/mo pipe × 29% yield — the KAM book\'s expansion + renewals must close the ~15% gap (Sep–Oct carry seasonal upside; both strong in 2025).', { x: 7.0, y: 6.42, w: 5.8, h: 0.5, fontFace: F.body, fontSize: 9.5, color: C.muted, italic: true });
+  s.addText('Jul = confirmed FC ($18.8k, 81%) with weighted upside to $46.1k (197%). Aug–Oct pace ~85% at the current ~$43k/mo pipe × 29% yield — the KAM book\'s expansion + renewals must close the ~15% gap (Sep–Oct carry seasonal upside; both strong in 2025).', { x: 7.0, y: 6.42, w: 5.8, h: 0.5, fontFace: F.body, fontSize: 9.5, color: C.muted, italic: true });
 }
 
 // ===== S7 CLOSED EXECUTION =====
@@ -457,7 +457,7 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
     ['Shopify', 'X Ads | $2k', '$1,750', 'Committed', '90%', '$1,600', C.green, true],
     ['Upwork', 'MIC/MCP | $15k', '$11,500', 'Agreement · legal/DPA', '85%', '$9,800', C.green, true],
     ['Shronk', 'Growth | $2k', '$2,124', 'Committed', '75%', '$1,600', C.green, true],
-    ['Kraken', 'MCP | $3.5k', '$3,468', 'Pending Sales Ops reopen', '70%', '$2,400', C.orange, true],
+    ['Kraken', 'MCP | $3.5k', '$3,468', 'Committed', '70%', '$2,400', C.green, true],
     ['HA', 'Gemini Agent | $7.5k', '$7,500', 'Qualification', '65%', '$4,900', C.blue, false],
     ['RLE', 'BQ | $20k', '$20,000', 'Proof of Value · main swing', '50%', '$10,000', C.accent, true],
     ['Other (~16)', 'Growth/MCP/Claude $2-5k', '~$60,500', '—', '~26%', '~$15,800', C.muted, false],
@@ -487,7 +487,7 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   s.addShape('roundRect', { x: 0.4, y: 6.35, w: 12.55, h: 0.65, fill: { color: '143A2E' }, line: { color: C.green, width: 1 }, rectRadius: 0.08 });
   s.addText([
     { text: 'The read: ', options: { bold: true, color: C.green } },
-    { text: 'July opens 197% weighted-covered with $18.8k already committed (81%) on the reduced $23.4k quota — coverage is not the risk. A no-anchor portfolio (largest weighted RLE $10k) converts on MEDDICC breadth; Upwork (85%, legal/DPA) is the strongest signal. Kraken pending Sales Ops; HubSpot|MCP moved to Aug.', options: { color: C.text } }
+    { text: 'July opens 197% weighted-covered with $18.8k already committed (81%) on the reduced $23.4k quota — coverage is not the risk. A no-anchor portfolio (largest weighted RLE $10k) converts on MEDDICC breadth; Upwork (85%, legal/DPA) is the strongest signal. HubSpot|MCP moved to Aug.', options: { color: C.text } }
   ], { x: 0.6, y: 6.4, w: 12.2, h: 0.6, fontFace: F.body, fontSize: 10.5, valign: 'middle' });
 }
 
