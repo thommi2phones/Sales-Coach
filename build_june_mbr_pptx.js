@@ -344,32 +344,35 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
 
   // Right: June activity baseline
   s.addShape('rect', { x: 6.8, y: 1.4, w: 6.2, h: 4.5, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
-  s.addText('JUNE OUTREACH — COMMAND CENTER (email CMS)', { x: 7.0, y: 1.5, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 12, color: C.muted, bold: true, charSpacing: 1 });
+  s.addText('JUNE OUTREACH — HubSpot + Command Center', { x: 7.0, y: 1.5, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 12, color: C.muted, bold: true, charSpacing: 1 });
   const actRows = [
-    ['Emails Sent', '3,093', '155%', C.green],
-    ['Contacts Enrolled', '90', '23%', C.orange],
-    ['Contacts Reached', '427', '21%', C.red],
-    ['Accounts Touched', '32', '40%', C.orange]
+    ['Emails Sent', '394', '3,093', '3,487'],
+    ['Contacts Enrolled', '—', '90', '90'],
+    ['Contacts Reached', '—', '427', '427'],
+    ['Accounts Touched', '—', '32', '32'],
+    ['Replies', '—', '2', '2']
   ];
   const actT = [
-    [{ text: 'Metric', options: { bold: true, color: C.muted, fontSize: 12, fill: { color: C.surface } } },
-     { text: 'June', options: { bold: true, color: C.muted, fontSize: 12, align: 'right', fill: { color: C.surface } } },
-     { text: '% Goal', options: { bold: true, color: C.muted, fontSize: 12, align: 'right', fill: { color: C.surface } } }],
-    ...actRows.map(r => [
-      { text: r[0], options: { color: C.text, fontSize: 12.5, fill: { color: C.surface2 } } },
-      { text: r[1], options: { color: C.text, fontSize: 12.5, align: 'right', bold: true, fill: { color: C.surface2 } } },
-      { text: r[2], options: { color: r[3], fontSize: 12.5, align: 'right', bold: true, fill: { color: C.surface2 } } }
+    [{ text: 'Metric', options: { bold: true, color: C.muted, fontSize: 11, fill: { color: C.surface } } },
+     { text: 'HubSpot', options: { bold: true, color: C.muted, fontSize: 11, align: 'right', fill: { color: C.surface } } },
+     { text: 'Cmd Ctr', options: { bold: true, color: C.muted, fontSize: 11, align: 'right', fill: { color: C.surface } } },
+     { text: 'Total', options: { bold: true, color: C.muted, fontSize: 11, align: 'right', fill: { color: C.surface } } }],
+    ...actRows.map((r, i) => [
+      { text: r[0], options: { color: C.text, fontSize: 11.5, fill: { color: C.surface2 } } },
+      { text: r[1], options: { color: C.muted, fontSize: 11.5, align: 'right', fill: { color: C.surface2 } } },
+      { text: r[2], options: { color: C.muted, fontSize: 11.5, align: 'right', fill: { color: C.surface2 } } },
+      { text: r[3], options: { color: i === 0 ? C.green : C.text, fontSize: 11.5, align: 'right', bold: true, fill: { color: C.surface2 } } }
     ])
   ];
-  s.addTable(actT, tableOpts(7.0, 1.95, 5.8, [2.6, 1.5, 1.7], 0.42));
+  s.addTable(actT, tableOpts(7.0, 1.9, 5.8, [2.0, 1.2, 1.3, 1.3], 0.34));
   s.addText([
-    { text: 'Reply rate 0.6% · 2 replies', options: { bold: true, color: C.text, fontSize: 11.5 } },
-    { text: '   ·   Gold 3 (498 sent) · Bronze 17 (1,115) · Prospect 12 (975)', options: { color: C.muted, fontSize: 10.5 } }
-  ], { x: 7.0, y: 4.2, w: 5.8, h: 0.35, fontFace: F.body });
+    { text: 'Reply rate 0.6%', options: { bold: true, color: C.text, fontSize: 11 } },
+    { text: '  ·  HubSpot also: 62 meetings, 0 calls  ·  Tiers: Gold 3 (498) · Bronze 17 (1,115) · Prospect 12 (975)', options: { color: C.muted, fontSize: 10 } }
+  ], { x: 7.0, y: 4.02, w: 5.8, h: 0.5, fontFace: F.body });
   s.addText([
-    { text: 'The read: ', options: { bold: true, color: C.blue, fontSize: 12.5 } },
-    { text: 'volume ran hot (155%) but low-yield — 21% reached, 0.6% reply, 2 replies — and skewed to Bronze/Prospect (Gold just 3 accounts). Calls were 0. The cadence ran on autopilot; the KAM pivot redirects effort to the Gold base.', options: { color: C.text, fontSize: 12.5 } }
-  ], { x: 7.0, y: 4.65, w: 5.8, h: 1.25, fontFace: F.body, valign: 'top' });
+    { text: 'The read: ', options: { bold: true, color: C.blue, fontSize: 12 } },
+    { text: '3,487 total emails but low-yield — 427 reached, 0.6% reply, 2 replies — skewed to Bronze/Prospect (Gold just 3 accts). Cadence on autopilot; the KAM pivot redirects effort to the Gold base.', options: { color: C.text, fontSize: 12 } }
+  ], { x: 7.0, y: 4.62, w: 5.8, h: 1.25, fontFace: F.body, valign: 'top' });
 
   s.addShape('roundRect', { x: 0.4, y: 6.1, w: 12.55, h: 0.85, fill: { color: C.surface2 }, line: { color: C.accent, width: 1 }, rectRadius: 0.1 });
   s.addText([
