@@ -370,12 +370,12 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
     { text: '   93 replies on 313 sent', options: { color: C.muted, fontSize: 10.5 } }
   ], { x: 7.0, y: 3.8, w: 5.8, h: 0.28, fontFace: F.body });
   s.addText([
-    { text: '● Cold · CMS cadence:  0.6%', options: { bold: true, color: C.red, fontSize: 12 } },
-    { text: '   2 replies · Gold 3 (498) · Bronze 17 (1,115) · Prospect 12 (975)', options: { color: C.muted, fontSize: 10 } }
+    { text: '● Cold · CMS cadence:  6% by account', options: { bold: true, color: C.red, fontSize: 12 } },
+    { text: '   2 of 32 touched · 0.6% by contact', options: { color: C.muted, fontSize: 10 } }
   ], { x: 7.0, y: 4.12, w: 5.8, h: 0.4, fontFace: F.body });
   s.addText([
     { text: 'The read: ', options: { bold: true, color: C.blue, fontSize: 12 } },
-    { text: 'warm 1:1 emails reply ~50× the cold cadence (30% vs 0.6%). 3,487 sent but cold volume is near-dead and skewed to Bronze/Prospect — the KAM case for working warm Gold relationships, not cold volume.', options: { color: C.text, fontSize: 12 } }
+    { text: 'warm 1:1 replies ~30% vs cold cadence just ~6% of touched accounts (2 of 32). 3,487 emails sent but cold engagement is near-dead — the KAM case for working warm Gold relationships, not cold volume.', options: { color: C.text, fontSize: 12 } }
   ], { x: 7.0, y: 4.6, w: 5.8, h: 1.3, fontFace: F.body, valign: 'top' });
 
   s.addShape('roundRect', { x: 0.4, y: 6.1, w: 12.55, h: 0.85, fill: { color: C.surface2 }, line: { color: C.accent, width: 1 }, rectRadius: 0.1 });
