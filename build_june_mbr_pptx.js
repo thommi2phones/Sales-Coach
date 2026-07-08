@@ -463,7 +463,7 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
     ['Upwork', 'MIC/MCP | $15k', '$11,500', 'Agreement · legal/DPA', '85%', '$9,800', C.green, true],
     ['Kraken', 'MCP | $3.5k', '$3,468', 'Committed', '85%', '$2,900', C.green, true],
     ['Shronk', 'Growth | $2k', '$2,124', 'Committed', '76%', '$1,600', C.green, true],
-    ['Hawk', 'MCP | $12.5k', '$12,500', 'Qualification · new', '69%', '$8,600', C.blue, false],
+    ['Hawk', 'MCP | $12.5k', '$12,500', 'Proposal · new', '69%', '$8,600', C.accent, false],
     ['HA', 'Gemini Agent | $7.5k', '$7,500', 'Qualification', '65%', '$4,900', C.blue, false],
     ['RLE', 'BQ | $20k', '$20,000', 'Proof of Value · main swing', '50%', '$10,000', C.accent, true],
     ['Other (~18)', 'Growth/MCP/Claude $2-5k', '~$83,000', '—', '~27%', '~$22,600', C.muted, false],
