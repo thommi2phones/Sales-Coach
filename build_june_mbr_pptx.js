@@ -82,26 +82,26 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   s.addShape('rect', { x: 0.4, y: 1.4, w: 6.2, h: 4.0, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
   s.addText('JUNE MITs (FROM MAY PLAN)', { x: 0.6, y: 1.55, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
   s.addText([
-    { text: '✗  MIT #1 Restart the dial engine — TOTAL FAIL\n', options: { color: C.red, bold: true, fontSize: 12 } },
-    { text: '    The #1 fix was ≥15 dials/day. Calls went 39 → 0 — the wrong direction, against ~22 Call Prep blocks Reclaim scheduled. The block-to-dial gap went from partial (May) to total (June).\n\n', options: { color: C.muted, fontSize: 10 } },
-    { text: '✗  MIT #2 MEDDICC breadth on every $10k+ deal — FAIL\n', options: { color: C.red, bold: true, fontSize: 12 } },
-    { text: '    Every $10k+ deal that reached a close closed LOST: Unilever $40k, AdRoll $13k, AMN $12k, Celebrands $12k. The Scotiabank motion did not reach the big pipe.', options: { color: C.muted, fontSize: 10 } }
+    { text: '~  MIT #1 Restart the dial engine — SUPERSEDED BY A BOOK CHANGE\n', options: { color: C.orange, bold: true, fontSize: 12 } },
+    { text: '    Mid-month the entire book shifted and the motion changed. Cold outbound / TOFU became non-critical — effort outside the Bronze base was futile as the role moved. Calls went 39 → 0, but that is a deprioritization, not a miss — these metrics don\'t really count this month.\n\n', options: { color: C.muted, fontSize: 10 } },
+    { text: '✓  MIT #2 MEDDICC on $10k+ — TOOK HOLD IN CALL PREP\n', options: { color: C.green, bold: true, fontSize: 12 } },
+    { text: '    The Call Prep blocks became genuinely useful for framing MEDDICC-based discovery questions — the questioning discipline that now carries into the account motion. Full breadth across every $10k+ deal didn\'t land, but the habit did.', options: { color: C.muted, fontSize: 10 } }
   ], { x: 0.6, y: 1.9, w: 5.8, h: 3.4, fontFace: F.body });
 
   s.addShape('rect', { x: 6.8, y: 1.4, w: 6.2, h: 4.0, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
   s.addText('WHAT HAPPENED INSTEAD', { x: 7.0, y: 1.55, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
   s.addText([
     { text: '✓  Revenue held 87% + pipe-gen recovered ~96%\n', options: { color: C.green, bold: true, fontSize: 12 } },
-    { text: '    Both lines looked healthy — but on breadth (11 wins ≤$4.9k), one carryover (AMBSE $10k), inbound demos and expansion, not the two committed fixes.\n\n', options: { color: C.muted, fontSize: 10 } },
-    { text: '~  The structure held; the execution didn\'t\n', options: { color: C.orange, bold: true, fontSize: 12 } },
-    { text: '    ~22 Call Prep blocks on the calendar, 0 dials inside them. Scheduling the intention is not making the call — proven a second, more complete time.', options: { color: C.muted, fontSize: 10 } }
+    { text: '    Both lines healthy — on breadth (11 wins ≤$4.9k), one carryover (AMBSE $10k), inbound demos and expansion. The expansion motion is the tell for what comes next.\n\n', options: { color: C.muted, fontSize: 10 } },
+    { text: '~  The motion changed underneath the plan\n', options: { color: C.orange, bold: true, fontSize: 12 } },
+    { text: '    The book restructured mid-month — cold outbound deprioritized, focus shifting to the installed base. The May plan\'s dial + MEDDICC-breadth targets were overtaken by the KAM transition now underway.', options: { color: C.muted, fontSize: 10 } }
   ], { x: 7.0, y: 1.9, w: 5.8, h: 3.4, fontFace: F.body });
 
   s.addShape('roundRect', { x: 0.4, y: 5.65, w: 12.55, h: 1.3, fill: { color: C.surface2 }, line: { color: C.accent, width: 1 }, rectRadius: 0.1 });
   s.addText([
     { text: 'The one-sentence read: ', options: { bold: true, color: C.accent } },
-    { text: 'June didn\'t fix May\'s gap — it papered over it with volume and expansion. A green revenue number is hiding a stone-cold outbound engine and a $10k+ pipe leaking out the bottom. ', options: { color: C.text } },
-    { text: 'That\'s a Q3 revenue risk, not a recovery.', options: { bold: true, color: C.orange } }
+    { text: 'June held revenue at 87% and recovered pipe-gen — and mid-month the book and role changed, retiring the outbound motion the May plan was built on. ', options: { color: C.text } },
+    { text: 'July is a transition month: a new KAM book, not a dial sprint.', options: { bold: true, color: C.orange } }
   ], { x: 0.6, y: 5.75, w: 12.15, h: 1.1, fontFace: F.body, fontSize: 13, valign: 'middle' });
 }
 
@@ -118,58 +118,26 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
       { text: '✓  Meetings held up (62, up from 54) — inbound demand real and being worked', options: { color: C.text } }
     ] },
     { accent: C.red, title: 'WHERE I NEED TO IMPROVE', body: [
-      { text: '✗  Calls went to ZERO — 39 → 0. ', options: { color: C.red, bold: true } },
-      { text: '~22 Call Prep blocks, 0 dials. The #1 MIT moved backward.\n\n', options: { color: C.muted } },
-      { text: '✗  Every $10k+ deal closed LOST — Unilever $40k, AdRoll $13k, AMN $12k, Celebrands $12k\n\n', options: { color: C.text } },
-      { text: '✗  Stale deals still dying at 300+ days — day-60 disqualification not enforced\n\n', options: { color: C.text } },
-      { text: '✗  Self-generated pipe near zero — contacts halved (90); no outbound floor under the number', options: { color: C.text } }
+      { text: '~  Outbound wound down with the book change — ', options: { color: C.orange, bold: true } },
+      { text: 'calls 39 → 0 as cold TOFU was deprioritized. Not a miss, but the KAM motion still needs its own activity rhythm.\n\n', options: { color: C.muted } },
+      { text: '✗  Big deals still leaked — ', options: { color: C.red, bold: true } },
+      { text: 'the $10k+ deals that reached a close were mostly overdue / dead ops that never got the full motion. Don\'t carry zombies into the new book.\n\n', options: { color: C.muted } },
+      { text: '✗  Day-60 hygiene not enforced — ', options: { color: C.red, bold: true } },
+      { text: 'stale deals inflated pipe, then died. Clean the book on day one of the KAM transition.\n\n', options: { color: C.muted } },
+      { text: '~  Small-deal breadth won\'t scale — ', options: { color: C.orange, bold: true } },
+      { text: 'a month of ≤$5k deals hit 87%, but the gold base is where the real ACV lives.', options: { color: C.muted } }
     ] },
     { accent: C.accent, title: 'KEY DEAL LEARNINGS', body: [
       { text: 'The composition tells the story: ', options: { bold: true, color: C.text } },
       { text: '11 of 12 wins were ≤$4.9k; the only $10k win (AMBSE) was already on the board.\n\n', options: { color: C.muted } },
-      { text: 'Unilever ($40k, created 8/2025): ', options: { bold: true, color: C.text } },
-      { text: 'the ~10-month stale death the day-60 rule was meant to prevent.\n\n', options: { color: C.muted } },
-      { text: 'AMN ($12k): ', options: { bold: true, color: C.text } },
-      { text: 'sat as live pipe for months, never got an EB — the DTCC lesson, repeated.\n\n', options: { color: C.muted } },
-      { text: 'The volume bill: ', options: { bold: true, color: C.text } },
-      { text: 'two months off the phones is invisible in June\'s revenue but is the Q3 pipeline risk.', options: { color: C.muted } }
+      { text: 'Expansion is the durable engine: ', options: { bold: true, color: C.text } },
+      { text: 'BRP, Tracer, YMCA, Promega, CFG all grew inside the installed base — the exact motion the new KAM book is built to run.\n\n', options: { color: C.muted } },
+      { text: 'MEDDICC questioning took hold: ', options: { bold: true, color: C.text } },
+      { text: 'Call Prep sharpened discovery on live deals — a habit to carry into account planning.\n\n', options: { color: C.muted } },
+      { text: 'The $10k+ lesson still stands: ', options: { bold: true, color: C.text } },
+      { text: 'big deals convert only with the full EB / multi-thread motion (Scotiabank proof) — now aimed at the gold base.', options: { color: C.muted } }
     ] }
   ]);
-}
-
-// ===== S4b THE $10k+ LOSSES =====
-{ const s = pres.addSlide({ masterName: 'DARK' });
-  slideTitle(s, '4b', 'The $10k+ Losses — Anatomy of the Pattern');
-  s.addText('Every deal ≥$10k that closed in June closed lost — Unilever $40k, AdRoll $13k, AMN $12k, Celebrands $12k. The inverse of May\'s Scotiabank win. The same lesson, third month.', { x: 0.4, y: 1.3, w: 12.6, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted });
-  const cols = [
-    { accent: C.red, title: 'WHAT WENT WRONG', body: [
-      { text: '✗  Unilever Prestige ($40k) — created 8/2025, ~10-month cycle that never had a real next step\n\n', options: { color: C.text, fontSize: 10 } },
-      { text: '✗  AdRoll ($13k) — created 6/2025, another ~12-month zombie that died loud\n\n', options: { color: C.text, fontSize: 10 } },
-      { text: '✗  AMN ($12k) — named in the April pipeline, sat as live pipe for months with no EB\n\n', options: { color: C.text, fontSize: 10 } },
-      { text: '✗  Celebrands ($12k) — entered and died in ~10 days, never qualified', options: { color: C.text, fontSize: 10 } }
-    ] },
-    { accent: C.orange, title: 'WHY THEY DIED', body: [
-      { text: '• No EB / technical multi-thread — the motion that saved Scotiabank never ran\n\n', options: { color: C.muted, fontSize: 10 } },
-      { text: '• Day-60 disqualification not enforced — zombies inflated pipe, then imploded\n\n', options: { color: C.muted, fontSize: 10 } },
-      { text: '• Email-only follow-up on $10k+ deals — email doesn\'t advance or save the big deals\n\n', options: { color: C.muted, fontSize: 10 } },
-      { text: '• The rep was reacting to inbound, not driving the late-stage motion on the big pipe', options: { color: C.text, fontSize: 10, bold: true } }
-    ] },
-    { accent: C.green, title: 'THE REPLICABLE FIX', body: [
-      { text: '• EB engaged before pricing on every $10k+ deal\n\n', options: { color: C.text, fontSize: 10 } },
-      { text: '• Prep brief + technical multi-thread — the Scotiabank standard\n\n', options: { color: C.text, fontSize: 10 } },
-      { text: '• Security/legal docs pushed early; day-60 disqualification swept every Friday\n\n', options: { color: C.text, fontSize: 10 } },
-      { text: 'So what: ', options: { color: C.green, fontSize: 10, bold: true } },
-      { text: 'now the standard for Upwork, RLE, Shubert, TaxAct, BlueDoor — July\'s $10k+ pipe', options: { color: C.muted, fontSize: 10 } }
-    ] }
-  ];
-  const cw = 4.05, gap = 0.2, sx = 0.4, sy = 1.7, ch = 4.9;
-  cols.forEach((p, i) => {
-    const x = sx + i * (cw + gap);
-    s.addShape('rect', { x, y: sy, w: cw, h: ch, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
-    s.addShape('rect', { x, y: sy, w: 0.05, h: ch, fill: { color: p.accent }, line: { width: 0 } });
-    s.addText(p.title, { x: x + 0.15, y: sy + 0.12, w: cw - 0.25, h: 0.3, fontFace: F.body, fontSize: 10, bold: true, color: p.accent, charSpacing: 1 });
-    s.addText(p.body, { x: x + 0.15, y: sy + 0.5, w: cw - 0.25, h: ch - 0.6, fontFace: F.body, valign: 'top' });
-  });
 }
 
 // ===== S5 PIPELINE GEN =====
@@ -229,27 +197,30 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   s.addTable(pgT, tableOpts(0.4, 1.8, 6.1, [2.6, 1.7, 1.8], 0.42));
   s.addText('50 → 90 → 89 → 103 → 54 → 96.  The pipe-gen arc recovered.', { x: 0.4, y: 4.95, w: 6.1, h: 0.3, fontFace: F.body, fontSize: 10, color: C.muted, italic: true });
   // Revenue table
-  s.addText('REVENUE % TO QUOTA', { x: 6.9, y: 1.45, w: 6, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
+  s.addText('REVENUE % TO QUOTA — ALL MONTHS', { x: 6.9, y: 1.45, w: 6, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
   const rv = [
     ['Month', 'Revenue', '% Quota'],
-    ['April', '$17,213', '37%', C.red],
-    ['May', '$40,379', '86%', C.green],
-    ['June', '$40,605', '87%', C.green]
+    ['January', '$52,590', '131%', C.green, false],
+    ['February', '$43,667', '109%', C.green, false],
+    ['March', '$58,465', '133%', C.green, false],
+    ['April', '$17,213', '37%', C.red, false],
+    ['May', '$40,379', '86%', C.green, false],
+    ['June', '$40,605', '87%', C.green, false],
+    ['YTD (Jan–Jun)', '$252,919', '96% pace', C.orange, true]
   ];
   const rvT = [
     rv[0].map(h => ({ text: h, options: { bold: true, color: C.muted, fill: { color: C.surface2 }, fontSize: 11, align: h === 'Month' ? 'left' : (h === 'Revenue' ? 'right' : 'center') } })),
-    ...rv.slice(1).map((r, i) => r.slice(0, 3).map((c, j) => ({
-      text: c, options: { bold: i === 2 || j === 2, color: j === 2 ? r[3] : (i === 2 ? C.white : C.text), fill: { color: i === 2 ? '143A2E' : C.surface }, fontSize: 12, align: j === 0 ? 'left' : (j === 1 ? 'right' : 'center') }
+    ...rv.slice(1).map((r) => r.slice(0, 3).map((c, j) => ({
+      text: c, options: { bold: r[4] || j === 2, color: j === 2 ? r[3] : (r[4] ? C.white : C.text), fill: { color: r[4] ? '3D2E0D' : C.surface }, fontSize: 12, align: j === 0 ? 'left' : (j === 1 ? 'right' : 'center') }
     })))
   ];
-  s.addTable(rvT, tableOpts(6.9, 1.8, 6.1, [2.3, 2.2, 1.6], 0.42));
-  s.addText('37 → 86 → 87.  Two straight months near quota — but calls: 280 → 39 → 0.', { x: 6.9, y: 3.15, w: 6.1, h: 0.3, fontFace: F.body, fontSize: 10, color: C.muted, italic: true });
+  s.addTable(rvT, tableOpts(6.9, 1.8, 6.1, [2.3, 2.2, 1.6], 0.40));
 
   s.addShape('roundRect', { x: 0.4, y: 5.5, w: 12.55, h: 1.3, fill: { color: C.surface2 }, line: { color: C.accent, width: 1 }, rectRadius: 0.1 });
   s.addText([
-    { text: 'The pattern: ', options: { bold: true, color: C.accent } },
-    { text: 'both headline lines are green — revenue held, pipe-gen recovered. But the calls line (280 → 39 → 0) kept breaking, and every $10k+ close was a loss. ', options: { color: C.text } },
-    { text: 'The scorecard is green; the engine underneath is cold.', options: { bold: true, color: C.orange } }
+    { text: 'YTD pacing: ', options: { bold: true, color: C.accent } },
+    { text: 'six months in, revenue is at ~96% of cumulative quota — April (37%) is the only real dent, offset by three months over 100%. ', options: { color: C.text } },
+    { text: 'The base is solid heading into the KAM transition; H2 is about converting the gold book to close the gap.', options: { bold: true, color: C.orange } }
   ], { x: 0.6, y: 5.6, w: 12.2, h: 1.1, fontFace: F.body, fontSize: 14, valign: 'middle' });
 }
 
@@ -259,8 +230,8 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   const stats = [
     { label: 'REVENUE (WON)', val: '$40.6k', sub: '87% to quota · 12 deals', color: C.green },
     { label: 'BIGGEST WIN', val: '$10k', sub: 'AMBSE · carryover, not new', color: C.orange },
-    { label: 'CLOSED LOST (Y1 ACV)', val: '~$93k', sub: '9 deals · every $10k+ lost', color: C.red },
-    { label: 'NET CLOSED ACTIVITY', val: '−$52k', sub: 'Won minus lost', color: C.red }
+    { label: 'CLOSED LOST (Y1 ACV)', val: '~$81k', sub: '8 deals · mostly stale/dead ops', color: C.red },
+    { label: 'NET CLOSED ACTIVITY', val: '−$40k', sub: 'Won minus lost', color: C.red }
   ];
   stats.forEach((st, i) => {
     const x = 0.4 + i * 3.2;
@@ -274,147 +245,155 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   const tbl = [
     [mk('Story', C.muted, true, 11), mk('Deals', C.muted, true, 11), { text: 'Lost ACV', options: { color: C.muted, bold: true, fontSize: 11, align: 'right', fill: { color: C.surface2 } } }, mk('So what', C.muted, true, 11)].map(o => (o.options.fill = { color: C.surface2 }, o)),
     [mk('Stale-deal deaths (300+ days)', C.text, true, 11), mk('Unilever Prestige ($40k, created 8/2025), AdRoll ($13k, created 6/2025)', C.text, false, 10), { text: '~$53,000', options: { color: C.red, bold: true, fontSize: 11, align: 'right', fill: { color: C.surface } } }, mk('~10–12 mo cycles, no real next step. The Industry Dive death, repeated.', C.muted, false, 10)],
-    [mk('$10k+ that never got the motion', C.text, true, 11), mk('AMN ($12k, in the April pipe), Celebrands ($12k, died in ~10d)', C.text, false, 10), { text: '~$24,000', options: { color: C.red, bold: true, fontSize: 11, align: 'right', fill: { color: C.surface } } }, mk('MEDDICC breadth (May MIT) never reached them. No EB; Celebrands died unqualified.', C.muted, false, 10)],
+    [mk('$10k+ that never got the motion', C.text, true, 11), mk('AMN ($12k, in the April pipe) — overdue / dead op', C.text, false, 10), { text: '~$12,000', options: { color: C.red, bold: true, fontSize: 11, align: 'right', fill: { color: C.surface } } }, mk('MEDDICC breadth never reached it; no EB. A dead op, not a live-deal loss.', C.muted, false, 10)],
     [mk('Mid / small cleanup', C.text, true, 11), mk('Charter One ($6k), Furnished Finder ($4k), Poppy ($2k), PSA ($2k), AHS ($2k)', C.text, false, 10), { text: '~$16,000', options: { color: C.red, bold: true, fontSize: 11, align: 'right', fill: { color: C.surface } } }, mk('Long-cycle small deals dispositioned — the healthy part of the number.', C.muted, false, 10)]
   ];
   s.addTable(tbl, tableOpts(0.4, 3.3, 12.55, [2.8, 4.6, 1.4, 3.75], 0.62));
   s.addShape('roundRect', { x: 0.4, y: 6.05, w: 12.55, h: 0.9, fill: { color: '3A2520' }, line: { color: C.red, width: 1 }, rectRadius: 0.1 });
   s.addText([
-    { text: 'The lesson, three months old: ', options: { bold: true, color: C.red } },
-    { text: 'the $10k+ pipe converts only when the full MEDDICC/EB/security motion runs on it (Scotiabank $35k), and it dies when it doesn\'t (Unilever, AdRoll, AMN, Celebrands). ', options: { color: C.text } },
-    { text: 'July\'s job: give every $10k+ deal the Scotiabank treatment.', options: { bold: true, color: C.orange } }
+    { text: 'The read: ', options: { bold: true, color: C.red } },
+    { text: 'the $10k+ that closed lost were mostly overdue / dead ops (Unilever, AdRoll, AMN) that never got the full motion — not live deals fumbled. (Celebrands excluded — ~$1k closed, split across two ops.) ', options: { color: C.text } },
+    { text: 'The KAM job: give the gold base the Scotiabank-grade motion so the real ACV converts.', options: { bold: true, color: C.orange } }
   ], { x: 0.6, y: 6.12, w: 12.2, h: 0.75, fontFace: F.body, fontSize: 12, valign: 'middle' });
 }
 
 // ===== S8 JULY MITs =====
 { const s = pres.addSlide({ masterName: 'DARK' });
-  slideTitle(s, 8, 'July MITs');
-  const mits = [
-    { accent: C.blue, num: '1', title: 'TURN THE PHONES ON — MEASURED', body: [
-      { text: 'Dials have been cold two months (39 → 0). The Call Prep block clearly isn\'t enough — pair every block with a ', options: { color: C.text, fontSize: 13 } },
-      { text: '≥15 logged-dial/day target', options: { bold: true, color: C.text, fontSize: 13 } },
-      { text: ', a same-day dial count, and a weekly 1:1 accountability check. 300+ dials for July. This is now non-negotiable and escalated.\n\n', options: { color: C.text, fontSize: 13 } },
-      { text: 'The headline MIT — June hit the number on inbound while the outbound engine stayed stone cold. July refuses that.', options: { italic: true, color: C.muted, fontSize: 11 } } ] },
-    { accent: C.accent, num: '2', title: 'CONVERT THE $10k+ PIPE — STOP LIVING ON <$5k BREADTH', body: [
-      { text: 'June hit 87% on 11 small deals + one carryover while every $10k+ deal died. Run the full Scotiabank-style MEDDICC/EB/security motion across Upwork, RLE, Shubert, TaxAct, BlueDoor. Enforce day-60 disqualification (the Unilever/AdRoll lesson).\n\n', options: { color: C.text, fontSize: 13 } },
-      { text: 'June proved I can hit the number on breadth. July must prove I can close big deals again — quality and self-generated volume at once.', options: { italic: true, color: C.muted, fontSize: 11 } } ] }
-  ];
-  mits.forEach((m, i) => {
-    const x = 0.4 + i * 6.4;
-    s.addShape('rect', { x, y: 1.5, w: 6.2, h: 5.0, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
-    s.addShape('rect', { x, y: 1.5, w: 0.08, h: 5.0, fill: { color: m.accent }, line: { width: 0 } });
-    s.addShape('ellipse', { x: x + 0.35, y: 1.75, w: 0.8, h: 0.8, fill: { color: m.accent }, line: { width: 0 } });
-    s.addText(m.num, { x: x + 0.35, y: 1.78, w: 0.8, h: 0.75, fontFace: F.head, fontSize: 32, bold: true, color: C.white, align: 'center' });
-    s.addText(m.title, { x: x + 1.3, y: 1.8, w: 4.7, h: 0.85, fontFace: F.head, fontSize: 15, bold: true, color: m.accent, charSpacing: 1, valign: 'middle' });
-    s.addText(m.body, { x: x + 0.35, y: 2.8, w: 5.65, h: 3.5, fontFace: F.body, valign: 'top' });
-  });
+  slideTitle(s, 8, 'July MIT — Get a Handle on the New KAM Book');
+  // Context banner — the motion change
+  s.addShape('roundRect', { x: 0.4, y: 1.35, w: 12.55, h: 1.15, fill: { color: '231D3D' }, line: { color: C.accent, width: 1.5 }, rectRadius: 0.1 });
+  s.addText([
+    { text: 'The motion is changing. ', options: { bold: true, color: C.accent, fontSize: 13 } },
+    { text: 'We are reverting from the all-bound AE motion (one AE owns inbound + outbound + expansion) back to the 2024 customer-growth model I led. I move from manager to ', options: { color: C.text, fontSize: 13 } },
+    { text: 'Key Account Manager (KAM)', options: { bold: true, color: C.text, fontSize: 13 } },
+    { text: ' on the brand side — owning a defined book of accounts, not chasing net-new cold.', options: { color: C.text, fontSize: 13 } }
+  ], { x: 0.6, y: 1.45, w: 12.15, h: 0.95, fontFace: F.body, valign: 'middle' });
+
+  // Single MIT card
+  s.addShape('rect', { x: 0.4, y: 2.7, w: 12.55, h: 3.15, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
+  s.addShape('rect', { x: 0.4, y: 2.7, w: 0.08, h: 3.15, fill: { color: C.blue }, line: { width: 0 } });
+  s.addShape('ellipse', { x: 0.75, y: 2.95, w: 0.8, h: 0.8, fill: { color: C.blue }, line: { width: 0 } });
+  s.addText('1', { x: 0.75, y: 2.98, w: 0.8, h: 0.75, fontFace: F.head, fontSize: 32, bold: true, color: C.white, align: 'center' });
+  s.addText('LEARN THE BOOK & BUILD THE PATH TO QUOTA', { x: 1.7, y: 3.0, w: 11.0, h: 0.5, fontFace: F.head, fontSize: 17, bold: true, color: C.blue, valign: 'middle' });
+  s.addText([
+    { text: 'The book: ', options: { bold: true, color: C.text, fontSize: 13 } },
+    { text: '~75 Gold accounts + ~70 Scaled / Bronze = ~145 accounts. ', options: { color: C.text, fontSize: 13 } },
+    { text: 'The whole of July is understanding this book cold and finding where the opportunity is to make quota for the rest of the year.\n\n', options: { color: C.muted, fontSize: 12 } },
+    { text: '•  Map & tier the Gold base — health, spend, whitespace, renewal timing\n', options: { color: C.text, fontSize: 12 } },
+    { text: '•  Build account plans for the top Gold accounts (biggest ARR / nearest renewals first)\n', options: { color: C.text, fontSize: 12 } },
+    { text: '•  Surface expansion + renewal opportunity — e.g. Hawaiian Airlines $20k MIC+DWH renewal\n', options: { color: C.text, fontSize: 12 } },
+    { text: '•  Identify the 2–3 plays with the clearest path to revenue in H2\n', options: { color: C.text, fontSize: 12 } },
+    { text: '•  No cold-call focus — the motion is retain, deepen, and expand the installed base', options: { color: C.text, fontSize: 12 } }
+  ], { x: 0.75, y: 3.75, w: 11.9, h: 2.05, fontFace: F.body, valign: 'top' });
+
+  s.addShape('roundRect', { x: 0.4, y: 6.05, w: 12.55, h: 0.9, fill: { color: '13392D' }, line: { color: C.green, width: 1 }, rectRadius: 0.1 });
+  s.addText([
+    { text: 'This is the only MIT this month. ', options: { bold: true, color: C.green, fontSize: 13 } },
+    { text: 'July is a ramp: success is a clear, tiered book strategy and coverage of the Gold base — not an activity or dial count. Get the book right and H2 quota has a plan behind it.', options: { color: C.text, fontSize: 13 } }
+  ], { x: 0.6, y: 6.12, w: 12.15, h: 0.75, fontFace: F.body, valign: 'middle' });
 }
 
 // ===== S9 FUNNEL MATH =====
 { const s = pres.addSlide({ masterName: 'DARK' });
-  slideTitle(s, 9, 'July Funnel Math — Top-Down Derivation');
+  slideTitle(s, 9, 'July Plan — KAM Book & Path to Quota');
+  // Left: the book & the math
   s.addShape('rect', { x: 0.4, y: 1.4, w: 6.2, h: 4.5, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
-  s.addText('LOCKED INPUTS', { x: 0.6, y: 1.5, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
+  s.addText('THE BOOK & THE MATH', { x: 0.6, y: 1.5, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
   s.addText([
-    { text: '• July revenue quota: ', options: { color: C.text, fontSize: 12 } }, { text: '$23,400', options: { bold: true, color: C.orange, fontSize: 12 } }, { text: ' (reduced — July only; full $46,750 resumes Aug)\n', options: { color: C.text, fontSize: 12 } },
-    { text: '• Pipeline goal: ', options: { color: C.text, fontSize: 12 } }, { text: '$187,000', options: { bold: true, color: C.text, fontSize: 12 } }, { text: ' (held at full-month 4×)\n', options: { color: C.text, fontSize: 12 } },
-    { text: '• Plan target: ', options: { color: C.text, fontSize: 12 } }, { text: '$200,000', options: { bold: true, color: C.text, fontSize: 12 } }, { text: ' (+7% buffer)\n', options: { color: C.text, fontSize: 12 } },
-    { text: '• ACV baseline: ', options: { color: C.text, fontSize: 12 } }, { text: '$11,000', options: { bold: true, color: C.text, fontSize: 12 } }, { text: ' (6-mo avg) — but June\'s actual win ACV was ~$3.4k; the gap IS the coaching point', options: { color: C.text, fontSize: 12 } }
-  ], { x: 0.6, y: 1.85, w: 5.8, h: 1.7, fontFace: F.body });
-  s.addText('BACKED-OUT TARGETS', { x: 0.6, y: 3.7, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
+    { text: '• July revenue quota: ', options: { color: C.text, fontSize: 12 } }, { text: '$23,400', options: { bold: true, color: C.orange, fontSize: 12 } }, { text: ' (reduced; full $46,750 resumes Aug)\n', options: { color: C.text, fontSize: 12 } },
+    { text: '• The book: ', options: { color: C.text, fontSize: 12 } }, { text: '~145 accounts', options: { bold: true, color: C.text, fontSize: 12 } }, { text: ' — 75 Gold + 70 Scaled/Bronze\n', options: { color: C.text, fontSize: 12 } },
+    { text: '• Open July pipe: ', options: { color: C.text, fontSize: 12 } }, { text: '$106.9k', options: { bold: true, color: C.green, fontSize: 12 } }, { text: ' · 457% coverage · $46.1k weighted (197%)\n', options: { color: C.text, fontSize: 12 } },
+    { text: '• The July math is ', options: { color: C.text, fontSize: 12 } }, { text: 'book coverage', options: { bold: true, color: C.blue, fontSize: 12 } }, { text: ', not cold-funnel throughput — cover the Gold base and surface the expansion/renewal that funds H2 quota.', options: { color: C.text, fontSize: 12 } }
+  ], { x: 0.6, y: 1.9, w: 5.8, h: 2.4, fontFace: F.body });
+  s.addText('PATH TO H2 QUOTA', { x: 0.6, y: 4.15, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
   s.addText([
-    { text: '• Deals needed: ', options: { color: C.text, fontSize: 12 } }, { text: '~18', options: { bold: true, color: C.text, fontSize: 12 } }, { text: ' ($200k ÷ $11k)\n', options: { color: C.text, fontSize: 12 } },
-    { text: '• Booked meetings: ', options: { color: C.text, fontSize: 12 } }, { text: '~60', options: { bold: true, color: C.text, fontSize: 12 } }, { text: '\n', options: { color: C.text, fontSize: 12 } },
-    { text: '• Contacts enrolled: ', options: { color: C.text, fontSize: 12 } }, { text: '~330', options: { bold: true, color: C.text, fontSize: 12 } }, { text: ' (June halved to 90 — push back up)\n', options: { color: C.text, fontSize: 12 } },
-    { text: '• Calls: ', options: { color: C.text, fontSize: 12 } }, { text: '~300', options: { bold: true, color: C.green, fontSize: 12 } }, { text: ' — the explicit fix for the June miss (0 → 300)', options: { color: C.text, fontSize: 12 } }
-  ], { x: 0.6, y: 4.05, w: 5.8, h: 1.8, fontFace: F.body });
+    { text: '• Retain the renewals in the book (e.g. Hawaiian Airlines $20k)\n', options: { color: C.text, fontSize: 12 } },
+    { text: '• Expand the installed base — June\'s expansion wins (BRP, Tracer, YMCA) are the template\n', options: { color: C.text, fontSize: 12 } },
+    { text: '• Convert the $106.9k open with MEDDICC discipline on every $10k+', options: { color: C.text, fontSize: 12 } }
+  ], { x: 0.6, y: 4.5, w: 5.8, h: 1.35, fontFace: F.body });
 
+  // Right: June activity baseline
   s.addShape('rect', { x: 6.8, y: 1.4, w: 6.2, h: 4.5, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
-  s.addText('JUNE BASELINE → JULY TARGET', { x: 7.0, y: 1.5, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
-  const dataRows = [
-    ['Calls logged', '0', '300', 'from zero', C.green, true],
-    ['Contacts created', '90', '330', '+267%', C.green, false],
-    ['Emails sent', '394', '1,000', '+154%', C.green, false],
-    ['Meetings', '62', '60', '~flat', C.text, false],
-    ['New deals', '23', '~18', 'fewer · larger', C.orange, false],
-    ['Pipe generated', '~$179k', '$200k', '+12%', C.green, true]
-  ].map(r => [
-    { text: r[0], options: { color: C.text, fontSize: 11, bold: r[5], fill: { color: r[5] ? C.surface2 : C.surface } } },
-    { text: r[1], options: { color: C.text, fontSize: 11, align: 'right', bold: r[5], fill: { color: r[5] ? C.surface2 : C.surface } } },
-    { text: r[2], options: { color: C.text, fontSize: 11, align: 'right', bold: r[5], fill: { color: r[5] ? C.surface2 : C.surface } } },
-    { text: r[3], options: { color: r[4], fontSize: 11, align: 'right', bold: true, fill: { color: r[5] ? C.surface2 : C.surface } } }
-  ]);
-  const tblData = [
+  s.addText('JUNE ACTIVITY BASELINE (HubSpot / Command Center)', { x: 7.0, y: 1.5, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 10.5, color: C.muted, bold: true, charSpacing: 1 });
+  const actRows = [
+    ['Meetings', '62', 'Healthy inbound + customer load (~2.8/day)', C.green],
+    ['Emails logged', '394', 'Down, still the primary written channel', C.text],
+    ['New contacts', '90', 'Lighter — top-of-list enrollment slowed', C.text],
+    ['Calls / dials', '0', 'Cold dials deprioritized — intentional', C.orange]
+  ];
+  const actT = [
     [{ text: 'Activity', options: { bold: true, color: C.muted, fontSize: 10, fill: { color: C.surface } } },
      { text: 'June', options: { bold: true, color: C.muted, fontSize: 10, align: 'right', fill: { color: C.surface } } },
-     { text: 'July', options: { bold: true, color: C.muted, fontSize: 10, align: 'right', fill: { color: C.surface } } },
-     { text: 'Δ', options: { bold: true, color: C.muted, fontSize: 10, align: 'right', fill: { color: C.surface } } }],
-    ...dataRows
+     { text: 'Read', options: { bold: true, color: C.muted, fontSize: 10, fill: { color: C.surface } } }],
+    ...actRows.map(r => [
+      { text: r[0], options: { color: C.text, fontSize: 11, fill: { color: C.surface2 } } },
+      { text: r[1], options: { color: r[3], fontSize: 11, align: 'right', bold: true, fill: { color: C.surface2 } } },
+      { text: r[2], options: { color: C.muted, fontSize: 10, fill: { color: C.surface2 } } }
+    ])
   ];
-  s.addTable(tblData, tableOpts(7.0, 1.85, 5.8, [2.4, 1.0, 1.0, 1.4], 0.42));
-  s.addText('The big lever is calls. June\'s 0 is the number to fix; everything else follows from putting dials back inside the ~22 Call Prep blocks that already exist and go unused.', { x: 7.0, y: 5.1, w: 5.8, h: 0.7, fontFace: F.body, fontSize: 10, color: C.muted, italic: true });
+  s.addTable(actT, tableOpts(7.0, 1.9, 5.8, [1.7, 0.8, 3.3], 0.5));
+  s.addText([
+    { text: 'The read: ', options: { bold: true, color: C.blue, fontSize: 11 } },
+    { text: 'June ran on inbound demand + expansion — meetings healthy, cold outbound at zero by design. In the KAM motion that is the point: the KPI shifts from dials to account coverage, retention, and expansion pipeline.', options: { color: C.text, fontSize: 11 } }
+  ], { x: 7.0, y: 4.15, w: 5.8, h: 1.7, fontFace: F.body });
+
   s.addShape('roundRect', { x: 0.4, y: 6.1, w: 12.55, h: 0.85, fill: { color: C.surface2 }, line: { color: C.accent, width: 1 }, rectRadius: 0.1 });
   s.addText([
     { text: 'The shift: ', options: { bold: true, color: C.accent } },
-    { text: 'April proved volume. May proved conversion. June proved breadth+inbound. ', options: { color: C.text } },
-    { text: 'July proves the outbound floor', options: { bold: true, color: C.green } },
-    { text: ' — the dial engine back on, with Scotiabank-grade MEDDICC behind every $10k+ deal.', options: { color: C.text } }
+    { text: 'the old top-down funnel math (quota → pipe → dials) retires with the AE motion. ', options: { color: C.text } },
+    { text: 'July\'s math is book coverage', options: { bold: true, color: C.blue } },
+    { text: ' — 75 Gold accounts mapped and planned, expansion/renewal surfaced, the $106.9k open converted.', options: { color: C.text } }
   ], { x: 0.6, y: 6.18, w: 12.2, h: 0.7, fontFace: F.body, fontSize: 12, valign: 'middle' });
 }
 
 // ===== S10 DAILY ACTIVITY =====
 { const s = pres.addSlide({ masterName: 'DARK' });
-  slideTitle(s, 10, 'July Daily Activity Targets');
-  s.addText('22 working days in July (Jul 1–31; Jul 3 holiday for July 4 observed). The June lesson: a block on the calendar is not a dial made — zero dials on 22 blocks proves the block alone does nothing. July counts dials, not blocks.', { x: 0.4, y: 1.3, w: 12.6, h: 0.4, fontFace: F.body, fontSize: 11, color: C.muted });
-  const headers = ['Activity', 'Monthly', 'Weekly (avg)', 'Daily (22d)', 'Notes'];
+  slideTitle(s, 10, 'July KAM Activity Plan — Working the Book');
+  s.addText('The KAM motion replaces cold-outbound targets with book coverage. 22 working days in July (Jul 3 holiday). The measure this month is the Gold base mapped, planned, and touched — not dials.', { x: 0.4, y: 1.3, w: 12.6, h: 0.4, fontFace: F.body, fontSize: 11, color: C.muted });
+  const headers = ['KAM Activity', 'Monthly', 'Weekly (avg)', 'Notes'];
   const rows = [
-    ['Calls / dials', '300', '~75', '~15/day', 'The June miss (0). Logged inside Call Prep blocks', true],
-    ['New contacts enrolled', '330', '~83', '~15/day', 'Email-verified before enroll', false],
-    ['Emails sent (cadence)', '1,000', '~250', '~46/day', 'Cadence queue worked AM', false],
-    ['LinkedIn touches', '~210', '~52', '~10/day', '5 connect + 3 InMail + 3 comments', false],
-    ['Net-new accounts worked', '~70', '~17', '~3-4/day', 'Mon list-build to put an outbound floor down', false],
-    ['Booked meetings', '60', '~15', '~3/day', 'Balance closing + new', false],
-    ['Net-new deals created', '~18', '~4-5', '~1/day', 'Fewer, larger · $11k+ ACV', false]
+    ['Gold accounts reviewed & tiered', '75', '~19', 'Cover the full Gold base at least once — health, spend, whitespace', true],
+    ['Account plans built', '~20', '~5', 'Top Gold accounts first (biggest ARR / nearest renewals)', false],
+    ['Customer meetings / QBRs', '~40', '~10', 'Retention + expansion conversations across the book', false],
+    ['Expansion / renewal ops surfaced', '~10', '~2-3', 'Whitespace + renewal timing (e.g. Hawaiian Airlines $20k)', false],
+    ['Open pipeline advanced', '$106.9k', 'weekly', 'MEDDICC discipline on every $10k+ open deal', false],
+    ['Cold dials', '0', '—', 'Deprioritized in the KAM motion — not a July KPI', false]
   ];
   const tblD = [
-    headers.map(h => ({ text: h, options: { bold: true, color: C.muted, fontSize: 11, fill: { color: C.surface2 }, align: h === 'Activity' || h === 'Notes' ? 'left' : 'right' } })),
+    headers.map(h => ({ text: h, options: { bold: true, color: C.muted, fontSize: 11, fill: { color: C.surface2 }, align: h === 'KAM Activity' || h === 'Notes' ? 'left' : 'right' } })),
     ...rows.map(r => [
-      { text: r[0], options: { bold: r[5], color: C.text, fontSize: 12, fill: { color: r[5] ? C.surface2 : C.surface } } },
-      { text: r[1], options: { color: C.text, fontSize: 12, align: 'right', fill: { color: r[5] ? C.surface2 : C.surface } } },
-      { text: r[2], options: { color: C.text, fontSize: 12, align: 'right', fill: { color: r[5] ? C.surface2 : C.surface } } },
-      { text: r[3], options: { color: C.green, fontSize: 12, align: 'right', bold: true, fill: { color: r[5] ? C.surface2 : C.surface } } },
-      { text: r[4], options: { color: C.muted, fontSize: 10, fill: { color: r[5] ? C.surface2 : C.surface } } }
+      { text: r[0], options: { bold: r[4], color: C.text, fontSize: 12, fill: { color: r[4] ? C.surface2 : C.surface } } },
+      { text: r[1], options: { color: C.text, fontSize: 12, align: 'right', fill: { color: r[4] ? C.surface2 : C.surface } } },
+      { text: r[2], options: { color: C.blue, fontSize: 12, align: 'right', bold: true, fill: { color: r[4] ? C.surface2 : C.surface } } },
+      { text: r[3], options: { color: C.muted, fontSize: 10, fill: { color: r[4] ? C.surface2 : C.surface } } }
     ])
   ];
-  s.addTable(tblD, tableOpts(0.4, 1.8, 12.55, [3.0, 1.5, 1.4, 1.6, 5.05], 0.45));
-  s.addShape('roundRect', { x: 0.4, y: 5.95, w: 12.55, h: 1.0, fill: { color: '3D2E0D' }, line: { color: C.orange, width: 1 }, rectRadius: 0.1 });
+  s.addTable(tblD, tableOpts(0.4, 1.8, 12.55, [3.4, 1.5, 1.6, 6.05], 0.5));
+  s.addShape('roundRect', { x: 0.4, y: 5.95, w: 12.55, h: 1.0, fill: { color: '13392D' }, line: { color: C.green, width: 1 }, rectRadius: 0.1 });
   s.addText([
-    { text: 'The "no exceptions" line: ', options: { bold: true, color: C.orange } },
-    { text: '15 logged dials on every working day. ', options: { bold: true, color: C.text } },
-    { text: 'June had the blocks (~22 Call Prep) and made 0 dials. The metric that matters is calls logged, not calendar coverage — zero is not an option.', options: { color: C.text } }
+    { text: 'The month-end bar: ', options: { bold: true, color: C.green } },
+    { text: 'every Gold account touched and tiered, the top accounts with a written plan, and a named path to H2 quota. ', options: { color: C.text } },
+    { text: 'Book coverage is the metric — not calls.', options: { bold: true, color: C.text } }
   ], { x: 0.6, y: 6.05, w: 12.2, h: 0.85, fontFace: F.body, fontSize: 12, valign: 'middle' });
 }
 
 // ===== S11 PLAYBOOK =====
 { const s = pres.addSlide({ masterName: 'DARK' });
-  slideTitle(s, 11, 'How We Work the Activities — Dials Inside the Blocks');
+  slideTitle(s, 11, 'How I\'ll Work the Book — Weekly KAM Rhythm');
   s.addShape('roundRect', { x: 0.4, y: 1.3, w: 12.55, h: 0.9, fill: { color: '231D3D' }, line: { color: C.accent, width: 1.5 }, rectRadius: 0.1 });
   s.addText([
-    { text: 'Commit: ', options: { bold: true, color: C.accent, fontSize: 13 } },
-    { text: 'The Reclaim blocks already exist and held all June. The July change is ', options: { color: C.text, fontSize: 13 } },
-    { text: 'accountability inside the block', options: { bold: true, color: C.text, fontSize: 13 } },
-    { text: ' — every Call Prep block ends with dials logged in HubSpot, counted same-day, reviewed weekly in the 1:1. In July the dial count is the contract.', options: { color: C.text, fontSize: 13 } }
+    { text: 'The rhythm shifts ', options: { bold: true, color: C.accent, fontSize: 13 } },
+    { text: 'from a cold-dial cadence to a book-management operating system — a repeatable week for covering the Gold base, advancing renewals + expansion, and keeping the book clean. Same discipline the Reclaim blocks built, pointed at the installed base.', options: { color: C.text, fontSize: 13 } }
   ], { x: 0.6, y: 1.4, w: 12.2, h: 0.75, fontFace: F.body, valign: 'middle' });
   const blocks = [
-    ['Account list build', 'Mondays · 60 min', 'Pull 20 net-new accounts to put an outbound floor under the inbound number: ZoomInfo + intent + 2025 closed-lost rework.'],
-    ['Contact enrollment', 'Daily AM · 30 min', '~15 contacts/day · verify email before enroll (June halved to 90).'],
-    ['Cadence + dials', 'Daily AM · 60 min', '~46 emails + ≥15 dials due today — LOGGED. The dials are the part that hit zero in June.'],
-    ['LinkedIn block', 'Daily midday · 20 min', '5 connect + 3 InMail + 3 comments on target-account posts.'],
-    ['Mid-funnel block', 'Daily PM · 60 min', 'Scotiabank-style motion on every $10k+ deal: EB, technical multi-thread, security docs early.'],
-    ['Friday hygiene + MEDDICC', 'Weekly · 90 min', 'Day-60 disqualification sweep — every deal 60+ days with no next step (Unilever/AdRoll rule). Update MEDDICC card on every Stage 2+ deal.'],
-    ['Closed-lost rework', 'Tuesdays · 45 min', '5 accounts/wk from 2025 closed-lost · restart with MCP/AI angle.']
+    ['Monday book review', 'Mondays · 60 min', 'Rank Gold accounts by ARR, renewal timing, and whitespace; set the week\'s target accounts and the plays to run.'],
+    ['Account planning', 'Daily AM · 60 min', 'Build / update account plans for top Gold accounts — stakeholders, value realized, expansion paths.'],
+    ['Customer conversations', 'Daily · 2–3 mtgs', 'QBRs, check-ins, and expansion discovery across the book — retention + growth, not net-new cold.'],
+    ['Pipeline advancement', 'Daily PM · 45 min', 'MEDDICC on every $10k+ open op (RLE, Upwork, HA) — EB, next step, drive it forward.'],
+    ['Renewal watch', 'Weekly · 30 min', 'Track upcoming renewals (e.g. Hawaiian Airlines $20k, Q3 2027) — no surprise churn, plan each early.'],
+    ['Friday hygiene + MEDDICC', 'Weekly · 90 min', 'Day-60 disqualification sweep; update MEDDICC cards on every open op; keep the book clean.']
   ];
-  const blkH = 0.62, blkY = 2.4;
+  const blkH = 0.72, blkY = 2.4;
   blocks.forEach((b, i) => {
     const y = blkY + i * blkH;
     s.addText([
@@ -423,13 +402,26 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
       { text: '   —   ', options: { color: C.muted, fontSize: 12 } },
       { text: b[1], options: { color: C.blue, fontSize: 11, bold: true } }
     ], { x: 0.4, y, w: 12.6, h: 0.3, fontFace: F.body });
-    s.addText(b[2], { x: 0.7, y: y + 0.3, w: 12.3, h: 0.32, fontFace: F.body, fontSize: 10, color: C.muted });
+    s.addText(b[2], { x: 0.7, y: y + 0.3, w: 12.3, h: 0.36, fontFace: F.body, fontSize: 10, color: C.muted });
   });
 }
 
 // ===== S12 TRUE PIPELINE =====
 { const s = pres.addSlide({ masterName: 'DARK' });
-  slideTitle(s, 12, 'July True Pipeline — $106.9k Open (Command Center · Jul 8)');
+  slideTitle(s, 12, 'July Forecast & Pipeline — Command Center · Jul 8');
+  const fc = [
+    { label: 'JULY QUOTA (REDUCED)', val: '$23.4k', sub: 'full $46.75k resumes Aug', color: C.orange },
+    { label: 'CONFIRMED FC', val: '$18.8k', sub: '81% of quota · 4 committed', color: C.green },
+    { label: 'WEIGHTED FC', val: '$46.1k', sub: '197% of quota', color: C.green },
+    { label: 'OPEN PIPELINE', val: '$106.9k', sub: '457% · 22 July-close', color: C.text }
+  ];
+  fc.forEach((c, i) => {
+    const x = 0.4 + i * 3.19;
+    s.addShape('rect', { x, y: 1.35, w: 3.0, h: 1.05, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
+    s.addText(c.label, { x: x + 0.15, y: 1.42, w: 2.8, h: 0.25, fontFace: F.body, fontSize: 8.5, color: C.muted, bold: true, charSpacing: 1 });
+    s.addText(c.val, { x: x + 0.15, y: 1.64, w: 2.8, h: 0.5, fontFace: F.head, fontSize: 22, bold: true, color: c.color });
+    s.addText(c.sub, { x: x + 0.15, y: 2.14, w: 2.8, h: 0.22, fontFace: F.body, fontSize: 8, color: C.muted });
+  });
   const headers = ['Account', 'Opportunity', 'ERR', 'Stage', '% Close', 'Weighted'];
   const dealRows = [
     ['Shopify', 'X Ads | $2k', '$1,750', 'Committed', '90%', '$1,600', C.green, true],
@@ -437,9 +429,8 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
     ['Shronk', 'Growth | $2k', '$2,124', 'Committed', '75%', '$1,600', C.green, true],
     ['Kraken', 'MCP | $3.5k', '$3,468', 'Pending Sales Ops reopen', '70%', '$2,400', C.orange, true],
     ['HA', 'Gemini Agent | $7.5k', '$7,500', 'Qualification', '65%', '$4,900', C.blue, false],
-    ['TaskRabbit', 'Gem Agent | $5k', '$5,000', 'Qualification', '56%', '$2,800', C.blue, false],
     ['RLE', 'BQ | $20k', '$20,000', 'Proof of Value · main swing', '50%', '$10,000', C.accent, true],
-    ['Other (~15)', 'Growth/MCP/Claude $2-4k', '~$55,500', '—', '~23%', '~$13,000', C.muted, false],
+    ['Other (~16)', 'Growth/MCP/Claude $2-5k', '~$60,500', '—', '~26%', '~$15,800', C.muted, false],
     ['TOTAL', '22 July-close deals', '$106,900', '—', '43%', '$46,100', C.green, true]
   ];
   const tbl = [
@@ -457,69 +448,62 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
       ];
     })
   ];
-  s.addTable(tbl, tableOpts(0.4, 1.4, 12.55, [2.0, 2.7, 1.4, 2.2, 1.4, 2.85], 0.42));
-  s.addShape('rect', { x: 0.4, y: 5.55, w: 12.55, h: 0.55, fill: { color: '3A2520' }, line: { color: C.red, width: 0.5 } });
+  s.addTable(tbl, tableOpts(0.4, 2.55, 12.55, [1.7, 2.7, 1.3, 2.55, 1.3, 3.0], 0.34));
+  s.addShape('rect', { x: 0.4, y: 5.75, w: 12.55, h: 0.5, fill: { color: '3A2520' }, line: { color: C.red, width: 0.5 } });
   s.addText([
-    { text: 'Swing / overdue (re-date or disqualify · not in the $106.9k July-close): ', options: { bold: true, color: C.red } },
-    { text: 'US Soccer $40k (overdue 5/28), BlueDoor $10k (overdue 6/25), IA $5k (overdue 5/28)', options: { color: C.text } }
-  ], { x: 0.6, y: 5.6, w: 12.2, h: 0.45, fontFace: F.body, fontSize: 12, valign: 'middle' });
-  s.addText('Command-center reconciled (Jul 8): $18.8k already committed (81% of the reduced $23.4k July quota), $46.1k weighted (197%). Coverage is not the risk — it\'s a no-anchor portfolio of $7–20k deals. MEDDICC breadth on RLE, Upwork, HA is the MIT. Kraken pending Sales Ops reopen; HubSpot|MCP moved to Aug.', { x: 0.4, y: 6.25, w: 12.6, h: 0.6, fontFace: F.body, fontSize: 10, color: C.muted, italic: true });
+    { text: 'Swing / overdue (not in the $106.9k July-close): ', options: { bold: true, color: C.red } },
+    { text: 'US Soccer $40k (overdue 5/28), BlueDoor $10k (overdue 6/25), IA $5k (overdue 5/28) — re-date or disqualify', options: { color: C.text } }
+  ], { x: 0.6, y: 5.8, w: 12.2, h: 0.4, fontFace: F.body, fontSize: 11, valign: 'middle' });
+  s.addShape('roundRect', { x: 0.4, y: 6.35, w: 12.55, h: 0.65, fill: { color: '143A2E' }, line: { color: C.green, width: 1 }, rectRadius: 0.08 });
+  s.addText([
+    { text: 'The read: ', options: { bold: true, color: C.green } },
+    { text: 'July opens 197% weighted-covered with $18.8k already committed (81%) on the reduced $23.4k quota — coverage is not the risk. A no-anchor portfolio (largest weighted RLE $10k) converts on MEDDICC breadth; Upwork (85%, legal/DPA) is the strongest signal. Kraken pending Sales Ops; HubSpot|MCP moved to Aug.', options: { color: C.text } }
+  ], { x: 0.6, y: 6.4, w: 12.2, h: 0.6, fontFace: F.body, fontSize: 10.5, valign: 'middle' });
 }
 
-// ===== S13 FORECAST =====
+// ===== S13 HAWAIIAN AIRLINES ACCOUNT PLAN =====
 { const s = pres.addSlide({ masterName: 'DARK' });
-  slideTitle(s, 13, 'July Forecast');
-  s.addShape('rect', { x: 0.4, y: 1.4, w: 8.0, h: 5.5, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
-  s.addText('FORECAST (HIGH-CONFIDENCE)', { x: 0.6, y: 1.5, w: 7.6, h: 0.3, fontFace: F.body, fontSize: 11, color: C.green, bold: true, charSpacing: 2 });
-  s.addText([
-    { text: '■  Upwork — $9.8k (85%) ', options: { bold: true, color: C.green, fontSize: 12 } },
-    { text: '· in Agreement, moving through legal/DPA — strongest close signal (Gmail thread through 6/29)\n', options: { color: C.text, fontSize: 11 } },
-    { text: '■  Shopify $1.6k (90%) · Shronk $1.6k (75%) · Kraken $2.4k (70%) ', options: { bold: true, color: C.text, fontSize: 12 } },
-    { text: '· the other committed deals · $18.8k confirmed FC total (81% of quota). Kraken pending Sales Ops reopen.', options: { color: C.muted, fontSize: 11 } }
-  ], { x: 0.6, y: 1.85, w: 7.6, h: 1.1, fontFace: F.body });
-  s.addText('SWING DEALS (THE MONTH IS MADE HERE)', { x: 0.6, y: 3.0, w: 7.6, h: 0.3, fontFace: F.body, fontSize: 11, color: C.orange, bold: true, charSpacing: 2 });
-  s.addText([
-    { text: '■  RLE ($20k, 50%) — new POV, main swing ', options: { bold: true, color: C.accent, fontSize: 12 } },
-    { text: '· $10k weighted · value narrative + ROI on the POV\n', options: { color: C.text, fontSize: 11 } },
-    { text: '■  HA ($7.5k, 65%) ', options: { bold: true, color: C.text, fontSize: 12 } },
-    { text: '— Gemini Agent · drive qualification → proposal\n', options: { color: C.muted, fontSize: 11 } },
-    { text: '■  Shubert ($12k, 10%) ', options: { bold: true, color: C.text, fontSize: 12 } },
-    { text: '— early · EB conversation before pricing\n', options: { color: C.muted, fontSize: 11 } },
-    { text: '■  WestGate ($7.5k, 10%) ', options: { bold: true, color: C.text, fontSize: 12 } },
-    { text: '— POV expansion · quantify value\n', options: { color: C.muted, fontSize: 11 } },
-    { text: '■  US Soccer ($40k) — overdue 5/28, re-date or disqualify by 7/11 ', options: { bold: true, color: C.red, fontSize: 12 } },
-    { text: '· not in the $106.9k July-close\n', options: { color: C.text, fontSize: 11 } },
-    { text: '■  BlueDoor ($10k) ', options: { bold: true, color: C.text, fontSize: 12 } },
-    { text: '— overdue 6/25 · quantify pain or disqualify by day-60', options: { color: C.muted, fontSize: 11 } }
-  ], { x: 0.6, y: 3.35, w: 7.6, h: 2.4, fontFace: F.body });
-  s.addShape('roundRect', { x: 0.6, y: 5.9, w: 7.6, h: 0.85, fill: { color: '3D2E0D' }, line: { color: C.orange, width: 1 }, rectRadius: 0.08 });
-  s.addText([
-    { text: 'The narrative: ', options: { bold: true, color: C.orange } },
-    { text: 'July opens $0 closed but 197% weighted-covered ($46.1k) on the reduced $23.4k quota — $18.8k already committed (81%). Coverage is not the risk; conversion is. A no-anchor portfolio converts only if MEDDICC runs on every $10k+, and the dials must come back — or a green forecast hides a cold-outbound Q3.', options: { color: C.text } }
-  ], { x: 0.75, y: 5.96, w: 7.3, h: 0.73, fontFace: F.body, fontSize: 10.5, valign: 'middle' });
-
-  s.addShape('rect', { x: 8.6, y: 1.4, w: 4.4, h: 5.5, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
-  s.addText('FORECAST / OPEN PIPELINE', { x: 8.8, y: 1.5, w: 4.0, h: 0.3, fontFace: F.body, fontSize: 10, color: C.muted, bold: true, charSpacing: 2 });
-  const fcRows = [
-    ['July Quota (reduced)', '$23,400', true, C.orange],
-    ['Closed Won (MTD)', '$0', false, C.text],
-    ['Confirmed FC', '$18,800 · 81%', false, C.green],
-    ['Weighted FC', '$46,100 · 197%', true, C.green],
-    ['Open Pipeline', '$106,900 · 457%', false, C.text],
-    ['# Open Deals', '22', false, C.text]
+  slideTitle(s, 13, 'Closing / Account Plan — Hawaiian Airlines (Gold)');
+  s.addText('The marquee Gold-account plan. The other open ops are smaller (Growth/MCP $2–5k) and run on the standard cadence — no standalone plan needed.', { x: 0.4, y: 1.3, w: 12.6, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted });
+  const cards = [
+    { accent: C.orange, title: 'ACCOUNT SNAPSHOT', body: [
+      { text: 'Tier: ', options: { bold: true, color: C.text, fontSize: 11 } }, { text: 'Gold · established, expanding customer\n\n', options: { color: C.muted, fontSize: 10 } },
+      { text: 'Products: ', options: { bold: true, color: C.text, fontSize: 11 } }, { text: 'MIC + DWH (managed ingestion + data warehouse)\n\n', options: { color: C.muted, fontSize: 10 } },
+      { text: 'Installed base: ', options: { bold: true, color: C.text, fontSize: 11 } }, { text: '$40k SNO (2023) + $20k MIC+DWH (won 2025) — proven, renewing account\n\n', options: { color: C.muted, fontSize: 10 } },
+      { text: 'Open op: ', options: { bold: true, color: C.green, fontSize: 11 } }, { text: '$20k MIC+DWH renewal · Q3 2027 · 40% · created 9/2025', options: { color: C.muted, fontSize: 10 } }
+    ] },
+    { accent: C.green, title: 'THE PLAN — RETAIN + EXPAND', body: [
+      { text: '•  Retain: ', options: { bold: true, color: C.text, fontSize: 11 } }, { text: 'lock the $20k Q3-2027 renewal early — map decision process + value realized before it hits the danger zone\n\n', options: { color: C.muted, fontSize: 10 } },
+      { text: '•  Expand: ', options: { bold: true, color: C.text, fontSize: 11 } }, { text: 'DWH growth, added sources / seats — the June expansion template (BRP, Tracer) applied here\n\n', options: { color: C.muted, fontSize: 10 } },
+      { text: '•  Multi-thread: ', options: { bold: true, color: C.text, fontSize: 11 } }, { text: 'EB + technical / data-eng stakeholders, not one champion\n\n', options: { color: C.muted, fontSize: 10 } },
+      { text: '•  QBR: ', options: { bold: true, color: C.text, fontSize: 11 } }, { text: 'value review — quantify ingestion / warehouse ROI delivered to date', options: { color: C.muted, fontSize: 10 } }
+    ] },
+    { accent: C.accent, title: 'MEDDICC + NEXT STEPS', body: [
+      { text: 'E', options: { bold: true, color: C.accent, fontSize: 11 } }, { text: 'B — confirm the economic buyer for the 2027 renewal\n', options: { color: C.muted, fontSize: 10 } },
+      { text: 'M', options: { bold: true, color: C.accent, fontSize: 11 } }, { text: 'etrics — quantify data value delivered (usage, time saved)\n', options: { color: C.muted, fontSize: 10 } },
+      { text: 'D', options: { bold: true, color: C.accent, fontSize: 11 } }, { text: 'ecision Process — map the renewal approval path\n', options: { color: C.muted, fontSize: 10 } },
+      { text: 'C', options: { bold: true, color: C.accent, fontSize: 11 } }, { text: 'hampion — confirm + coach the internal advocate\n\n', options: { color: C.muted, fontSize: 10 } },
+      { text: 'Next steps: ', options: { bold: true, color: C.green, fontSize: 11 } }, { text: 'book QBR (Jul) · account plan doc (Jul) · renewal strategy locked by Q1 2027', options: { color: C.muted, fontSize: 10 } }
+    ] }
   ];
-  let fy = 1.95;
-  fcRows.forEach(r => {
-    s.addText(r[0], { x: 8.8, y: fy, w: 2.5, h: 0.35, fontFace: F.body, fontSize: 11, color: C.muted });
-    s.addText(r[1], { x: 11.0, y: fy, w: 1.85, h: 0.35, fontFace: F.body, fontSize: 12, color: r[3], bold: r[2], align: 'right' });
-    fy += 0.5;
+  const cw = 4.05, gap = 0.2, sx = 0.4, sy = 1.75, ch = 4.4;
+  cards.forEach((p, i) => {
+    const x = sx + i * (cw + gap);
+    s.addShape('rect', { x, y: sy, w: cw, h: ch, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
+    s.addShape('rect', { x, y: sy, w: 0.05, h: ch, fill: { color: p.accent }, line: { width: 0 } });
+    s.addText(p.title, { x: x + 0.15, y: sy + 0.12, w: cw - 0.25, h: 0.3, fontFace: F.body, fontSize: 10, bold: true, color: p.accent, charSpacing: 1 });
+    s.addText(p.body, { x: x + 0.15, y: sy + 0.5, w: cw - 0.25, h: ch - 0.6, fontFace: F.body, valign: 'top' });
   });
-  s.addText('Weighted pipe covers the reduced July quota 1.97× and $18.8k is already committed (81%). Coverage is healthy — the risk is the no-anchor, all-inbound mix. Every $10k+ deal still needs the MEDDICC motion. (Full $46,750 quota resumes Aug.)', { x: 8.8, y: 5.1, w: 4.0, h: 1.6, fontFace: F.body, fontSize: 10, color: C.muted, italic: true });
+  s.addShape('roundRect', { x: 0.4, y: 6.35, w: 12.55, h: 0.65, fill: { color: '13392D' }, line: { color: C.green, width: 1 }, rectRadius: 0.1 });
+  s.addText([
+    { text: 'The KAM template: ', options: { bold: true, color: C.green } },
+    { text: 'retain the renewal, expand the base, multi-thread the account. Hawaiian is the model — the rest of the Gold book gets the same treatment through July.', options: { color: C.text } }
+  ], { x: 0.6, y: 6.42, w: 12.2, h: 0.5, fontFace: F.body, fontSize: 12, valign: 'middle' });
 }
 
 // ===== S13b MEDDICC REPLICATE =====
 { const s = pres.addSlide({ masterName: 'DARK' });
-  slideTitle(s, '13b', 'MEDDICC — Proven on Scotiabank, Missing in June');
+  slideTitle(s, '13b', 'Appendix / Leave-Behind — MEDDICC Proven on Scotiabank');
   s.addShape('roundRect', { x: 0.4, y: 1.3, w: 12.55, h: 0.85, fill: { color: '143A2E' }, line: { color: C.green, width: 1 }, rectRadius: 0.1 });
   s.addText([
     { text: 'Scotiabank proved MEDDICC converts flagship deals. June forgot it — ', options: { bold: true, color: C.green, fontSize: 12 } },
@@ -555,72 +539,35 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   });
 }
 
-// ===== S13d PER-DEAL MEDDICC =====
-{ const s = pres.addSlide({ masterName: 'DARK' });
-  slideTitle(s, '13d', 'July MEDDICC Targets — Per Active Deal');
-  s.addText('Each major open deal · the red-to-fix dimension · the July action. Plus two loss autopsies carried from June.', { x: 0.4, y: 1.3, w: 12.6, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted });
-  const headers = ['Deal', 'ERR', 'Weakest Dimension', 'July Action', 'Due'];
-  const rows = [
-    ['Upwork', '$15k', 'Paper Process', 'Close legal/DPA — drive to signature', '7/15', false],
-    ['RLE', '$20k', 'Metrics', 'Value narrative + ROI on the POV', '7/17', false],
-    ['US Soccer', '$40k', 'Decision Process', 'Real next step or re-date / disqualify (overdue 5/28)', '7/11', false],
-    ['Shubert', '$12k', 'Economic Buyer', 'EB conversation before pricing', '7/17', false],
-    ['TaxAct', '$10k', 'Champion', 'Multi-thread / champion test', '7/17', false],
-    ['BlueDoor', '$10k', 'Pain (urgency)', 'Quantify or disqualify by day-60', '7/18', false],
-    ['Unilever (autopsy)', 'lost $40k', 'Decision Process', '1-pager: the ~10-month stale death', '7/9', true],
-    ['AMN (autopsy)', 'lost $12k', 'Economic Buyer', '1-pager: the SNO deal that never got an EB', '7/9', true]
-  ];
-  const tbl = [
-    headers.map(h => ({ text: h, options: { bold: true, color: C.muted, fontSize: 11, fill: { color: C.surface2 }, align: h === 'ERR' || h === 'Due' ? 'right' : 'left' } })),
-    ...rows.map(r => {
-      const bg = r[5] ? '3A2520' : C.surface;
-      return [
-        { text: r[0], options: { color: C.text, fontSize: 11, bold: r[5], fill: { color: bg } } },
-        { text: r[1], options: { color: r[5] ? C.red : C.text, fontSize: 11, align: 'right', fill: { color: bg } } },
-        { text: r[2], options: { color: C.text, fontSize: 11, fill: { color: bg } } },
-        { text: r[3], options: { color: C.muted, fontSize: 11, fill: { color: bg } } },
-        { text: r[4], options: { color: C.text, fontSize: 11, align: 'right', fill: { color: bg } } }
-      ];
-    })
-  ];
-  s.addTable(tbl, tableOpts(0.4, 1.75, 12.55, [2.6, 1.0, 2.6, 4.95, 1.4], 0.5));
-  s.addShape('roundRect', { x: 0.4, y: 6.0, w: 12.55, h: 0.9, fill: { color: '3A2520' }, line: { color: C.red, width: 1 }, rectRadius: 0.1 });
-  s.addText([
-    { text: 'Pattern: ', options: { bold: true, color: C.red } },
-    { text: 'the deals that win (Scotiabank, AMBSE eventually) get multi-threaded and driven; the deals that lose (Unilever, AdRoll, AMN) sit until they die. ', options: { color: C.text } },
-    { text: 'Same lesson, third month — July is about not learning it a fourth time.', options: { bold: true, color: C.orange } }
-  ], { x: 0.6, y: 6.07, w: 12.2, h: 0.75, fontFace: F.body, fontSize: 12, valign: 'middle' });
-}
-
 // ===== S15 COACHING =====
 { const s = pres.addSlide({ masterName: 'DARK' });
   slideTitle(s, 15, 'Coaching Focus — July');
   s.addShape('rect', { x: 0.4, y: 1.4, w: 6.2, h: 2.6, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
   s.addShape('rect', { x: 0.4, y: 1.4, w: 0.08, h: 2.6, fill: { color: C.blue }, line: { width: 0 } });
-  s.addText('PRIMARY — DIAL DISCIPLINE (ESCALATED)', { x: 0.6, y: 1.55, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 12, color: C.blue, bold: true, charSpacing: 1 });
+  s.addText('PRIMARY — RAMP INTO THE KAM MOTION', { x: 0.6, y: 1.55, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 12, color: C.blue, bold: true, charSpacing: 1 });
   s.addText([
-    { text: '• Now a two-month failure (39 → 0) — block + logged-dial target + weekly review\n\n', options: { color: C.text, fontSize: 11 } },
-    { text: '• ≥15 dials/day, logged in HubSpot, counted same-day. Non-negotiable\n\n', options: { color: C.text, fontSize: 11 } },
-    { text: '• Walk one day\'s call log in each 1:1', options: { color: C.text, fontSize: 11 } }
+    { text: '• Learn the new book cold — 75 Gold + 70 Scaled/Bronze (~145 accounts)\n\n', options: { color: C.text, fontSize: 11 } },
+    { text: '• Build account plans for the top Gold accounts — ARR + renewal-timing first\n\n', options: { color: C.text, fontSize: 11 } },
+    { text: '• Name the path to full-year quota from the installed base', options: { color: C.text, fontSize: 11 } }
   ], { x: 0.6, y: 2.0, w: 5.8, h: 1.9, fontFace: F.body });
 
   s.addShape('rect', { x: 6.8, y: 1.4, w: 6.2, h: 2.6, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
   s.addShape('rect', { x: 6.8, y: 1.4, w: 0.08, h: 2.6, fill: { color: C.accent }, line: { width: 0 } });
-  s.addText('SECONDARY — MEDDICC BREADTH', { x: 7.0, y: 1.55, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 12, color: C.accent, bold: true, charSpacing: 1 });
+  s.addText('SECONDARY — RETAIN & EXPAND THE BASE', { x: 7.0, y: 1.55, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 12, color: C.accent, bold: true, charSpacing: 1 });
   s.addText([
-    { text: '• Full Scotiabank motion on every $10k+ late-stage deal, not just inbound\n\n', options: { color: C.text, fontSize: 11 } },
-    { text: '• 1 deal card walked through every weekly 1:1\n\n', options: { color: C.text, fontSize: 11 } },
-    { text: '• Day-60 disqualification enforced (Unilever/AdRoll lesson)', options: { color: C.text, fontSize: 11 } }
+    { text: '• Renewals first — Hawaiian Airlines $20k (Q3 2027) and every dated renewal, planned early\n\n', options: { color: C.text, fontSize: 11 } },
+    { text: '• Expand the June-proven way — BRP, Tracer, YMCA are the template\n\n', options: { color: C.text, fontSize: 11 } },
+    { text: '• MEDDICC discipline on the open $10k+ ops (RLE, Upwork, HA)', options: { color: C.text, fontSize: 11 } }
   ], { x: 7.0, y: 2.0, w: 5.8, h: 1.9, fontFace: F.body });
 
   s.addText('THEME & CARRY-FORWARD', { x: 0.4, y: 4.2, w: 12, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
   s.addText([
-    { text: '✓  New theme — Day-60 disqualification. ', options: { color: C.green, bold: true, fontSize: 12 } },
-    { text: 'Unilever ($40k) and AdRoll ($13k) are June\'s stale deaths — kill zombies before they inflate and then implode the pipe.\n\n', options: { color: C.text, fontSize: 12 } },
+    { text: '✓  New theme — the motion change. ', options: { color: C.green, bold: true, fontSize: 12 } },
+    { text: 'From the all-bound AE model to KAM (the 2024 customer-growth motion). July is a ramp, not a sprint — the deliverable is a book strategy, not an activity count.\n\n', options: { color: C.text, fontSize: 12 } },
     { text: '•  Carried forward: ', options: { color: C.accent, bold: true, fontSize: 12 } },
-    { text: 'Value Narratives on $10k+ deals · Exec Summaries on top 3 · "sustain, don\'t sprint" — two motions at once.\n\n', options: { color: C.text, fontSize: 12 } },
+    { text: 'the MEDDICC questioning habit from Call Prep, and day-60 hygiene to clean the book on entry (no inherited zombies).\n\n', options: { color: C.text, fontSize: 12 } },
     { text: '•  The one-line goal: ', options: { color: C.accent, bold: true, fontSize: 12 } },
-    { text: 'put an outbound floor under a green June and close big deals again — don\'t let a green number hide a cold-outbound Q3.', options: { color: C.text, fontSize: 12 } }
+    { text: 'get the book right — a tiered Gold-base strategy with a named path to H2 quota. Coverage, not dials.', options: { color: C.text, fontSize: 12 } }
   ], { x: 0.4, y: 4.55, w: 12.6, h: 2.3, fontFace: F.body });
 }
 
