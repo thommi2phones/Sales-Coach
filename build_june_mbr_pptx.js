@@ -40,10 +40,10 @@ const col3 = (slide, items) => {
   const w = 4.05, gap = 0.2, startX = 0.4;
   items.forEach((item, i) => {
     const x = startX + i * (w + gap);
-    slide.addShape('rect', { x, y: 1.4, w, h: 4.5, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
-    slide.addShape('rect', { x, y: 1.4, w: 0.06, h: 4.5, fill: { color: item.accent }, line: { width: 0 } });
-    slide.addText(item.title, { x: x + 0.2, y: 1.55, w: w - 0.3, h: 0.4, fontFace: F.body, fontSize: 11, color: item.accent, bold: true, charSpacing: 2 });
-    slide.addText(item.body, { x: x + 0.2, y: 2.0, w: w - 0.3, h: 3.8, fontFace: F.body, fontSize: 10.5 });
+    slide.addShape('rect', { x, y: 1.4, w, h: 5.45, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
+    slide.addShape('rect', { x, y: 1.4, w: 0.06, h: 5.45, fill: { color: item.accent }, line: { width: 0 } });
+    slide.addText(item.title, { x: x + 0.2, y: 1.58, w: w - 0.3, h: 0.4, fontFace: F.body, fontSize: 12.5, color: item.accent, bold: true, charSpacing: 2 });
+    slide.addText(item.body, { x: x + 0.2, y: 2.15, w: w - 0.3, h: 4.55, fontFace: F.body, fontSize: 12.5, valign: 'top' });
   });
 };
 
@@ -82,20 +82,20 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   s.addShape('rect', { x: 0.4, y: 1.4, w: 6.2, h: 4.0, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
   s.addText('JUNE MITs (FROM MAY PLAN)', { x: 0.6, y: 1.55, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
   s.addText([
-    { text: '~  MIT #1 Restart the dial engine — SUPERSEDED BY A BOOK CHANGE\n', options: { color: C.orange, bold: true, fontSize: 12 } },
-    { text: '    Mid-month the entire book shifted and the motion changed. Cold outbound / TOFU became non-critical — effort outside the Bronze base was futile as the role moved. Calls went 39 → 0, but that is a deprioritization, not a miss — these metrics don\'t really count this month.\n\n', options: { color: C.muted, fontSize: 10 } },
-    { text: '✓  MIT #2 MEDDICC on $10k+ — TOOK HOLD IN CALL PREP\n', options: { color: C.green, bold: true, fontSize: 12 } },
-    { text: '    The Call Prep blocks became genuinely useful for framing MEDDICC-based discovery questions — the questioning discipline that now carries into the account motion. Full breadth across every $10k+ deal didn\'t land, but the habit did.', options: { color: C.muted, fontSize: 10 } }
-  ], { x: 0.6, y: 1.9, w: 5.8, h: 3.4, fontFace: F.body });
+    { text: '~  MIT #1 Restart the dial engine — SUPERSEDED BY A BOOK CHANGE\n', options: { color: C.orange, bold: true, fontSize: 14 } },
+    { text: 'Mid-month the entire book shifted and the motion changed. Cold outbound / TOFU became non-critical — effort outside the Bronze base was futile as the role moved. Calls went 39 → 0, but that is a deprioritization, not a miss — these metrics don\'t really count this month.\n\n', options: { color: C.muted, fontSize: 12.5 } },
+    { text: '✓  MIT #2 MEDDICC on $10k+ — TOOK HOLD IN CALL PREP\n', options: { color: C.green, bold: true, fontSize: 14 } },
+    { text: 'The Call Prep blocks became genuinely useful for framing MEDDICC-based discovery questions — the questioning discipline that now carries into the account motion. Full breadth across every $10k+ deal didn\'t land, but the habit did.', options: { color: C.muted, fontSize: 12.5 } }
+  ], { x: 0.6, y: 2.0, w: 5.8, h: 3.5, fontFace: F.body, valign: 'top' });
 
   s.addShape('rect', { x: 6.8, y: 1.4, w: 6.2, h: 4.0, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
   s.addText('WHAT HAPPENED INSTEAD', { x: 7.0, y: 1.55, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
   s.addText([
-    { text: '✓  Revenue held 87% + pipe-gen recovered ~96%\n', options: { color: C.green, bold: true, fontSize: 12 } },
-    { text: '    Both lines healthy — on breadth (11 wins ≤$4.9k), one carryover (AMBSE $10k), inbound demos and expansion. The expansion motion is the tell for what comes next.\n\n', options: { color: C.muted, fontSize: 10 } },
-    { text: '~  The motion changed underneath the plan\n', options: { color: C.orange, bold: true, fontSize: 12 } },
-    { text: '    The book restructured mid-month — cold outbound deprioritized, focus shifting to the installed base. The May plan\'s dial + MEDDICC-breadth targets were overtaken by the KAM transition now underway.', options: { color: C.muted, fontSize: 10 } }
-  ], { x: 7.0, y: 1.9, w: 5.8, h: 3.4, fontFace: F.body });
+    { text: '✓  Revenue held 87% + pipe-gen recovered ~96%\n', options: { color: C.green, bold: true, fontSize: 14 } },
+    { text: 'Both lines healthy — on breadth (11 wins ≤$4.9k), one carryover (AMBSE $10k), inbound demos and expansion. The expansion motion is the tell for what comes next.\n\n', options: { color: C.muted, fontSize: 12.5 } },
+    { text: '~  The motion changed underneath the plan\n', options: { color: C.orange, bold: true, fontSize: 14 } },
+    { text: 'The book restructured mid-month — cold outbound deprioritized, focus shifting to the installed base. The May plan\'s dial + MEDDICC-breadth targets were overtaken by the KAM transition now underway.', options: { color: C.muted, fontSize: 12.5 } }
+  ], { x: 7.0, y: 2.0, w: 5.8, h: 3.5, fontFace: F.body, valign: 'top' });
 
   s.addShape('roundRect', { x: 0.4, y: 5.65, w: 12.55, h: 1.3, fill: { color: C.surface2 }, line: { color: C.accent, width: 1 }, rectRadius: 0.1 });
   s.addText([
@@ -176,9 +176,9 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
 
 // ===== S6 YTD =====
 { const s = pres.addSlide({ masterName: 'DARK' });
-  slideTitle(s, 6, 'YTD 2026 — The Recovery, and the Catch');
-  // Pipe gen table
-  s.addText('PIPELINE GEN % TO GOAL', { x: 0.4, y: 1.45, w: 6, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
+  slideTitle(s, 6, 'YTD Pace & the Pipe → Revenue Correlation');
+  // Pipe gen % table (left)
+  s.addText('PIPELINE GEN % TO GOAL', { x: 0.4, y: 1.4, w: 6, h: 0.3, fontFace: F.body, fontSize: 12, color: C.muted, bold: true, charSpacing: 2 });
   const pg = [
     ['Month', 'Deals', '% Goal'],
     ['January', '9', '50%', C.red],
@@ -189,15 +189,14 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
     ['June', '23', '~96%', C.green]
   ];
   const pgT = [
-    pg[0].map(h => ({ text: h, options: { bold: true, color: C.muted, fill: { color: C.surface2 }, fontSize: 11, align: h === 'Month' ? 'left' : 'center' } })),
+    pg[0].map(h => ({ text: h, options: { bold: true, color: C.muted, fill: { color: C.surface2 }, fontSize: 12, align: h === 'Month' ? 'left' : 'center' } })),
     ...pg.slice(1).map((r, i) => r.slice(0, 3).map((c, j) => ({
-      text: c, options: { bold: i === 5 || j === 2, color: j === 2 ? r[3] : (i === 5 ? C.white : C.text), fill: { color: i === 5 ? '143A2E' : C.surface }, fontSize: 12, align: j === 0 ? 'left' : 'center' }
+      text: c, options: { bold: i === 5 || j === 2, color: j === 2 ? r[3] : (i === 5 ? C.white : C.text), fill: { color: i === 5 ? '143A2E' : C.surface }, fontSize: 12.5, align: j === 0 ? 'left' : 'center' }
     })))
   ];
-  s.addTable(pgT, tableOpts(0.4, 1.8, 6.1, [2.6, 1.7, 1.8], 0.42));
-  s.addText('50 → 90 → 89 → 103 → 54 → 96.  The pipe-gen arc recovered.', { x: 0.4, y: 4.95, w: 6.1, h: 0.3, fontFace: F.body, fontSize: 10, color: C.muted, italic: true });
-  // Revenue table
-  s.addText('REVENUE % TO QUOTA — ALL MONTHS', { x: 6.9, y: 1.45, w: 6, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
+  s.addTable(pgT, tableOpts(0.4, 1.75, 6.1, [2.6, 1.7, 1.8], 0.35));
+  // Revenue % table (right)
+  s.addText('REVENUE % TO QUOTA — ALL MONTHS', { x: 6.9, y: 1.4, w: 6, h: 0.3, fontFace: F.body, fontSize: 12, color: C.muted, bold: true, charSpacing: 2 });
   const rv = [
     ['Month', 'Revenue', '% Quota'],
     ['January', '$52,590', '131%', C.green, false],
@@ -209,19 +208,50 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
     ['YTD (Jan–Jun)', '$252,919', '96% pace', C.orange, true]
   ];
   const rvT = [
-    rv[0].map(h => ({ text: h, options: { bold: true, color: C.muted, fill: { color: C.surface2 }, fontSize: 11, align: h === 'Month' ? 'left' : (h === 'Revenue' ? 'right' : 'center') } })),
+    rv[0].map(h => ({ text: h, options: { bold: true, color: C.muted, fill: { color: C.surface2 }, fontSize: 12, align: h === 'Month' ? 'left' : (h === 'Revenue' ? 'right' : 'center') } })),
     ...rv.slice(1).map((r) => r.slice(0, 3).map((c, j) => ({
-      text: c, options: { bold: r[4] || j === 2, color: j === 2 ? r[3] : (r[4] ? C.white : C.text), fill: { color: r[4] ? '3D2E0D' : C.surface }, fontSize: 12, align: j === 0 ? 'left' : (j === 1 ? 'right' : 'center') }
+      text: c, options: { bold: r[4] || j === 2, color: j === 2 ? r[3] : (r[4] ? C.white : C.text), fill: { color: r[4] ? '3D2E0D' : C.surface }, fontSize: 12.5, align: j === 0 ? 'left' : (j === 1 ? 'right' : 'center') }
     })))
   ];
-  s.addTable(rvT, tableOpts(6.9, 1.8, 6.1, [2.3, 2.2, 1.6], 0.40));
+  s.addTable(rvT, tableOpts(6.9, 1.75, 6.1, [2.3, 2.2, 1.6], 0.31));
 
-  s.addShape('roundRect', { x: 0.4, y: 5.5, w: 12.55, h: 1.3, fill: { color: C.surface2 }, line: { color: C.accent, width: 1 }, rectRadius: 0.1 });
+  // Bottom-left: correlation & lead time
+  s.addShape('rect', { x: 0.4, y: 4.5, w: 6.2, h: 2.45, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
+  s.addShape('rect', { x: 0.4, y: 4.5, w: 0.06, h: 2.45, fill: { color: C.accent }, line: { width: 0 } });
+  s.addText('PIPE → REVENUE: WHAT WE\'RE ACTUALLY TRACKING', { x: 0.6, y: 4.6, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 12, color: C.accent, bold: true, charSpacing: 1 });
   s.addText([
-    { text: 'YTD pacing: ', options: { bold: true, color: C.accent } },
-    { text: 'six months in, revenue is at ~96% of cumulative quota — April (37%) is the only real dent, offset by three months over 100%. ', options: { color: C.text } },
-    { text: 'The base is solid heading into the KAM transition; H2 is about converting the gold book to close the gap.', options: { bold: true, color: C.orange } }
-  ], { x: 0.6, y: 5.6, w: 12.2, h: 1.1, fontFace: F.body, fontSize: 14, valign: 'middle' });
+    { text: 'Correlation is weak at every lag ', options: { color: C.text, fontSize: 12.5 } },
+    { text: '(r = 0.01–0.28, 18 mo)', options: { bold: true, color: C.orange, fontSize: 12.5 } },
+    { text: ' — pipeline is lumpy, no clean fixed lead time.\n', options: { color: C.text, fontSize: 12.5 } },
+    { text: 'Stable ratio: ', options: { bold: true, color: C.green, fontSize: 12.5 } },
+    { text: '~29% of trailing-3-mo pipe', options: { bold: true, color: C.text, fontSize: 12.5 } },
+    { text: ' converts to revenue.\n', options: { color: C.text, fontSize: 12.5 } },
+    { text: 'So what: ', options: { bold: true, color: C.text, fontSize: 12.5 } },
+    { text: 'pipe-gen % is a loose predictor — expansion + renewal timing (the KAM motion) moves revenue more than raw new-pipe volume.', options: { color: C.muted, fontSize: 12.5 } }
+  ], { x: 0.6, y: 4.95, w: 5.8, h: 1.95, fontFace: F.body, valign: 'top' });
+
+  // Bottom-right: Jul-Oct projection
+  s.addShape('rect', { x: 6.8, y: 4.5, w: 6.2, h: 2.45, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
+  s.addShape('rect', { x: 6.8, y: 4.5, w: 0.06, h: 2.45, fill: { color: C.green }, line: { width: 0 } });
+  s.addText('PROJECTED ATTAINMENT — JUL → OCT', { x: 7.0, y: 4.6, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 12, color: C.green, bold: true, charSpacing: 1 });
+  const proj = [
+    ['Month', 'Quota', 'Proj Rev', 'Pace'],
+    ['July', '$23.4k', '$46.1k wtd', '197%', C.green],
+    ['August', '$46.8k', '~$40k', '~86%', C.orange],
+    ['September', '$46.8k', '~$40k+', '~86%+', C.orange],
+    ['October', '$46.8k', '~$40k+', '~86%+', C.orange]
+  ];
+  const projT = [
+    proj[0].map(h => ({ text: h, options: { bold: true, color: C.muted, fontSize: 11, fill: { color: C.surface }, align: h === 'Month' ? 'left' : 'right' } })),
+    ...proj.slice(1).map(r => [
+      { text: r[0], options: { color: C.text, fontSize: 11.5, fill: { color: C.surface2 } } },
+      { text: r[1], options: { color: C.text, fontSize: 11.5, align: 'right', fill: { color: C.surface2 } } },
+      { text: r[2], options: { color: C.text, fontSize: 11.5, align: 'right', fill: { color: C.surface2 } } },
+      { text: r[3], options: { color: r[4], fontSize: 11.5, align: 'right', bold: true, fill: { color: C.surface2 } } }
+    ])
+  ];
+  s.addTable(projT, tableOpts(7.0, 4.95, 5.8, [1.7, 1.2, 1.5, 1.4], 0.28));
+  s.addText('Jul over-covered on the reduced quota. Aug–Oct pace ~85% at the current ~$43k/mo pipe × 29% yield — the KAM book\'s expansion + renewals must close the ~15% gap (Sep–Oct carry seasonal upside; both strong in 2025).', { x: 7.0, y: 6.42, w: 5.8, h: 0.5, fontFace: F.body, fontSize: 9.5, color: C.muted, italic: true });
 }
 
 // ===== S7 CLOSED EXECUTION =====
@@ -240,15 +270,15 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
     s.addText(st.val, { x: x + 0.15, y: 1.8, w: 2.8, h: 0.6, fontFace: F.head, fontSize: 28, bold: true, color: st.color });
     s.addText(st.sub, { x: x + 0.15, y: 2.4, w: 2.8, h: 0.25, fontFace: F.body, fontSize: 9, color: C.muted });
   });
-  s.addText('THE LOSSES THAT MATTERED', { x: 0.4, y: 2.95, w: 12, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
-  const mk = (t, c, b, sz) => ({ text: t, options: { color: c, bold: !!b, fontSize: sz || 10, fill: { color: C.surface } } });
+  s.addText('THE LOSSES THAT MATTERED', { x: 0.4, y: 2.95, w: 12, h: 0.3, fontFace: F.body, fontSize: 12.5, color: C.muted, bold: true, charSpacing: 2 });
+  const mk = (t, c, b, sz) => ({ text: t, options: { color: c, bold: !!b, fontSize: sz || 12.5, fill: { color: C.surface } } });
   const tbl = [
-    [mk('Story', C.muted, true, 11), mk('Deals', C.muted, true, 11), { text: 'Lost ACV', options: { color: C.muted, bold: true, fontSize: 11, align: 'right', fill: { color: C.surface2 } } }, mk('So what', C.muted, true, 11)].map(o => (o.options.fill = { color: C.surface2 }, o)),
-    [mk('Stale-deal deaths (300+ days)', C.text, true, 11), mk('Unilever Prestige ($40k, created 8/2025), AdRoll ($13k, created 6/2025)', C.text, false, 10), { text: '~$53,000', options: { color: C.red, bold: true, fontSize: 11, align: 'right', fill: { color: C.surface } } }, mk('~10–12 mo cycles, no real next step. The Industry Dive death, repeated.', C.muted, false, 10)],
-    [mk('$10k+ that never got the motion', C.text, true, 11), mk('AMN ($12k, in the April pipe) — overdue / dead op', C.text, false, 10), { text: '~$12,000', options: { color: C.red, bold: true, fontSize: 11, align: 'right', fill: { color: C.surface } } }, mk('MEDDICC breadth never reached it; no EB. A dead op, not a live-deal loss.', C.muted, false, 10)],
-    [mk('Mid / small cleanup', C.text, true, 11), mk('Charter One ($6k), Furnished Finder ($4k), Poppy ($2k), PSA ($2k), AHS ($2k)', C.text, false, 10), { text: '~$16,000', options: { color: C.red, bold: true, fontSize: 11, align: 'right', fill: { color: C.surface } } }, mk('Long-cycle small deals dispositioned — the healthy part of the number.', C.muted, false, 10)]
+    [mk('Story', C.muted, true, 13), mk('Deals', C.muted, true, 13), { text: 'Lost ACV', options: { color: C.muted, bold: true, fontSize: 13, align: 'right', fill: { color: C.surface2 } } }, mk('So what', C.muted, true, 13)].map(o => (o.options.fill = { color: C.surface2 }, o)),
+    [mk('Stale-deal deaths (300+ days)', C.text, true, 13), mk('Unilever Prestige ($40k, created 8/2025), AdRoll ($13k, created 6/2025)', C.text, false, 12), { text: '~$53,000', options: { color: C.red, bold: true, fontSize: 13, align: 'right', fill: { color: C.surface } } }, mk('~10–12 mo cycles, no real next step. The Industry Dive death, repeated.', C.muted, false, 12)],
+    [mk('$10k+ that never got the motion', C.text, true, 13), mk('AMN ($12k, in the April pipe) — overdue / dead op', C.text, false, 12), { text: '~$12,000', options: { color: C.red, bold: true, fontSize: 13, align: 'right', fill: { color: C.surface } } }, mk('MEDDICC breadth never reached it; no EB. A dead op, not a live-deal loss.', C.muted, false, 12)],
+    [mk('Mid / small cleanup', C.text, true, 13), mk('Charter One ($6k), Furnished Finder ($4k), Poppy ($2k), PSA ($2k), AHS ($2k)', C.text, false, 12), { text: '~$16,000', options: { color: C.red, bold: true, fontSize: 13, align: 'right', fill: { color: C.surface } } }, mk('Long-cycle small deals dispositioned — the healthy part of the number.', C.muted, false, 12)]
   ];
-  s.addTable(tbl, tableOpts(0.4, 3.3, 12.55, [2.8, 4.6, 1.4, 3.75], 0.62));
+  s.addTable(tbl, tableOpts(0.4, 3.3, 12.55, [2.8, 4.6, 1.4, 3.75], 0.66));
   s.addShape('roundRect', { x: 0.4, y: 6.05, w: 12.55, h: 0.9, fill: { color: '3A2520' }, line: { color: C.red, width: 1 }, rectRadius: 0.1 });
   s.addText([
     { text: 'The read: ', options: { bold: true, color: C.red } },
@@ -300,21 +330,21 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   s.addShape('rect', { x: 0.4, y: 1.4, w: 6.2, h: 4.5, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
   s.addText('THE BOOK & THE MATH', { x: 0.6, y: 1.5, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
   s.addText([
-    { text: '• July revenue quota: ', options: { color: C.text, fontSize: 12 } }, { text: '$23,400', options: { bold: true, color: C.orange, fontSize: 12 } }, { text: ' (reduced; full $46,750 resumes Aug)\n', options: { color: C.text, fontSize: 12 } },
-    { text: '• The book: ', options: { color: C.text, fontSize: 12 } }, { text: '~145 accounts', options: { bold: true, color: C.text, fontSize: 12 } }, { text: ' — 75 Gold + 70 Scaled/Bronze\n', options: { color: C.text, fontSize: 12 } },
-    { text: '• Open July pipe: ', options: { color: C.text, fontSize: 12 } }, { text: '$106.9k', options: { bold: true, color: C.green, fontSize: 12 } }, { text: ' · 457% coverage · $46.1k weighted (197%)\n', options: { color: C.text, fontSize: 12 } },
-    { text: '• The July math is ', options: { color: C.text, fontSize: 12 } }, { text: 'book coverage', options: { bold: true, color: C.blue, fontSize: 12 } }, { text: ', not cold-funnel throughput — cover the Gold base and surface the expansion/renewal that funds H2 quota.', options: { color: C.text, fontSize: 12 } }
-  ], { x: 0.6, y: 1.9, w: 5.8, h: 2.4, fontFace: F.body });
-  s.addText('PATH TO H2 QUOTA', { x: 0.6, y: 4.15, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
+    { text: '• July revenue quota: ', options: { color: C.text, fontSize: 13 } }, { text: '$23,400', options: { bold: true, color: C.orange, fontSize: 13 } }, { text: ' (reduced; full $46,750 resumes Aug)\n', options: { color: C.text, fontSize: 13 } },
+    { text: '• The book: ', options: { color: C.text, fontSize: 13 } }, { text: '~145 accounts', options: { bold: true, color: C.text, fontSize: 13 } }, { text: ' — 75 Gold + 70 Scaled/Bronze\n', options: { color: C.text, fontSize: 13 } },
+    { text: '• Open July pipe: ', options: { color: C.text, fontSize: 13 } }, { text: '$106.9k', options: { bold: true, color: C.green, fontSize: 13 } }, { text: ' · 457% coverage · $46.1k weighted (197%)\n', options: { color: C.text, fontSize: 13 } },
+    { text: '• The July math is ', options: { color: C.text, fontSize: 13 } }, { text: 'book coverage', options: { bold: true, color: C.blue, fontSize: 13 } }, { text: ', not cold-funnel throughput — cover the Gold base and surface the expansion/renewal that funds H2 quota.', options: { color: C.text, fontSize: 13 } }
+  ], { x: 0.6, y: 1.9, w: 5.8, h: 2.1, fontFace: F.body, valign: 'top' });
+  s.addText('PATH TO H2 QUOTA', { x: 0.6, y: 4.05, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 12, color: C.muted, bold: true, charSpacing: 2 });
   s.addText([
-    { text: '• Retain the renewals in the book (e.g. Hawaiian Airlines $20k)\n', options: { color: C.text, fontSize: 12 } },
-    { text: '• Expand the installed base — June\'s expansion wins (BRP, Tracer, YMCA) are the template\n', options: { color: C.text, fontSize: 12 } },
-    { text: '• Convert the $106.9k open with MEDDICC discipline on every $10k+', options: { color: C.text, fontSize: 12 } }
-  ], { x: 0.6, y: 4.5, w: 5.8, h: 1.35, fontFace: F.body });
+    { text: '• Retain the renewals in the book (e.g. Hawaiian Airlines $20k)\n', options: { color: C.text, fontSize: 13 } },
+    { text: '• Expand the installed base — June\'s expansion wins (BRP, Tracer, YMCA) are the template\n', options: { color: C.text, fontSize: 13 } },
+    { text: '• Convert the $106.9k open with MEDDICC discipline on every $10k+', options: { color: C.text, fontSize: 13 } }
+  ], { x: 0.6, y: 4.4, w: 5.8, h: 1.45, fontFace: F.body, valign: 'top' });
 
   // Right: June activity baseline
   s.addShape('rect', { x: 6.8, y: 1.4, w: 6.2, h: 4.5, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
-  s.addText('JUNE ACTIVITY BASELINE (HubSpot / Command Center)', { x: 7.0, y: 1.5, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 10.5, color: C.muted, bold: true, charSpacing: 1 });
+  s.addText('JUNE ACTIVITY BASELINE (HubSpot / Command Center)', { x: 7.0, y: 1.5, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 12, color: C.muted, bold: true, charSpacing: 1 });
   const actRows = [
     ['Meetings', '62', 'Healthy inbound + customer load (~2.8/day)', C.green],
     ['Emails logged', '394', 'Down, still the primary written channel', C.text],
@@ -322,20 +352,20 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
     ['Calls / dials', '0', 'Cold dials deprioritized — intentional', C.orange]
   ];
   const actT = [
-    [{ text: 'Activity', options: { bold: true, color: C.muted, fontSize: 10, fill: { color: C.surface } } },
-     { text: 'June', options: { bold: true, color: C.muted, fontSize: 10, align: 'right', fill: { color: C.surface } } },
-     { text: 'Read', options: { bold: true, color: C.muted, fontSize: 10, fill: { color: C.surface } } }],
+    [{ text: 'Activity', options: { bold: true, color: C.muted, fontSize: 12, fill: { color: C.surface } } },
+     { text: 'June', options: { bold: true, color: C.muted, fontSize: 12, align: 'right', fill: { color: C.surface } } },
+     { text: 'Read', options: { bold: true, color: C.muted, fontSize: 12, fill: { color: C.surface } } }],
     ...actRows.map(r => [
-      { text: r[0], options: { color: C.text, fontSize: 11, fill: { color: C.surface2 } } },
-      { text: r[1], options: { color: r[3], fontSize: 11, align: 'right', bold: true, fill: { color: C.surface2 } } },
-      { text: r[2], options: { color: C.muted, fontSize: 10, fill: { color: C.surface2 } } }
+      { text: r[0], options: { color: C.text, fontSize: 12.5, fill: { color: C.surface2 } } },
+      { text: r[1], options: { color: r[3], fontSize: 12.5, align: 'right', bold: true, fill: { color: C.surface2 } } },
+      { text: r[2], options: { color: C.muted, fontSize: 11.5, fill: { color: C.surface2 } } }
     ])
   ];
-  s.addTable(actT, tableOpts(7.0, 1.9, 5.8, [1.7, 0.8, 3.3], 0.5));
+  s.addTable(actT, tableOpts(7.0, 1.95, 5.8, [1.7, 0.8, 3.3], 0.48));
   s.addText([
-    { text: 'The read: ', options: { bold: true, color: C.blue, fontSize: 11 } },
-    { text: 'June ran on inbound demand + expansion — meetings healthy, cold outbound at zero by design. In the KAM motion that is the point: the KPI shifts from dials to account coverage, retention, and expansion pipeline.', options: { color: C.text, fontSize: 11 } }
-  ], { x: 7.0, y: 4.15, w: 5.8, h: 1.7, fontFace: F.body });
+    { text: 'The read: ', options: { bold: true, color: C.blue, fontSize: 13 } },
+    { text: 'June ran on inbound demand + expansion — meetings healthy, cold outbound at zero by design. In the KAM motion that is the point: the KPI shifts from dials to account coverage, retention, and expansion pipeline.', options: { color: C.text, fontSize: 13 } }
+  ], { x: 7.0, y: 4.55, w: 5.8, h: 1.75, fontFace: F.body, valign: 'top' });
 
   s.addShape('roundRect', { x: 0.4, y: 6.1, w: 12.55, h: 0.85, fill: { color: C.surface2 }, line: { color: C.accent, width: 1 }, rectRadius: 0.1 });
   s.addText([
@@ -511,31 +541,31 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   ], { x: 0.6, y: 1.38, w: 12.2, h: 0.7, fontFace: F.body, valign: 'middle' });
   const cols = [
     { accent: C.green, title: 'WHAT WON SCOTIABANK', body: [
-      { text: 'E', options: { bold: true, color: C.green, fontSize: 11 } }, { text: 'conomic Buyer — engaged + decision path live through signature\n\n', options: { color: C.text, fontSize: 10 } },
-      { text: 'Technical multi-thread', options: { bold: true, color: C.text, fontSize: 11 } }, { text: ' — engineering org, not just champion\n\n', options: { color: C.muted, fontSize: 10 } },
-      { text: 'P', options: { bold: true, color: C.green, fontSize: 11 } }, { text: 'aper Process — security/DR docs early, confirmed received\n\n', options: { color: C.text, fontSize: 10 } },
-      { text: 'Prep brief', options: { bold: true, color: C.text, fontSize: 11 } }, { text: ' before the technical call — objections anticipated', options: { color: C.muted, fontSize: 10 } }
+      { text: 'E', options: { bold: true, color: C.green, fontSize: 13 } }, { text: 'conomic Buyer — engaged + decision path live through signature\n\n', options: { color: C.text, fontSize: 12.5 } },
+      { text: 'Technical multi-thread', options: { bold: true, color: C.text, fontSize: 13 } }, { text: ' — engineering org, not just champion\n\n', options: { color: C.muted, fontSize: 12.5 } },
+      { text: 'P', options: { bold: true, color: C.green, fontSize: 13 } }, { text: 'aper Process — security/DR docs early, confirmed received\n\n', options: { color: C.text, fontSize: 12.5 } },
+      { text: 'Prep brief', options: { bold: true, color: C.text, fontSize: 13 } }, { text: ' before the technical call — objections anticipated', options: { color: C.muted, fontSize: 12.5 } }
     ] },
     { accent: C.red, title: 'WHAT LOST JUNE\'S $10k+ DEALS', body: [
-      { text: '✗  No EB motion ran (AMN — sat live for months)\n\n', options: { color: C.red, fontSize: 10, bold: true } },
-      { text: '✗  ~10–12 month stale deaths, no next step (Unilever, AdRoll)\n\n', options: { color: C.red, fontSize: 10, bold: true } },
-      { text: '✗  Died unqualified in ~10 days (Celebrands)\n\n', options: { color: C.red, fontSize: 10, bold: true } },
-      { text: '✗  Day-60 disqualification rule not enforced', options: { color: C.red, fontSize: 10, bold: true } }
+      { text: '✗  No EB motion ran (AMN — sat live for months)\n\n', options: { color: C.red, fontSize: 12.5, bold: true } },
+      { text: '✗  ~10–12 month stale deaths, no next step (Unilever, AdRoll)\n\n', options: { color: C.red, fontSize: 12.5, bold: true } },
+      { text: '✗  Died unqualified in ~10 days (Celebrands)\n\n', options: { color: C.red, fontSize: 12.5, bold: true } },
+      { text: '✗  Day-60 disqualification rule not enforced', options: { color: C.red, fontSize: 12.5, bold: true } }
     ] },
-    { accent: C.blue, title: 'JULY OPERATING RHYTHM', body: [
-      { text: '• Day 1: open MEDDICC card, rate R/Y/G\n\n', options: { color: C.text, fontSize: 10 } },
-      { text: '• Every $10k+ deal: EB booked before pricing\n\n', options: { color: C.text, fontSize: 10 } },
-      { text: '• Every technical call: written prep brief\n\n', options: { color: C.text, fontSize: 10 } },
-      { text: '• Friday: disqualify anything 60d+ with no next step', options: { color: C.text, fontSize: 10 } }
+    { accent: C.blue, title: 'THE MEDDICC OPERATING RHYTHM', body: [
+      { text: '• Day 1: open MEDDICC card, rate R/Y/G\n\n', options: { color: C.text, fontSize: 12.5 } },
+      { text: '• Every $10k+ deal: EB booked before pricing\n\n', options: { color: C.text, fontSize: 12.5 } },
+      { text: '• Every technical call: written prep brief\n\n', options: { color: C.text, fontSize: 12.5 } },
+      { text: '• Friday: disqualify anything 60d+ with no next step', options: { color: C.text, fontSize: 12.5 } }
     ] }
   ];
-  const cw = 4.05, gap = 0.2, sx = 0.4, sy = 2.35, ch = 4.2;
+  const cw = 4.05, gap = 0.2, sx = 0.4, sy = 2.3, ch = 4.0;
   cols.forEach((p, i) => {
     const x = sx + i * (cw + gap);
     s.addShape('rect', { x, y: sy, w: cw, h: ch, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
     s.addShape('rect', { x, y: sy, w: 0.05, h: ch, fill: { color: p.accent }, line: { width: 0 } });
-    s.addText(p.title, { x: x + 0.15, y: sy + 0.12, w: cw - 0.25, h: 0.3, fontFace: F.body, fontSize: 10, bold: true, color: p.accent, charSpacing: 1 });
-    s.addText(p.body, { x: x + 0.15, y: sy + 0.5, w: cw - 0.25, h: ch - 0.6, fontFace: F.body, valign: 'top' });
+    s.addText(p.title, { x: x + 0.15, y: sy + 0.15, w: cw - 0.25, h: 0.3, fontFace: F.body, fontSize: 12, bold: true, color: p.accent, charSpacing: 1 });
+    s.addText(p.body, { x: x + 0.15, y: sy + 0.6, w: cw - 0.25, h: ch - 0.7, fontFace: F.body, valign: 'top' });
   });
 }
 
@@ -544,31 +574,31 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
   slideTitle(s, 15, 'Coaching Focus — July');
   s.addShape('rect', { x: 0.4, y: 1.4, w: 6.2, h: 2.6, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
   s.addShape('rect', { x: 0.4, y: 1.4, w: 0.08, h: 2.6, fill: { color: C.blue }, line: { width: 0 } });
-  s.addText('PRIMARY — RAMP INTO THE KAM MOTION', { x: 0.6, y: 1.55, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 12, color: C.blue, bold: true, charSpacing: 1 });
+  s.addText('PRIMARY — RAMP INTO THE KAM MOTION', { x: 0.6, y: 1.58, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 13, color: C.blue, bold: true, charSpacing: 1 });
   s.addText([
-    { text: '• Learn the new book cold — 75 Gold + 70 Scaled/Bronze (~145 accounts)\n\n', options: { color: C.text, fontSize: 11 } },
-    { text: '• Build account plans for the top Gold accounts — ARR + renewal-timing first\n\n', options: { color: C.text, fontSize: 11 } },
-    { text: '• Name the path to full-year quota from the installed base', options: { color: C.text, fontSize: 11 } }
-  ], { x: 0.6, y: 2.0, w: 5.8, h: 1.9, fontFace: F.body });
+    { text: '• Learn the new book cold — 75 Gold + 70 Scaled/Bronze (~145 accounts)\n\n', options: { color: C.text, fontSize: 13 } },
+    { text: '• Build account plans for the top Gold accounts — ARR + renewal-timing first\n\n', options: { color: C.text, fontSize: 13 } },
+    { text: '• Name the path to full-year quota from the installed base', options: { color: C.text, fontSize: 13 } }
+  ], { x: 0.6, y: 2.05, w: 5.8, h: 1.85, fontFace: F.body, valign: 'top' });
 
   s.addShape('rect', { x: 6.8, y: 1.4, w: 6.2, h: 2.6, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
   s.addShape('rect', { x: 6.8, y: 1.4, w: 0.08, h: 2.6, fill: { color: C.accent }, line: { width: 0 } });
-  s.addText('SECONDARY — RETAIN & EXPAND THE BASE', { x: 7.0, y: 1.55, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 12, color: C.accent, bold: true, charSpacing: 1 });
+  s.addText('SECONDARY — RETAIN & EXPAND THE BASE', { x: 7.0, y: 1.58, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 13, color: C.accent, bold: true, charSpacing: 1 });
   s.addText([
-    { text: '• Renewals first — Hawaiian Airlines $20k (Q3 2027) and every dated renewal, planned early\n\n', options: { color: C.text, fontSize: 11 } },
-    { text: '• Expand the June-proven way — BRP, Tracer, YMCA are the template\n\n', options: { color: C.text, fontSize: 11 } },
-    { text: '• MEDDICC discipline on the open $10k+ ops (RLE, Upwork, HA)', options: { color: C.text, fontSize: 11 } }
-  ], { x: 7.0, y: 2.0, w: 5.8, h: 1.9, fontFace: F.body });
+    { text: '• Renewals first — Hawaiian Airlines $20k (Q3 2027) and every dated renewal, planned early\n\n', options: { color: C.text, fontSize: 13 } },
+    { text: '• Expand the June-proven way — BRP, Tracer, YMCA are the template\n\n', options: { color: C.text, fontSize: 13 } },
+    { text: '• MEDDICC discipline on the open $10k+ ops (RLE, Upwork, HA)', options: { color: C.text, fontSize: 13 } }
+  ], { x: 7.0, y: 2.05, w: 5.8, h: 1.85, fontFace: F.body, valign: 'top' });
 
-  s.addText('THEME & CARRY-FORWARD', { x: 0.4, y: 4.2, w: 12, h: 0.3, fontFace: F.body, fontSize: 11, color: C.muted, bold: true, charSpacing: 2 });
+  s.addText('THEME & CARRY-FORWARD', { x: 0.4, y: 4.25, w: 12, h: 0.3, fontFace: F.body, fontSize: 12.5, color: C.muted, bold: true, charSpacing: 2 });
   s.addText([
-    { text: '✓  New theme — the motion change. ', options: { color: C.green, bold: true, fontSize: 12 } },
-    { text: 'From the all-bound AE model to KAM (the 2024 customer-growth motion). July is a ramp, not a sprint — the deliverable is a book strategy, not an activity count.\n\n', options: { color: C.text, fontSize: 12 } },
-    { text: '•  Carried forward: ', options: { color: C.accent, bold: true, fontSize: 12 } },
-    { text: 'the MEDDICC questioning habit from Call Prep, and day-60 hygiene to clean the book on entry (no inherited zombies).\n\n', options: { color: C.text, fontSize: 12 } },
-    { text: '•  The one-line goal: ', options: { color: C.accent, bold: true, fontSize: 12 } },
-    { text: 'get the book right — a tiered Gold-base strategy with a named path to H2 quota. Coverage, not dials.', options: { color: C.text, fontSize: 12 } }
-  ], { x: 0.4, y: 4.55, w: 12.6, h: 2.3, fontFace: F.body });
+    { text: '✓  New theme — the motion change. ', options: { color: C.green, bold: true, fontSize: 13.5 } },
+    { text: 'From the all-bound AE model to KAM (the 2024 customer-growth motion). July is a ramp, not a sprint — the deliverable is a book strategy, not an activity count.\n\n', options: { color: C.text, fontSize: 13.5 } },
+    { text: '•  Carried forward: ', options: { color: C.accent, bold: true, fontSize: 13.5 } },
+    { text: 'the MEDDICC questioning habit from Call Prep, and day-60 hygiene to clean the book on entry (no inherited zombies).\n\n', options: { color: C.text, fontSize: 13.5 } },
+    { text: '•  The one-line goal: ', options: { color: C.accent, bold: true, fontSize: 13.5 } },
+    { text: 'get the book right — a tiered Gold-base strategy with a named path to H2 quota. Coverage, not dials.', options: { color: C.text, fontSize: 13.5 } }
+  ], { x: 0.4, y: 4.6, w: 12.6, h: 2.3, fontFace: F.body, valign: 'top' });
 }
 
 const OUT = 'June_2026_NAM_MBR.pptx';
