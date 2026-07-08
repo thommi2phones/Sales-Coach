@@ -344,28 +344,32 @@ const tableOpts = (x, y, w, colW, rowH) => ({ x, y, w, colW, rowH, fontFace: F.b
 
   // Right: June activity baseline
   s.addShape('rect', { x: 6.8, y: 1.4, w: 6.2, h: 4.5, fill: { color: C.surface2 }, line: { color: C.border, width: 0.5 } });
-  s.addText('JUNE ACTIVITY BASELINE (HubSpot / Command Center)', { x: 7.0, y: 1.5, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 12, color: C.muted, bold: true, charSpacing: 1 });
+  s.addText('JUNE OUTREACH — COMMAND CENTER (email CMS)', { x: 7.0, y: 1.5, w: 5.8, h: 0.3, fontFace: F.body, fontSize: 12, color: C.muted, bold: true, charSpacing: 1 });
   const actRows = [
-    ['Meetings', '62', 'Healthy inbound + customer load (~2.8/day)', C.green],
-    ['Emails logged', '394', 'Down, still the primary written channel', C.text],
-    ['New contacts', '90', 'Lighter — top-of-list enrollment slowed', C.text],
-    ['Calls / dials', '0', 'Cold dials deprioritized — intentional', C.orange]
+    ['Emails Sent', '3,093', '155%', C.green],
+    ['Contacts Enrolled', '90', '23%', C.orange],
+    ['Contacts Reached', '427', '21%', C.red],
+    ['Accounts Touched', '32', '40%', C.orange]
   ];
   const actT = [
-    [{ text: 'Activity', options: { bold: true, color: C.muted, fontSize: 12, fill: { color: C.surface } } },
+    [{ text: 'Metric', options: { bold: true, color: C.muted, fontSize: 12, fill: { color: C.surface } } },
      { text: 'June', options: { bold: true, color: C.muted, fontSize: 12, align: 'right', fill: { color: C.surface } } },
-     { text: 'Read', options: { bold: true, color: C.muted, fontSize: 12, fill: { color: C.surface } } }],
+     { text: '% Goal', options: { bold: true, color: C.muted, fontSize: 12, align: 'right', fill: { color: C.surface } } }],
     ...actRows.map(r => [
       { text: r[0], options: { color: C.text, fontSize: 12.5, fill: { color: C.surface2 } } },
-      { text: r[1], options: { color: r[3], fontSize: 12.5, align: 'right', bold: true, fill: { color: C.surface2 } } },
-      { text: r[2], options: { color: C.muted, fontSize: 11.5, fill: { color: C.surface2 } } }
+      { text: r[1], options: { color: C.text, fontSize: 12.5, align: 'right', bold: true, fill: { color: C.surface2 } } },
+      { text: r[2], options: { color: r[3], fontSize: 12.5, align: 'right', bold: true, fill: { color: C.surface2 } } }
     ])
   ];
-  s.addTable(actT, tableOpts(7.0, 1.95, 5.8, [1.7, 0.8, 3.3], 0.48));
+  s.addTable(actT, tableOpts(7.0, 1.95, 5.8, [2.6, 1.5, 1.7], 0.42));
   s.addText([
-    { text: 'The read: ', options: { bold: true, color: C.blue, fontSize: 13 } },
-    { text: 'June ran on inbound demand + expansion — meetings healthy, cold outbound at zero by design. In the KAM motion that is the point: the KPI shifts from dials to account coverage, retention, and expansion pipeline.', options: { color: C.text, fontSize: 13 } }
-  ], { x: 7.0, y: 4.55, w: 5.8, h: 1.75, fontFace: F.body, valign: 'top' });
+    { text: 'Reply rate 0.6% · 2 replies', options: { bold: true, color: C.text, fontSize: 11.5 } },
+    { text: '   ·   Gold 3 (498 sent) · Bronze 17 (1,115) · Prospect 12 (975)', options: { color: C.muted, fontSize: 10.5 } }
+  ], { x: 7.0, y: 4.2, w: 5.8, h: 0.35, fontFace: F.body });
+  s.addText([
+    { text: 'The read: ', options: { bold: true, color: C.blue, fontSize: 12.5 } },
+    { text: 'volume ran hot (155%) but low-yield — 21% reached, 0.6% reply, 2 replies — and skewed to Bronze/Prospect (Gold just 3 accounts). Calls were 0. The cadence ran on autopilot; the KAM pivot redirects effort to the Gold base.', options: { color: C.text, fontSize: 12.5 } }
+  ], { x: 7.0, y: 4.65, w: 5.8, h: 1.25, fontFace: F.body, valign: 'top' });
 
   s.addShape('roundRect', { x: 0.4, y: 6.1, w: 12.55, h: 0.85, fill: { color: C.surface2 }, line: { color: C.accent, width: 1 }, rectRadius: 0.1 });
   s.addText([
